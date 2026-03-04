@@ -29,7 +29,7 @@ export default function About() {
                 target="_blank" 
                 className="hover:underline"
               >
-                linkedin.com/in/david-lopez-sánchez-aa269a1b7
+                https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7/
               </a>
             </p>
           </div>
