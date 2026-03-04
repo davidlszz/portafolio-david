@@ -25,11 +25,11 @@ export default function About() {
             <span className="text-gray-500">LinkedIn</span>
             <p className="text-white">
               <a 
-                href="https://www.linkedin.com/in/David Lopez Sánchez" 
+                href="https://www.linkedin.com/in/david-lopez-sánchez-aa269a1b7" 
                 target="_blank" 
                 className="hover:underline"
               >
-                linkedin.com/in/David Lopez Sánchez
+                linkedin.com/in/david-lopez-sánchez-aa269a1b7
               </a>
             </p>
           </div>
