@@ -3,19 +3,21 @@
 import { useEffect, useState } from "react";
 import { Menu, ShieldCheck, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { useLanguage } from "./LanguageContext";
 
 const navItems = [
-  { id: "home", label: "Inicio" },
-  { id: "about", label: "Sobre mi" },
-  { id: "stack", label: "Stack" },
-  { id: "projects", label: "Proyectos" },
-  { id: "focus", label: "Enfoque" },
-  { id: "contact", label: "Contacto" },
-];
+  { id: "home", es: "Inicio", en: "Home" },
+  { id: "about", es: "Sobre mi", en: "About" },
+  { id: "stack", es: "Stack", en: "Stack" },
+  { id: "projects", es: "Proyectos", en: "Projects" },
+  { id: "focus", es: "Enfoque", en: "Focus" },
+  { id: "contact", es: "Contacto", en: "Contact" },
+] as const;
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
+  const { lang, setLang } = useLanguage();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -62,6 +64,29 @@ export default function Navbar() {
           <span className="cyber-title text-xs md:text-sm">David / Secure Node</span>
         </a>
 
+        <div className="hidden items-center gap-2 md:flex">
+          <button
+            type="button"
+            onClick={() => setLang("en")}
+            className={`rounded-md px-3 py-1 text-[11px] tracking-[0.14em] ${
+              lang === "en" ? "bg-cyan-300/20 text-cyan-100" : "text-cyan-100/65"
+            }`}
+            aria-label="Switch to English"
+          >
+            EN
+          </button>
+          <button
+            type="button"
+            onClick={() => setLang("es")}
+            className={`rounded-md px-3 py-1 text-[11px] tracking-[0.14em] ${
+              lang === "es" ? "bg-emerald-400/20 text-emerald-200" : "text-cyan-100/65"
+            }`}
+            aria-label="Cambiar a Espanol"
+          >
+            ES
+          </button>
+        </div>
+
         <nav className="hidden items-center gap-2 md:flex">
           {navItems.map((item) => (
             <a
@@ -73,7 +98,7 @@ export default function Navbar() {
                   : "text-cyan-100/80 hover:bg-cyan-300/10 hover:text-cyan-100"
               }`}
             >
-              {item.label}
+              {lang === "es" ? item.es : item.en}
             </a>
           ))}
         </nav>
@@ -98,6 +123,22 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="mx-auto mt-3 w-full max-w-6xl rounded-xl border border-cyan-300/30 bg-slate-950/92 p-3 md:hidden"
           >
+            <div className="mb-2 flex gap-2">
+              <button
+                type="button"
+                onClick={() => setLang("en")}
+                className={`rounded-md px-3 py-2 text-xs ${lang === "en" ? "bg-cyan-300/20 text-cyan-100" : "text-cyan-100/70"}`}
+              >
+                English
+              </button>
+              <button
+                type="button"
+                onClick={() => setLang("es")}
+                className={`rounded-md px-3 py-2 text-xs ${lang === "es" ? "bg-emerald-400/20 text-emerald-200" : "text-cyan-100/70"}`}
+              >
+                Espanol
+              </button>
+            </div>
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (
                 <a
@@ -110,7 +151,7 @@ export default function Navbar() {
                       : "text-cyan-100/85 hover:bg-cyan-300/10"
                   }`}
                 >
-                  {item.label}
+                  {lang === "es" ? item.es : item.en}
                 </a>
               ))}
             </nav>
