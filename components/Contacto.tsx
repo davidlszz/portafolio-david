@@ -1,52 +1,59 @@
 import FadeInSection from "./FadeInSection";
+import { Github, Linkedin, Mail } from "lucide-react";
 
-export default function About() {
+export default function Contacto() {
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black text-white px-6 flex items-center">
+    <section id="contact" className="flex min-h-screen scroll-mt-28 items-center px-6 py-20">
       <FadeInSection>
-        <h2 className="text-4xl font-bold mb-10">
-          Contacto
-        </h2>
+        <div className="section-shell mx-auto w-full max-w-5xl rounded-2xl p-8 md:p-12">
+          <h2 className="cyber-title mb-8 text-3xl font-bold text-white md:text-4xl">Contacto</h2>
 
-        <p className="text-gray-400 text-lg mb-10">
-          Si te interesa colaborar en proyectos de infraestructura,
-          redes o desarrollo de sistemas confiables, puedes contactarme
-          a través de los siguientes medios.
-        </p>
+          <p className="cyber-text mb-10 text-lg leading-relaxed">
+            Si quieres colaborar en proyectos de ciberseguridad, infraestructura o confiabilidad,
+            puedes contactarme por estos canales.
+          </p>
 
-        <div className="space-y-6 text-lg">
-
-          <div>
-            <span className="text-gray-500">Email</span>
-            <p className="text-white">davidlszdev@gmail.com</p>
-          </div>
-
-          <div>
-            <span className="text-gray-500">LinkedIn</span>
-            <p className="text-white">
-              <a 
-                href="https://www.linkedin.com/in/david-lopez-sánchez-aa269a1b7" 
-                target="_blank" 
-                className="hover:underline"
-              >
-                https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7/
+          <div className="grid gap-6 md:grid-cols-3">
+            <article className="rounded-xl border border-emerald-400/30 bg-slate-950/55 p-5">
+              <p className="mb-2 flex items-center gap-2 text-xs tracking-[0.18em] text-emerald-300">
+                <Mail size={14} />
+                EMAIL
+              </p>
+              <a className="cyber-link break-all" href="mailto:davidlszdev@gmail.com">
+                davidlszdev@gmail.com
               </a>
-            </p>
-          </div>
+            </article>
 
-          <div>
-            <span className="text-gray-500">GitHub</span>
-            <p className="text-white">
-              <a 
-                href="https://github.com/davidlszz" 
-                target="_blank" 
-                className="hover:underline"
+            <article className="rounded-xl border border-cyan-300/30 bg-slate-950/55 p-5">
+              <p className="mb-2 flex items-center gap-2 text-xs tracking-[0.18em] text-cyan-300">
+                <Linkedin size={14} />
+                LINKEDIN
+              </p>
+              <a
+                href="https://www.linkedin.com/in/david-lopez-sanchez-aa269a1b7/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cyber-link break-all"
+              >
+                linkedin.com/in/david-lopez-sanchez-aa269a1b7
+              </a>
+            </article>
+
+            <article className="rounded-xl border border-emerald-400/30 bg-slate-950/55 p-5">
+              <p className="mb-2 flex items-center gap-2 text-xs tracking-[0.18em] text-emerald-300">
+                <Github size={14} />
+                GITHUB
+              </p>
+              <a
+                href="https://github.com/davidlszz"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cyber-link break-all"
               >
                 github.com/davidlszz
               </a>
-            </p>
+            </article>
           </div>
-
         </div>
       </FadeInSection>
     </section>

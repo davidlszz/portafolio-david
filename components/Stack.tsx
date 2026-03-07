@@ -1,48 +1,41 @@
 import FadeInSection from "./FadeInSection";
 
-export default function About() {
+export default function Stack() {
+  const groups = [
+    {
+      title: "Seguridad de red",
+      items: ["TCP/IP", "DNS", "TLS", "SSH", "Subnetting"],
+    },
+    {
+      title: "Infraestructura",
+      items: ["Linux", "VPS", "Nginx", "Reverse proxy", "Hardening base"],
+    },
+    {
+      title: "DevSecOps",
+      items: ["Git", "CI/CD", "Observabilidad", "Gestion de incidentes", "Automatizacion"],
+    },
+  ];
+
   return (
-    <section className="min-h-screen bg-gradient-to-b from-black via-zinc-900 to-black text-white px-6 flex items-center">
+    <section id="stack" className="flex min-h-screen scroll-mt-28 items-center px-6 py-20">
       <FadeInSection>
-        <h2 className="text-4xl font-bold mb-12">
-          Stack Técnico
-        </h2>
+        <div className="section-shell mx-auto max-w-5xl rounded-2xl p-8 md:p-12">
+          <h2 className="cyber-title mb-10 text-3xl font-bold text-white md:text-4xl">Stack tecnico</h2>
 
-        <div className="grid md:grid-cols-3 gap-10">
-          
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Redes</h3>
-            <ul className="text-gray-400 space-y-2">
-              <li>TCP/IP</li>
-              <li>DNS</li>
-              <li>TLS</li>
-              <li>SSH</li>
-              <li>Subnetting</li>
-            </ul>
+          <div className="grid gap-6 md:grid-cols-3">
+            {groups.map((group) => (
+              <article key={group.title} className="rounded-xl border border-emerald-400/25 bg-slate-950/55 p-6">
+                <h3 className="mb-4 text-xl font-semibold text-emerald-200">{group.title}</h3>
+                <ul className="space-y-2">
+                  {group.items.map((item) => (
+                    <li key={item} className="cyber-text text-sm">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            ))}
           </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">Infraestructura</h3>
-            <ul className="text-gray-400 space-y-2">
-              <li>Linux</li>
-              <li>VPS Deployment</li>
-              <li>Nginx</li>
-              <li>Reverse Proxy</li>
-              <li>WAF (conceptos)</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-2xl font-semibold mb-4">DevOps</h3>
-            <ul className="text-gray-400 space-y-2">
-              <li>Git</li>
-              <li>CI/CD</li>
-              <li>Observabilidad (bases)</li>
-              <li>MTTR</li>
-              <li>Automatización</li>
-            </ul>
-          </div>
-
         </div>
       </FadeInSection>
     </section>

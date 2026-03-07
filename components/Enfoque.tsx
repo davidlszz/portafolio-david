@@ -2,40 +2,33 @@
 
 import { motion } from "framer-motion";
 
-
 export default function Enfoque() {
   return (
-    <section className="min-h-screen bg-black text-white px-6 flex items-center">
+    <section id="focus" className="flex min-h-screen scroll-mt-28 items-center px-6 py-20">
       <motion.div
-        className="max-w-4xl mx-auto"
+        className="section-shell mx-auto max-w-5xl rounded-2xl p-8 md:p-12"
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-4xl font-bold mb-10">
-          Enfoque
-        </h2>
+        <h2 className="cyber-title mb-8 text-3xl font-bold text-white md:text-4xl">Enfoque</h2>
 
-        <p className="text-gray-400 text-lg leading-relaxed mb-6">
-          Mi interés principal está en comprender cómo funcionan los sistemas
-          desde la capa de red hasta la entrega de aplicaciones en producción.
-          Analizo la interacción entre protocolos, servidores, infraestructura
-          y procesos de despliegue como un ecosistema completo.
+        <p className="cyber-text mb-6 text-lg leading-relaxed">
+          Mi enfoque integra ciberseguridad e infraestructura desde el diseno.
+          Analizo riesgos, superficie de ataque y dependencias operativas para construir
+          servicios mas resistentes en entornos reales.
         </p>
 
-        <p className="text-gray-400 text-lg leading-relaxed mb-6">
-          Considero la automatización, la observabilidad y la confiabilidad
-          como pilares fundamentales en el diseño de sistemas modernos.
-          Reducir la intervención manual, medir el comportamiento del sistema
-          y minimizar el MTTR son aspectos clave para construir entornos
-          resilientes y seguros.
+        <p className="cyber-text mb-6 text-lg leading-relaxed">
+          Priorizo automatizacion, observabilidad y respuesta a incidentes como parte del
+          ciclo de vida. Esto permite detectar desviaciones rapido y sostener continuidad
+          operativa aun bajo eventos adversos.
         </p>
 
-        <p className="text-gray-400 text-lg leading-relaxed">
-          Mi objetivo es evolucionar hacia roles enfocados en infraestructura,
-          cloud y Site Reliability Engineering, participando en la construcción
-          y mantenimiento de plataformas escalables y altamente disponibles.
+        <p className="cyber-text text-lg leading-relaxed">
+          El objetivo es aportar a equipos de infraestructura y seguridad con practicas
+          medibles, despliegues confiables y una cultura de mejora continua.
         </p>
       </motion.div>
     </section>
