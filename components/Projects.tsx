@@ -52,7 +52,7 @@ export default function Projects() {
             {projects.map((project) => (
               <article
                 key={project.title}
-                className="group rounded-xl border border-cyan-300/25 bg-slate-950/60 p-6 transition hover:-translate-y-0.5 hover:border-cyan-300/55"
+                className="interactive-card group rounded-xl border border-cyan-300/25 bg-slate-950/60 p-6 hover:border-cyan-300/55"
               >
                 <h3 className="mb-3 text-xl font-semibold text-cyan-100">{project.title}</h3>
                 <p className="cyber-text mb-4 text-sm leading-relaxed">{project.description}</p>

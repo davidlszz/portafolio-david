@@ -34,7 +34,10 @@ export default function Stack() {
 
           <div className="grid gap-6 md:grid-cols-3">
             {groups.map((group) => (
-              <article key={group.title} className="rounded-xl border border-emerald-400/25 bg-slate-950/55 p-6">
+              <article
+                key={group.title}
+                className="interactive-card rounded-xl border border-emerald-400/25 bg-slate-950/55 p-6"
+              >
                 <h3 className="mb-4 text-xl font-semibold text-emerald-200">{group.title}</h3>
                 <ul className="space-y-2">
                   {group.items.map((item) => (

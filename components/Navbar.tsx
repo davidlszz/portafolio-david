@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, ShieldCheck, X } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
@@ -17,6 +17,8 @@ const navItems = [
 export default function Navbar() {
   const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
   const { lang, setLang } = useLanguage();
 
   useEffect(() => {
@@ -45,6 +47,37 @@ export default function Navbar() {
   }, []);
 
   useEffect(() => {
+    let ticking = false;
+
+    const updateNavbar = () => {
+      const currentY = window.scrollY;
+
+      if (!open) {
+        if (currentY > 140 && currentY > lastScrollY.current + 4) {
+          setHidden(true);
+        } else if (currentY < lastScrollY.current - 4 || currentY < 80) {
+          setHidden(false);
+        }
+      }
+
+      lastScrollY.current = currentY;
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(updateNavbar);
+        ticking = true;
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [open]);
+
+  useEffect(() => {
     const body = document.body;
     if (open) {
       body.style.overflow = "hidden";
@@ -57,7 +90,11 @@ export default function Navbar() {
   }, [open]);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:px-6">
+    <header
+      className={`fixed inset-x-0 top-0 z-40 px-4 pt-4 transition-transform duration-300 md:px-6 ${
+        hidden && !open ? "-translate-y-[140%]" : "translate-y-0"
+      }`}
+    >
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border border-emerald-400/35 bg-slate-950/85 px-4 py-3 md:bg-slate-950/75 md:backdrop-blur-md">
         <a href="#home" className="flex items-center gap-2 text-emerald-200">
           <ShieldCheck size={18} />

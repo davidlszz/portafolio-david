@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { ReactNode } from "react";
 
 interface Props {
@@ -8,12 +8,15 @@ interface Props {
 }
 
 export default function FadeInSection({ children }: Props) {
+  const reducedMotion = useReducedMotion();
+
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      viewport={{ once: true }}
+      transition={{ duration: 0.55, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.18 }}
+      className="transform-gpu"
     >
       {children}
     </motion.div>

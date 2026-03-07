@@ -90,6 +90,20 @@ body::after {
     0 0 24px rgba(0, 255, 136, 0.08);
 }
 
+.interactive-card {
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+  will-change: transform;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .interactive-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
 .content-section {
   content-visibility: auto;
   contain-intrinsic-size: 900px;
@@ -160,6 +174,10 @@ body::after {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .interactive-card {
+    transition: none;
   }
 
   body::after {
