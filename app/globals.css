@@ -91,13 +91,19 @@ body::after {
 }
 
 @media (max-width: 768px), (pointer: coarse) {
+  body {
+    background:
+      radial-gradient(circle at 20% 10%, rgba(0, 229, 255, 0.1), transparent 34%),
+      radial-gradient(circle at 80% 80%, rgba(0, 255, 136, 0.1), transparent 36%),
+      linear-gradient(140deg, #03060b 0%, #060d16 55%, #05070d 100%);
+  }
+
   body::after {
     display: none;
   }
 
   body::before {
-    opacity: 0.1;
-    background-size: 56px 56px;
+    display: none;
   }
 
   .section-shell {
