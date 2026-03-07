@@ -56,7 +56,7 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-40 px-4 pt-4 md:px-6">
-      <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border border-emerald-400/35 bg-slate-950/75 px-4 py-3 backdrop-blur-md">
+      <div className="mx-auto flex w-full max-w-6xl items-center justify-between rounded-xl border border-emerald-400/35 bg-slate-950/85 px-4 py-3 md:bg-slate-950/75 md:backdrop-blur-md">
         <a href="#home" className="flex items-center gap-2 text-emerald-200">
           <ShieldCheck size={18} />
           <span className="cyber-title text-xs md:text-sm">David / Secure Node</span>
@@ -96,7 +96,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -12 }}
             transition={{ duration: 0.2 }}
-            className="mx-auto mt-3 w-full max-w-6xl rounded-xl border border-cyan-300/30 bg-slate-950/90 p-3 backdrop-blur-md md:hidden"
+            className="mx-auto mt-3 w-full max-w-6xl rounded-xl border border-cyan-300/30 bg-slate-950/92 p-3 md:hidden"
           >
             <nav className="flex flex-col gap-2">
               {navItems.map((item) => (

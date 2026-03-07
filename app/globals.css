@@ -90,6 +90,22 @@ body::after {
     0 0 24px rgba(0, 255, 136, 0.08);
 }
 
+@media (max-width: 768px), (pointer: coarse) {
+  body::after {
+    display: none;
+  }
+
+  body::before {
+    opacity: 0.1;
+    background-size: 56px 56px;
+  }
+
+  .section-shell {
+    backdrop-filter: none;
+    box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.06);
+  }
+}
+
 .cyber-title {
   font-family: var(--font-orbitron), sans-serif;
   letter-spacing: 0.06em;
