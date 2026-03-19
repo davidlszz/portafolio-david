@@ -1,14 +1,14 @@
 "use client";
 
 import FadeInSection from "./FadeInSection";
-import { Clock3, Github, Linkedin, Mail, ShieldCheck } from "lucide-react";
+import { Clock3, Github, Linkedin, Mail, ShieldCheck, TerminalSquare, Workflow } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
 
 const contactSignals = {
   es: [
     "Infraestructura segura",
-    "Automatizaci\u00f3n y CI/CD",
-    "Observabilidad y operaci\u00f3n",
+    "Automatización y CI/CD",
+    "Observabilidad y operación",
     "Hardening y confiabilidad",
   ],
   en: [
@@ -19,9 +19,47 @@ const contactSignals = {
   ],
 } as const;
 
+const collaborationModes = {
+  es: [
+    {
+      title: "Proyectos técnicos",
+      description: "Diseño, hardening, automatización y mejora continua sobre plataformas y servicios.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Laboratorios y práctica",
+      description: "Construcción de entornos controlados para observabilidad, segmentación y validación de controles.",
+      icon: TerminalSquare,
+    },
+    {
+      title: "Entrega operativa",
+      description: "Apoyo en documentación, runbooks, flujos CI/CD y trazabilidad de cambios.",
+      icon: Workflow,
+    },
+  ],
+  en: [
+    {
+      title: "Technical projects",
+      description: "Design, hardening, automation, and continuous improvement across platforms and services.",
+      icon: ShieldCheck,
+    },
+    {
+      title: "Labs and practice",
+      description: "Controlled environments for observability, segmentation, and validation of security controls.",
+      icon: TerminalSquare,
+    },
+    {
+      title: "Operational delivery",
+      description: "Support in documentation, runbooks, CI/CD flows, and change traceability.",
+      icon: Workflow,
+    },
+  ],
+} as const;
+
 export default function Contacto() {
   const { lang } = useLanguage();
   const signals = contactSignals[lang];
+  const modes = collaborationModes[lang];
 
   return (
     <section
@@ -33,7 +71,7 @@ export default function Contacto() {
           <div className="mb-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <p className="mb-3 text-xs font-medium tracking-[0.3em] text-cyan-300/85">
-                {lang === "es" ? "COLABORACI\u00d3N Y CONTACTO" : "COLLABORATION AND CONTACT"}
+                {lang === "es" ? "COLABORACIÓN Y CONTACTO" : "COLLABORATION AND CONTACT"}
               </p>
               <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
                 {lang === "es" ? "Contacto" : "Contact"}
@@ -41,13 +79,13 @@ export default function Contacto() {
 
               <p className="cyber-text text-lg leading-relaxed">
                 {lang === "es"
-                  ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operaci\u00f3n se crucen de forma real: despliegues confiables, hardening, observabilidad, automatizaci\u00f3n y mejora continua de plataformas."
+                  ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operación se crucen de forma real: despliegues confiables, hardening, observabilidad, automatización y mejora continua de plataformas."
                   : "I am interested in collaborating on initiatives where infrastructure, security, and operations intersect in real ways: reliable deployments, hardening, observability, automation, and continuous platform improvement."}
               </p>
 
               <p className="cyber-text mt-6 text-lg leading-relaxed">
                 {lang === "es"
-                  ? "Si tu equipo necesita una persona con mentalidad anal\u00edtica, foco en trazabilidad t\u00e9cnica y capacidad para aprender r\u00e1pido en entornos modernos, estos son mis canales principales para conversar sobre oportunidades, proyectos o colaboraciones."
+                  ? "Si tu equipo necesita una persona con mentalidad analítica, foco en trazabilidad técnica y capacidad para aprender rápido en entornos modernos, estos son mis canales principales para conversar sobre oportunidades, proyectos o colaboración."
                   : "If your team needs someone with an analytical mindset, a focus on technical traceability, and the ability to learn quickly in modern environments, these are my main channels for discussing opportunities, projects, or collaboration."}
               </p>
 
@@ -63,7 +101,7 @@ export default function Contacto() {
               </div>
             </div>
 
-            <div className="rounded-[1.6rem] border border-cyan-300/18 bg-slate-950/65 p-6">
+            <div className="cyber-grid-panel rounded-[1.6rem] border border-cyan-300/18 bg-slate-950/65 p-6">
               <div className="mb-5 flex items-center gap-3">
                 <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
                   <ShieldCheck size={20} />
@@ -73,7 +111,7 @@ export default function Contacto() {
                     {lang === "es" ? "Perfil de respuesta" : "Response profile"}
                   </p>
                   <p className="text-sm text-cyan-100/70">
-                    {lang === "es" ? "Canales profesionales y contacto directo" : "Professional channels and direct contact"}
+                    {lang === "es" ? "Canales profesionales y disponibilidad" : "Professional channels and availability"}
                   </p>
                 </div>
               </div>
@@ -83,7 +121,7 @@ export default function Contacto() {
                   <div className="flex items-center gap-3 text-cyan-200">
                     <Clock3 size={16} />
                     <span className="text-sm text-cyan-100/85">
-                      {lang === "es" ? "Respuesta esperada: 24 a 48 horas" : "Expected reply: 24 to 48 hours"}
+                      {lang === "es" ? "Respuesta estimada: 24 a 48 horas" : "Estimated reply: 24 to 48 hours"}
                     </span>
                   </div>
                 </div>
@@ -97,6 +135,21 @@ export default function Contacto() {
                 </div>
               </div>
             </div>
+          </div>
+
+          <div className="mb-8 grid gap-4 md:grid-cols-3">
+            {modes.map((mode) => (
+              <article
+                key={mode.title}
+                className="interactive-card rounded-[1.4rem] border border-emerald-400/18 bg-slate-950/65 p-6"
+              >
+                <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
+                  <mode.icon size={20} />
+                </div>
+                <h3 className="mb-3 text-lg font-semibold text-white">{mode.title}</h3>
+                <p className="cyber-text text-sm leading-relaxed">{mode.description}</p>
+              </article>
+            ))}
           </div>
 
           <div className="grid gap-6 md:grid-cols-3">
