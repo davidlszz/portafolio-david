@@ -70,11 +70,11 @@ export default function Contacto() {
         <div className="section-shell mx-auto w-full max-w-6xl overflow-hidden rounded-[2rem] p-8 md:p-12">
           <div className="mb-10 grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
-              <p className="mb-3 text-xs font-medium tracking-[0.3em] text-cyan-300/85">
+              <p className="hidden">
                 {lang === "es" ? "COLABORACIÓN Y CONTACTO" : "COLLABORATION AND CONTACT"}
               </p>
               <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-                {lang === "es" ? "Contacto" : "Contact"}
+                {lang === "es" ? "Colaboraci\u00f3n y contacto" : "Collaboration and contact"}
               </h2>
 
               <p className="cyber-text text-lg leading-relaxed">

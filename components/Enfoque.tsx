@@ -81,11 +81,11 @@ export default function Enfoque() {
       >
         <div className="mb-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
           <div>
-            <p className="mb-3 text-xs font-medium tracking-[0.3em] text-cyan-300/85">
+            <p className="hidden">
               {lang === "es" ? "CRITERIO DE TRABAJO" : "WORKING FRAMEWORK"}
             </p>
             <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-              {lang === "es" ? "Enfoque" : "Approach"}
+              {lang === "es" ? "Criterio de trabajo" : "Work criteria"}
             </h2>
 
             <p className="cyber-text text-lg leading-relaxed">

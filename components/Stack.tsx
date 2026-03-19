@@ -95,11 +95,8 @@ export default function Stack() {
         <div className="section-shell mx-auto max-w-6xl overflow-hidden rounded-[2rem] p-8 md:p-12">
           <div className="mb-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
             <div>
-              <p className="mb-3 text-xs font-medium tracking-[0.3em] text-cyan-300/85">
-                {lang === "es" ? "CAPACIDADES T\u00c9CNICAS" : "TECHNICAL CAPABILITIES"}
-              </p>
               <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-                {lang === "es" ? "Stack t\u00e9cnico" : "Technical stack"}
+                {lang === "es" ? "Capacidades t\u00e9cnicas" : "Technical capabilities"}
               </h2>
               <p className="cyber-text max-w-3xl text-base leading-relaxed md:text-lg">
                 {lang === "es"
