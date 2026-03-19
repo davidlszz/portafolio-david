@@ -1,6 +1,8 @@
 "use client";
 
 import FadeInSection from "./FadeInSection";
+import { ShieldCheck, Lock, TerminalSquare, Workflow, BellRing, Network, Waypoints } from "lucide-react";
+import { SiGithubactions, SiGit, SiLinux, SiNginx } from "react-icons/si";
 import { useLanguage } from "./LanguageContext";
 
 export default function Projects() {
@@ -12,7 +14,13 @@ export default function Projects() {
         lang === "es"
           ? "Fortalecimiento de un servidor Linux con Nginx, politicas SSH, minimo privilegio y TLS para trafico cifrado."
           : "Linux server hardening with Nginx, SSH policies, least privilege, and TLS for encrypted traffic.",
-      tags: ["Linux", "Nginx", "TLS", "SSH", "Hardening"],
+      tags: [
+        { label: "Linux", icon: SiLinux, type: "react-icons" },
+        { label: "Nginx", icon: SiNginx, type: "react-icons" },
+        { label: "TLS", icon: ShieldCheck, type: "lucide" },
+        { label: "SSH", icon: TerminalSquare, type: "lucide" },
+        { label: "Hardening", icon: Lock, type: "lucide" },
+      ],
     },
     {
       title: lang === "es" ? "Pipeline CI/CD con controles" : "Controlled CI/CD pipeline",
@@ -20,7 +28,12 @@ export default function Projects() {
         lang === "es"
           ? "Pipeline de despliegue con validaciones automatizadas, versionado seguro y reduccion de cambios manuales en produccion."
           : "Deployment pipeline with automated validations, secure versioning, and reduced manual changes in production.",
-      tags: ["Git", "CI/CD", "Automation", "Release"],
+      tags: [
+        { label: "Git", icon: SiGit, type: "react-icons" },
+        { label: "CI/CD", icon: SiGithubactions, type: "react-icons" },
+        { label: "Automation", icon: Workflow, type: "lucide" },
+        { label: "Release", icon: ShieldCheck, type: "lucide" },
+      ],
     },
     {
       title: lang === "es" ? "Laboratorio Blue Team" : "Blue Team lab",
@@ -28,7 +41,12 @@ export default function Projects() {
         lang === "es"
           ? "Escenarios de monitoreo con recoleccion de logs, deteccion de anomalias y respuesta inicial para bajar MTTR."
           : "Monitoring scenarios with log collection, anomaly detection, and first-response workflows to reduce MTTR.",
-      tags: ["Logs", "Alerting", "MTTR", "SOC"],
+      tags: [
+        { label: "Logs", icon: TerminalSquare, type: "lucide" },
+        { label: "Alerting", icon: BellRing, type: "lucide" },
+        { label: "MTTR", icon: ShieldCheck, type: "lucide" },
+        { label: "SOC", icon: Lock, type: "lucide" },
+      ],
     },
     {
       title: lang === "es" ? "Segmentacion de red" : "Network segmentation",
@@ -36,7 +54,11 @@ export default function Projects() {
         lang === "es"
           ? "Diseno de segmentacion por subredes para separar servicios criticos, reducir movimiento lateral y mejorar control de acceso."
           : "Subnet-based segmentation to isolate critical services, reduce lateral movement, and improve access control.",
-      tags: ["TCP/IP", "Subnetting", "Defense in depth"],
+      tags: [
+        { label: "TCP/IP", icon: Network, type: "lucide" },
+        { label: "Subnetting", icon: Waypoints, type: "lucide" },
+        { label: "Defense in depth", icon: ShieldCheck, type: "lucide" },
+      ],
     },
   ];
 
@@ -58,8 +80,13 @@ export default function Projects() {
                 <p className="cyber-text mb-4 text-sm leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag} className="cyber-chip rounded-md px-2 py-1 text-xs">
-                      {tag}
+                    <span key={tag.label} className="cyber-chip inline-flex items-center gap-2 rounded-md px-2.5 py-1.5 text-xs">
+                      {tag.type === "react-icons" ? (
+                        <tag.icon className="text-sm" />
+                      ) : (
+                        <tag.icon size={14} />
+                      )}
+                      {tag.label}
                     </span>
                   ))}
                 </div>

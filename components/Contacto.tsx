@@ -38,7 +38,7 @@ export default function Contacto() {
                 LINKEDIN
               </p>
               <a
-                href="https://www.linkedin.com/in/david-lopez-sanchez-aa269a1b7/"
+                href="https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="cyber-link break-all"
