@@ -7,7 +7,7 @@ import { useLanguage } from "./LanguageContext";
 
 const navItems = [
   { id: "home", es: "Inicio", en: "Home" },
-  { id: "about", es: "Sobre mi", en: "About" },
+  { id: "about", es: "Sobre m\u00ed", en: "About" },
   { id: "stack", es: "Stack", en: "Stack" },
   { id: "projects", es: "Proyectos", en: "Projects" },
   { id: "focus", es: "Enfoque", en: "Focus" },
@@ -118,7 +118,7 @@ export default function Navbar() {
             className={`rounded-md px-3 py-1 text-[11px] tracking-[0.14em] ${
               lang === "es" ? "bg-emerald-400/20 text-emerald-200" : "text-cyan-100/65"
             }`}
-            aria-label="Cambiar a Espanol"
+            aria-label={"Cambiar a Espa\u00f1ol"}
           >
             ES
           </button>
@@ -173,7 +173,7 @@ export default function Navbar() {
                 onClick={() => setLang("es")}
                 className={`rounded-md px-3 py-2 text-xs ${lang === "es" ? "bg-emerald-400/20 text-emerald-200" : "text-cyan-100/70"}`}
               >
-                Espanol
+                {"Espa\u00f1ol"}
               </button>
             </div>
             <nav className="flex flex-col gap-2">

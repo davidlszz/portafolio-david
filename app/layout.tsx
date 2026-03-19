@@ -15,9 +15,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "David Lopez Sanchez | Cybersecurity Portfolio",
+  title: "David L\u00f3pez S\u00e1nchez | Cybersecurity Portfolio",
   description:
-    "Portfolio de David Lopez Sanchez enfocado en ciberseguridad, infraestructura, redes y confiabilidad.",
+    "Portfolio de David L\u00f3pez S\u00e1nchez enfocado en ciberseguridad, infraestructura, redes y confiabilidad.",
 };
 
 export default function RootLayout({

@@ -53,7 +53,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.1 }}
             >
-              David Lopez Sanchez
+              David {"L\u00f3pez S\u00e1nchez"}
             </motion.h1>
 
             <motion.p
@@ -78,7 +78,7 @@ export default function Hero() {
               transition={{ duration: 0.75, delay: 0.2 }}
             >
               {lang === "es"
-                ? "Ingenieria de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
+                ? "Ingenier\u00eda de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
                 : "Systems engineering focused on cybersecurity, infrastructure hardening, secure networking, and operational reliability with a DevSecOps mindset."}
             </motion.p>
 
@@ -117,7 +117,7 @@ export default function Hero() {
                 {hasProfileImage ? (
                   <Image
                     src="/profile-photo.jpg"
-                    alt="Retrato de David Lopez Sanchez"
+                    alt={"Retrato de David L\u00f3pez S\u00e1nchez"}
                     fill
                     priority
                     sizes="(max-width: 768px) 70vw, 30vw"

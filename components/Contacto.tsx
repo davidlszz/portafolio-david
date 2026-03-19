@@ -8,7 +8,10 @@ export default function Contacto() {
   const { lang } = useLanguage();
 
   return (
-    <section id="contact" className="content-section flex min-h-[78svh] scroll-mt-28 items-center px-4 py-20 md:min-h-screen md:px-6">
+    <section
+      id="contact"
+      className="content-section flex min-h-[78svh] scroll-mt-28 items-center px-4 py-20 md:min-h-screen md:px-6"
+    >
       <FadeInSection>
         <div className="section-shell mx-auto w-full max-w-5xl rounded-2xl p-8 md:p-12">
           <h2 className="cyber-title mb-8 text-3xl font-bold text-white md:text-4xl">
@@ -43,7 +46,7 @@ export default function Contacto() {
                 rel="noopener noreferrer"
                 className="cyber-link break-all"
               >
-                linkedin.com/in/david-lopez-sanchez-aa269a1b7
+                {"linkedin.com/in/david-lopez-s\u00e1nchez-aa269a1b7"}
               </a>
             </article>
 

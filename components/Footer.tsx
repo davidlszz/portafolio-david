@@ -10,7 +10,8 @@ export default function Footer() {
     <footer className="relative z-10 px-4 pb-8 md:px-6">
       <div className="mx-auto flex w-full max-w-6xl flex-col gap-4 rounded-xl border border-cyan-300/25 bg-slate-950/70 px-5 py-4 text-xs text-cyan-100/75 md:flex-row md:items-center md:justify-between">
         <p>
-          (c) {year} David Lopez Sanchez // {lang === "es" ? "Ingenieria defensiva" : "Defensive engineering"}
+          {"\u00a9"} {year} David {"L\u00f3pez S\u00e1nchez"} {"//"}{" "}
+          {lang === "es" ? "Ingenier\u00eda defensiva" : "Defensive engineering"}
         </p>
         <div className="flex items-center gap-4">
           <a href="#home" className="cyber-link">

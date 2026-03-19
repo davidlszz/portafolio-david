@@ -1,7 +1,7 @@
 "use client";
 
 import FadeInSection from "./FadeInSection";
-import { ShieldCheck, Lock, TerminalSquare, Workflow, BellRing, Network, Waypoints } from "lucide-react";
+import { BellRing, Lock, Network, ShieldCheck, TerminalSquare, Waypoints, Workflow } from "lucide-react";
 import { SiGithubactions, SiGit, SiLinux, SiNginx } from "react-icons/si";
 import { useLanguage } from "./LanguageContext";
 
@@ -12,7 +12,7 @@ export default function Projects() {
       title: lang === "es" ? "Hardening de servidor VPS" : "VPS server hardening",
       description:
         lang === "es"
-          ? "Fortalecimiento de un servidor Linux con Nginx, politicas SSH, minimo privilegio y TLS para trafico cifrado."
+          ? "Fortalecimiento de un servidor Linux con Nginx, pol\u00edticas SSH, m\u00ednimo privilegio y TLS para tr\u00e1fico cifrado."
           : "Linux server hardening with Nginx, SSH policies, least privilege, and TLS for encrypted traffic.",
       tags: [
         { label: "Linux", icon: SiLinux, type: "react-icons" },
@@ -26,7 +26,7 @@ export default function Projects() {
       title: lang === "es" ? "Pipeline CI/CD con controles" : "Controlled CI/CD pipeline",
       description:
         lang === "es"
-          ? "Pipeline de despliegue con validaciones automatizadas, versionado seguro y reduccion de cambios manuales en produccion."
+          ? "Pipeline de despliegue con validaciones automatizadas, versionado seguro y reducci\u00f3n de cambios manuales en producci\u00f3n."
           : "Deployment pipeline with automated validations, secure versioning, and reduced manual changes in production.",
       tags: [
         { label: "Git", icon: SiGit, type: "react-icons" },
@@ -39,7 +39,7 @@ export default function Projects() {
       title: lang === "es" ? "Laboratorio Blue Team" : "Blue Team lab",
       description:
         lang === "es"
-          ? "Escenarios de monitoreo con recoleccion de logs, deteccion de anomalias y respuesta inicial para bajar MTTR."
+          ? "Escenarios de monitoreo con recolecci\u00f3n de logs, detecci\u00f3n de anomal\u00edas y respuesta inicial para bajar MTTR."
           : "Monitoring scenarios with log collection, anomaly detection, and first-response workflows to reduce MTTR.",
       tags: [
         { label: "Logs", icon: TerminalSquare, type: "lucide" },
@@ -49,10 +49,10 @@ export default function Projects() {
       ],
     },
     {
-      title: lang === "es" ? "Segmentacion de red" : "Network segmentation",
+      title: lang === "es" ? "Segmentaci\u00f3n de red" : "Network segmentation",
       description:
         lang === "es"
-          ? "Diseno de segmentacion por subredes para separar servicios criticos, reducir movimiento lateral y mejorar control de acceso."
+          ? "Dise\u00f1o de segmentaci\u00f3n por subredes para separar servicios cr\u00edticos, reducir movimiento lateral y mejorar control de acceso."
           : "Subnet-based segmentation to isolate critical services, reduce lateral movement, and improve access control.",
       tags: [
         { label: "TCP/IP", icon: Network, type: "lucide" },
@@ -63,7 +63,10 @@ export default function Projects() {
   ];
 
   return (
-    <section id="projects" className="content-section flex min-h-[78svh] scroll-mt-28 items-center px-4 py-20 md:min-h-screen md:px-6">
+    <section
+      id="projects"
+      className="content-section flex min-h-[78svh] scroll-mt-28 items-center px-4 py-20 md:min-h-screen md:px-6"
+    >
       <FadeInSection>
         <div className="section-shell mx-auto max-w-5xl rounded-2xl p-8 md:p-12">
           <h2 className="cyber-title mb-10 text-3xl font-bold text-white md:text-4xl">
@@ -80,12 +83,11 @@ export default function Projects() {
                 <p className="cyber-text mb-4 text-sm leading-relaxed">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
-                    <span key={tag.label} className="cyber-chip inline-flex items-center gap-2 rounded-md px-2.5 py-1.5 text-xs">
-                      {tag.type === "react-icons" ? (
-                        <tag.icon className="text-sm" />
-                      ) : (
-                        <tag.icon size={14} />
-                      )}
+                    <span
+                      key={tag.label}
+                      className="cyber-chip inline-flex items-center gap-2 rounded-md px-2.5 py-1.5 text-xs"
+                    >
+                      {tag.type === "react-icons" ? <tag.icon className="text-sm" /> : <tag.icon size={14} />}
                       {tag.label}
                     </span>
                   ))}
