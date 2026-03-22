@@ -1,9 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useMotionValue, useSpring } from "framer-motion";
 import { ShieldCheck } from "lucide-react";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 interface LanyardProps {
   name: string;
@@ -19,26 +18,37 @@ export default function Lanyard({
   compact = false,
 }: LanyardProps) {
   const [hasImage, setHasImage] = useState(true);
-  const rotate = useMotionValue(0);
-  const springRotate = useSpring(rotate, { stiffness: 180, damping: 16, mass: 0.5 });
+  const cardRef = useRef<HTMLDivElement>(null);
 
   const handleMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    const rect = event.currentTarget.getBoundingClientRect();
+    const element = cardRef.current;
+    if (!element) {
+      return;
+    }
+
+    const rect = element.getBoundingClientRect();
     const relativeX = (event.clientX - rect.left) / rect.width;
-    rotate.set((relativeX - 0.5) * 14);
+    element.style.setProperty("--lanyard-rotate", `${(relativeX - 0.5) * 14}deg`);
   };
 
-  const reset = () => rotate.set(0);
+  const reset = () => {
+    const element = cardRef.current;
+    if (!element) {
+      return;
+    }
+
+    element.style.setProperty("--lanyard-rotate", "0deg");
+  };
 
   return (
     <div className={`mx-auto flex flex-col items-center ${compact ? "w-full max-w-[240px]" : "w-full max-w-[280px]"}`}>
       <div className="mb-[-1px] h-12 w-px bg-gradient-to-b from-cyan-300/60 to-cyan-300/5" />
       <div className="mb-3 h-3 w-16 rounded-full border border-cyan-300/20 bg-cyan-300/8" />
-      <motion.div
+      <div
+        ref={cardRef}
         onPointerMove={handleMove}
         onPointerLeave={reset}
-        style={{ rotate: springRotate, transformOrigin: "top center" }}
-        className={`relative w-full overflow-hidden rounded-[1.6rem] border border-cyan-300/20 bg-slate-950/88 shadow-[0_24px_50px_rgba(0,0,0,0.28)] ${compact ? "p-4" : "p-5"}`}
+        className={`lanyard-card relative w-full overflow-hidden rounded-[1.6rem] border border-cyan-300/20 bg-slate-950/88 shadow-[0_24px_50px_rgba(0,0,0,0.28)] ${compact ? "p-4" : "p-5"}`}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.12),transparent_34%),linear-gradient(180deg,rgba(0,255,136,0.04),transparent_42%)]" />
         <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
@@ -68,7 +78,7 @@ export default function Lanyard({
             <p className={`truncate text-emerald-200 ${compact ? "text-xs" : "text-sm"}`}>{role}</p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }

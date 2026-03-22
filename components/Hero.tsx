@@ -1,6 +1,5 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
 import { Activity, LockKeyhole, Radar, ShieldCheck, Workflow } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SiGit, SiGithubactions, SiLinux, SiNginx } from "react-icons/si";
@@ -59,7 +58,6 @@ const heroSignals = {
 
 export default function Hero() {
   const { lang } = useLanguage();
-  const reducedMotion = useReducedMotion();
   const words = useMemo(
     () =>
       lang === "es"
@@ -74,7 +72,8 @@ export default function Hero() {
   const role = lang === "es" ? "Ingeniero de sistemas" : "Systems engineer";
 
   useEffect(() => {
-    if (reducedMotion) {
+    const media = window.matchMedia("(prefers-reduced-motion: reduce)");
+    if (media.matches) {
       return;
     }
 
@@ -83,7 +82,7 @@ export default function Hero() {
     }, 1800);
 
     return () => clearInterval(interval);
-  }, [reducedMotion, words]);
+  }, [words]);
 
   return (
     <section
@@ -92,62 +91,34 @@ export default function Hero() {
     >
       <SectionCard accent="mixed" depth={0}>
         <FadeContent className="mb-8 flex flex-wrap items-center justify-center gap-3">
-          <motion.p
-            className="rounded-full border border-cyan-300/18 bg-cyan-300/8 px-4 py-2 font-mono text-[11px] tracking-[0.28em] text-cyan-300"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <p className="rounded-full border border-cyan-300/18 bg-cyan-300/8 px-4 py-2 font-mono text-[11px] tracking-[0.28em] text-cyan-300">
             SECURITY.OPS // ONLINE
-          </motion.p>
+          </p>
 
-          <motion.div
-            className="cyber-badge inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] tracking-[0.18em]"
-            initial={{ opacity: 0, y: -14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.08 }}
-          >
+          <div className="cyber-badge inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] tracking-[0.18em]">
             <LockKeyhole size={14} />
             {lang === "es" ? "Perfil técnico en evolución" : "Technical profile in progress"}
-          </motion.div>
+          </div>
         </FadeContent>
 
         <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
           <AnimatedContent className="text-center xl:text-left">
-            <motion.h1
-              className="cyber-title mb-4 text-4xl font-extrabold text-white md:text-6xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.1 }}
-            >
+            <h1 className="cyber-title mb-4 text-4xl font-extrabold text-white md:text-6xl">
               David {"L\u00f3pez S\u00e1nchez"}
-            </motion.h1>
+            </h1>
 
-            <motion.p
-              className="mb-5 text-lg font-semibold text-emerald-300 md:text-2xl"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.45, delay: 0.16 }}
-            >
+            <p className="mb-5 text-lg font-semibold text-emerald-300 md:text-2xl">
               {lang === "es" ? "Especialidad:" : "Specialty:"}{" "}
-              <span
-                className="inline-block min-w-[11ch] border-r-2 border-cyan-300 pr-1 text-cyan-200"
-                style={{ animation: reducedMotion ? "none" : "blink-caret 0.85s steps(1) infinite" }}
-              >
+              <span className="inline-block min-w-[11ch] border-r-2 border-cyan-300 pr-1 text-cyan-200 hero-word-caret">
                 {words[wordIndex]}
               </span>
-            </motion.p>
+            </p>
 
-            <motion.p
-              className="cyber-text mx-auto mb-8 max-w-3xl text-base leading-relaxed xl:mx-0 md:text-xl"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.2 }}
-            >
+            <p className="cyber-text mx-auto mb-8 max-w-3xl text-base leading-relaxed xl:mx-0 md:text-xl">
               {lang === "es"
                 ? "Ingeniería de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
                 : "Systems engineering focused on cybersecurity, infrastructure hardening, secure networking, and operational reliability with a DevSecOps mindset."}
-            </motion.p>
+            </p>
 
             <div className="mb-8 grid gap-3 sm:grid-cols-3">
               {metrics.map((metric, index) => (
@@ -163,12 +134,7 @@ export default function Hero() {
               ))}
             </div>
 
-            <motion.div
-              className="mb-8 flex flex-col justify-center gap-4 sm:flex-row xl:justify-start"
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.75, delay: 0.35 }}
-            >
+            <div className="mb-8 flex flex-col justify-center gap-4 sm:flex-row xl:justify-start">
               <a
                 href="#projects"
                 className="rounded-[1rem] border border-emerald-400/50 bg-emerald-400/10 px-6 py-3 font-medium text-emerald-200 transition hover:bg-emerald-400/20"
@@ -183,7 +149,7 @@ export default function Hero() {
               >
                 GitHub
               </a>
-            </motion.div>
+            </div>
 
             <div className="mb-8 flex flex-wrap justify-center gap-3 xl:justify-start">
               {signals.map((signal, index) => (

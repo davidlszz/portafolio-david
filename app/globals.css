@@ -206,6 +206,10 @@ body > * {
   animation-direction: reverse;
 }
 
+.hero-word-caret {
+  animation: blink-caret 0.85s steps(1) infinite;
+}
+
 .section-grid-glow {
   position: absolute;
   inset: 1.25rem;
@@ -255,6 +259,31 @@ body > * {
   --stack-depth: 0;
   position: relative;
   transform: translate3d(0, calc(var(--stack-depth) * 2px), 0);
+}
+
+.profile-tilt {
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --glare-x: 50%;
+  --glare-y: 50%;
+  transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
+  transform-style: preserve-3d;
+  transition: transform 220ms ease;
+}
+
+.profile-glare {
+  left: var(--glare-x);
+  top: var(--glare-y);
+  transition:
+    left 180ms ease,
+    top 180ms ease;
+}
+
+.lanyard-card {
+  --lanyard-rotate: 0deg;
+  transform: rotate(var(--lanyard-rotate));
+  transform-origin: top center;
+  transition: transform 220ms ease;
 }
 
 .content-section {
@@ -424,5 +453,9 @@ body > * {
 
   .scroll-stack-shell {
     transform: none;
+  }
+
+  .hero-word-caret {
+    animation: none;
   }
 }

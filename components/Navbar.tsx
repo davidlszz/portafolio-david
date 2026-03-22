@@ -2,7 +2,6 @@
 
 import { useEffect, useRef, useState } from "react";
 import { Menu, ShieldCheck, X } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
 import { useLanguage } from "./LanguageContext";
 
 const navItems = [
@@ -118,19 +117,12 @@ export default function Navbar() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className={`relative overflow-hidden rounded-[1.1rem] px-4 py-3 text-[11px] tracking-[0.18em] transition ${
+                    className={`relative overflow-hidden rounded-[1.1rem] border px-4 py-3 text-[11px] tracking-[0.18em] transition ${
                       isActive
-                        ? "text-white"
-                        : "border border-transparent text-cyan-100/72 hover:border-cyan-300/14 hover:bg-cyan-300/8 hover:text-cyan-100"
+                        ? "border-cyan-300/20 bg-gradient-to-r from-cyan-300/18 to-emerald-400/16 text-white shadow-[0_0_24px_rgba(34,211,238,0.14)]"
+                        : "border-transparent text-cyan-100/72 hover:border-cyan-300/14 hover:bg-cyan-300/8 hover:text-cyan-100"
                     }`}
                   >
-                    {isActive && (
-                      <motion.span
-                        layoutId="card-nav-pill"
-                        className="absolute inset-0 rounded-[1.1rem] border border-cyan-300/20 bg-gradient-to-r from-cyan-300/18 to-emerald-400/16 shadow-[0_0_24px_rgba(34,211,238,0.14)]"
-                        transition={{ type: "spring", stiffness: 240, damping: 22 }}
-                      />
-                    )}
                     <span className="relative z-10">{lang === "es" ? item.es : item.en}</span>
                   </a>
                 );
@@ -178,65 +170,55 @@ export default function Navbar() {
           </div>
         </div>
 
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, y: -12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -12 }}
-              transition={{ duration: 0.22 }}
-              className="section-shell section-shell-react overflow-hidden rounded-[1.8rem] border border-cyan-300/18 bg-slate-950/90 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.32)]"
-            >
-              <div className="mb-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
-                <div>
-                  <p className="text-[11px] tracking-[0.24em] text-cyan-100/55">
-                    {lang === "es" ? "CARD NAV" : "CARD NAV"}
-                  </p>
-                  <p className="mt-2 text-sm font-semibold text-white">
-                    {lang === "es" ? "Navegación del portfolio" : "Portfolio navigation"}
-                  </p>
-                </div>
-                <div className="inline-flex items-center gap-1 rounded-[1.2rem] border border-cyan-300/14 bg-slate-900/80 p-1">
-                  <button
-                    type="button"
-                    onClick={() => setLang("en")}
-                    className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
-                      lang === "en" ? "bg-cyan-300/18 text-cyan-100" : "text-cyan-100/58"
-                    }`}
-                  >
-                    EN
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setLang("es")}
-                    className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
-                      lang === "es" ? "bg-emerald-400/18 text-emerald-100" : "text-cyan-100/58"
-                    }`}
-                  >
-                    ES
-                  </button>
-                </div>
+        {open && (
+          <div className="animated-content section-shell section-shell-react overflow-hidden rounded-[1.8rem] border border-cyan-300/18 bg-slate-950/90 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
+            <div className="mb-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
+              <div>
+                <p className="text-[11px] tracking-[0.24em] text-cyan-100/55">CARD NAV</p>
+                <p className="mt-2 text-sm font-semibold text-white">
+                  {lang === "es" ? "Navegación del portfolio" : "Portfolio navigation"}
+                </p>
               </div>
+              <div className="glass-chip inline-flex items-center gap-1 rounded-[1.2rem] p-1">
+                <button
+                  type="button"
+                  onClick={() => setLang("en")}
+                  className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
+                    lang === "en" ? "bg-cyan-300/18 text-cyan-100" : "text-cyan-100/58"
+                  }`}
+                >
+                  EN
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setLang("es")}
+                  className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
+                    lang === "es" ? "bg-emerald-400/18 text-emerald-100" : "text-cyan-100/58"
+                  }`}
+                >
+                  ES
+                </button>
+              </div>
+            </div>
 
-              <nav className="grid gap-2">
-                {navItems.map((item) => (
-                  <a
-                    key={item.id}
-                    href={`#${item.id}`}
-                    onClick={() => setOpen(false)}
-                    className={`rounded-[1.25rem] border px-4 py-3 text-sm tracking-[0.08em] transition ${
-                      active === item.id
-                        ? "border-emerald-400/18 bg-emerald-400/12 text-emerald-100"
-                        : "border-cyan-300/12 bg-slate-900/76 text-cyan-100/82 hover:bg-cyan-300/10"
-                    }`}
-                  >
-                    {lang === "es" ? item.es : item.en}
-                  </a>
-                ))}
-              </nav>
-            </motion.div>
-          )}
-        </AnimatePresence>
+            <nav className="grid gap-2">
+              {navItems.map((item) => (
+                <a
+                  key={item.id}
+                  href={`#${item.id}`}
+                  onClick={() => setOpen(false)}
+                  className={`rounded-[1.25rem] border px-4 py-3 text-sm tracking-[0.08em] transition ${
+                    active === item.id
+                      ? "border-emerald-400/18 bg-emerald-400/12 text-emerald-100"
+                      : "border-cyan-300/12 bg-slate-900/76 text-cyan-100/82 hover:bg-cyan-300/10"
+                  }`}
+                >
+                  {lang === "es" ? item.es : item.en}
+                </a>
+              ))}
+            </nav>
+          </div>
+        )}
       </div>
     </header>
   );
