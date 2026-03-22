@@ -3,6 +3,7 @@
 import { Activity, Radar, ShieldCheck, Target } from "lucide-react";
 import AnimatedContent from "./AnimatedContent";
 import FadeContent from "./FadeContent";
+import GlareHover from "./GlareHover";
 import { useLanguage } from "./LanguageContext";
 import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
@@ -12,19 +13,19 @@ const focusPillars = {
     {
       title: "Analizar primero",
       description:
-        "Parto del riesgo, la arquitectura y los puntos de fallo para entender dónde se rompe realmente un sistema.",
+        "Parto del riesgo, la arquitectura y los puntos de fallo para entender donde se rompe realmente un sistema.",
       icon: Radar,
     },
     {
       title: "Automatizar con criterio",
       description:
-        "Busco reducir fricción operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
+        "Busco reducir friccion operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
       icon: Activity,
     },
     {
       title: "Medir para mejorar",
       description:
-        "Sin observabilidad no hay operación madura; por eso priorizo logs, señales y métricas accionables.",
+        "Sin observabilidad no hay operacion madura; por eso priorizo logs, senales y metricas accionables.",
       icon: ShieldCheck,
     },
   ],
@@ -93,7 +94,7 @@ export default function Enfoque() {
 
             <p className="cyber-text mt-6 text-lg leading-relaxed">
               {lang === "es"
-                ? "Por eso priorizo diseñar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
+                ? "Por eso priorizo disenar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
                 : "That is why I prioritize layered defenses, automate controls where it makes sense, and measure real system behavior so decisions are based on evidence rather than assumptions."}
             </p>
           </AnimatedContent>
@@ -108,7 +109,7 @@ export default function Enfoque() {
                   {lang === "es" ? "Secuencia operativa" : "Operating sequence"}
                 </p>
                 <p className="text-sm text-cyan-100/70">
-                  {lang === "es" ? "Así estructuro el trabajo técnico" : "How I structure technical work"}
+                  {lang === "es" ? "Asi estructuro el trabajo tecnico" : "How I structure technical work"}
                 </p>
               </div>
             </div>
@@ -135,13 +136,26 @@ export default function Enfoque() {
           {pillars.map((pillar, index) => (
             <ScrollStack key={pillar.title} depth={index + 1}>
               <FadeContent delay={0.08 * index}>
-                <article className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6">
-                  <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
-                    <pillar.icon size={20} />
-                  </div>
-                  <h3 className="mb-3 text-lg font-semibold text-white">{pillar.title}</h3>
-                  <p className="cyber-text text-sm leading-relaxed">{pillar.description}</p>
-                </article>
+                <GlareHover
+                  width="100%"
+                  height="100%"
+                  background="linear-gradient(180deg, rgba(4, 10, 18, 0.88), rgba(6, 13, 20, 0.78))"
+                  borderRadius="1.5rem"
+                  borderColor="rgba(110, 231, 183, 0.14)"
+                  glareColor="#d7fff2"
+                  glareOpacity={0.12}
+                  glareAngle={-36}
+                  glareSize={220}
+                  className="reactbits-card-shell"
+                >
+                  <article className="interactive-card rounded-[1.5rem] p-6">
+                    <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
+                      <pillar.icon size={20} />
+                    </div>
+                    <h3 className="mb-3 text-lg font-semibold text-white">{pillar.title}</h3>
+                    <p className="cyber-text text-sm leading-relaxed">{pillar.description}</p>
+                  </article>
+                </GlareHover>
               </FadeContent>
             </ScrollStack>
           ))}

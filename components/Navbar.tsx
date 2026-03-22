@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { Menu, ShieldCheck, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "./LanguageContext";
 
 const navItems = [
   { id: "home", es: "Inicio", en: "Home" },
-  { id: "about", es: "Sobre mí", en: "About" },
+  { id: "about", es: "Sobre mi", en: "About" },
   { id: "stack", es: "Stack", en: "Stack" },
   { id: "projects", es: "Proyectos", en: "Projects" },
   { id: "focus", es: "Enfoque", en: "Focus" },
@@ -151,7 +151,7 @@ export default function Navbar() {
                   className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
                     lang === "es" ? "bg-emerald-400/18 text-emerald-100" : "text-cyan-100/58"
                   }`}
-                  aria-label="Cambiar a Español"
+                  aria-label="Cambiar a Espanol"
                 >
                   ES
                 </button>
@@ -176,7 +176,7 @@ export default function Navbar() {
               <div>
                 <p className="text-[11px] tracking-[0.24em] text-cyan-100/55">CARD NAV</p>
                 <p className="mt-2 text-sm font-semibold text-white">
-                  {lang === "es" ? "Navegación del portfolio" : "Portfolio navigation"}
+                  {lang === "es" ? "Navegacion del portfolio" : "Portfolio navigation"}
                 </p>
               </div>
               <div className="glass-chip inline-flex items-center gap-1 rounded-[1.2rem] p-1">

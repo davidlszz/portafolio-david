@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  ArrowUpRight,
   Clock3,
   Github,
   Linkedin,
@@ -11,17 +12,19 @@ import {
 } from "lucide-react";
 import AnimatedContent from "./AnimatedContent";
 import FadeContent from "./FadeContent";
+import GlareHover from "./GlareHover";
 import { useLanguage } from "./LanguageContext";
 import Lanyard from "./Lanyard";
 import LogoLoop from "./LogoLoop";
 import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
+import StarBorder from "./StarBorder";
 
 const contactSignals = {
   es: [
     { label: "Infraestructura segura", icon: <ShieldCheck size={16} /> },
-    { label: "Automatización y CI/CD", icon: <Workflow size={16} /> },
-    { label: "Observabilidad y operación", icon: <TerminalSquare size={16} /> },
+    { label: "Automatizaci\u00f3n y CI/CD", icon: <Workflow size={16} /> },
+    { label: "Observabilidad y operaci\u00f3n", icon: <TerminalSquare size={16} /> },
     { label: "LinkedIn", icon: <Linkedin size={16} /> },
     { label: "GitHub", icon: <Github size={16} /> },
     { label: "Email", icon: <Mail size={16} /> },
@@ -39,18 +42,18 @@ const contactSignals = {
 const collaborationModes = {
   es: [
     {
-      title: "Proyectos técnicos",
-      description: "Diseño, hardening, automatización y mejora continua sobre plataformas y servicios.",
+      title: "Proyectos t\u00e9cnicos",
+      description: "Dise\u00f1o, hardening, automatizaci\u00f3n y mejora continua sobre plataformas y servicios.",
       icon: ShieldCheck,
     },
     {
-      title: "Laboratorios y práctica",
-      description: "Construcción de entornos controlados para observabilidad, segmentación y validación de controles.",
+      title: "Laboratorios y pr\u00e1ctica",
+      description: "Construcci\u00f3n de entornos controlados para observabilidad, segmentaci\u00f3n y validaci\u00f3n de controles.",
       icon: TerminalSquare,
     },
     {
       title: "Entrega operativa",
-      description: "Apoyo en documentación, runbooks, flujos CI/CD y trazabilidad de cambios.",
+      description: "Apoyo en documentaci\u00f3n, runbooks, flujos CI/CD y trazabilidad de cambios.",
       icon: Workflow,
     },
   ],
@@ -85,18 +88,18 @@ export default function Contacto() {
       className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
       <SectionCard accent="cyan" depth={5}>
-        <div className="mb-8 grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)] xl:items-start">
+        <div className="mb-10 grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)] xl:items-start">
           <AnimatedContent className="mx-auto max-w-3xl text-center xl:mx-0 xl:text-left">
             <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
-              {lang === "es" ? "COLABORACIÓN Y CONTACTO" : "COLLABORATION AND CONTACT"}
+              {lang === "es" ? "COLABORACION Y CONTACTO" : "COLLABORATION AND CONTACT"}
             </p>
             <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-              {lang === "es" ? "Colaboración y contacto" : "Collaboration and contact"}
+              {lang === "es" ? "Colaboracion y contacto" : "Collaboration and contact"}
             </h2>
 
             <p className="cyber-text text-lg leading-relaxed">
               {lang === "es"
-                ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operación se crucen de forma real: despliegues confiables, hardening, observabilidad, automatización y mejora continua de plataformas."
+                ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operacion se crucen de forma real: despliegues confiables, hardening, observabilidad, automatizacion y mejora continua de plataformas."
                 : "I am interested in collaborating on initiatives where infrastructure, security, and operations intersect in real ways: reliable deployments, hardening, observability, automation, and continuous platform improvement."}
             </p>
 
@@ -105,10 +108,40 @@ export default function Contacto() {
                 <LogoLoop items={signals} duration={23} />
               </FadeContent>
             </div>
+
+            <div className="mt-6 flex flex-wrap justify-center gap-4 xl:justify-start">
+              <StarBorder
+                as="a"
+                href="mailto:davidlszdev@gmail.com"
+                className="star-border-cta"
+                color="#34d399"
+                speed="8s"
+              >
+                <span className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-emerald-50">
+                  {lang === "es" ? "Enviar correo" : "Send email"}
+                  <ArrowUpRight size={16} />
+                </span>
+              </StarBorder>
+
+              <StarBorder
+                as="a"
+                href="https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="star-border-cta star-border-cta-secondary"
+                color="#22d3ee"
+                speed="10s"
+              >
+                <span className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-cyan-50">
+                  LinkedIn
+                  <ArrowUpRight size={16} />
+                </span>
+              </StarBorder>
+            </div>
           </AnimatedContent>
 
           <AnimatedContent className="space-y-6" delay={0.08}>
-            <div className="cyber-grid-panel rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6">
+            <div className="cyber-grid-panel rounded-[1.8rem] border border-cyan-300/18 bg-slate-950/65 p-6">
               <div className="mb-5 flex items-center gap-3">
                 <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
                   <ShieldCheck size={20} />
@@ -145,7 +178,7 @@ export default function Contacto() {
                     <Workflow size={16} />
                     <span className="text-sm text-cyan-100/85">
                       {lang === "es"
-                        ? "Abierto a proyectos, prácticas y colaboración"
+                        ? "Abierto a proyectos, practicas y colaboracion"
                         : "Open to projects, internships, and collaboration"}
                     </span>
                   </div>
@@ -166,13 +199,26 @@ export default function Contacto() {
           {modes.map((mode, index) => (
             <ScrollStack key={mode.title} depth={index + 1}>
               <FadeContent delay={0.06 * index}>
-                <article className="interactive-card flex h-full flex-col rounded-[1.7rem] border border-emerald-400/18 bg-slate-950/65 p-6">
-                  <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200">
-                    <mode.icon size={22} />
-                  </div>
-                  <h3 className="mb-4 text-2xl font-semibold text-white">{mode.title}</h3>
-                  <p className="cyber-text text-base leading-relaxed">{mode.description}</p>
-                </article>
+                <GlareHover
+                  width="100%"
+                  height="100%"
+                  background="linear-gradient(180deg, rgba(4, 10, 18, 0.88), rgba(6, 13, 20, 0.78))"
+                  borderRadius="1.7rem"
+                  borderColor="rgba(110, 231, 183, 0.16)"
+                  glareColor="#d5fff6"
+                  glareOpacity={0.12}
+                  glareAngle={-36}
+                  glareSize={220}
+                  className="reactbits-card-shell"
+                >
+                  <article className="interactive-card flex h-full w-full flex-col rounded-[1.7rem] p-6">
+                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200">
+                      <mode.icon size={22} />
+                    </div>
+                    <h3 className="mb-4 text-2xl font-semibold text-white">{mode.title}</h3>
+                    <p className="cyber-text text-base leading-relaxed">{mode.description}</p>
+                  </article>
+                </GlareHover>
               </FadeContent>
             </ScrollStack>
           ))}
@@ -191,7 +237,7 @@ export default function Contacto() {
             {
               label: "LINKEDIN",
               href: "https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7",
-              text: "linkedin.com/in/david-lopez-sánchez-aa269a1b7",
+              text: "linkedin.com/in/david-lopez-sanchez-aa269a1b7",
               icon: Linkedin,
               borderClass: "border-cyan-300/22",
               textClass: "text-cyan-300",

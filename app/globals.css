@@ -398,6 +398,28 @@ body > * {
   }
 }
 
+@keyframes star-movement-bottom {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-100%, 0%);
+    opacity: 0;
+  }
+}
+
+@keyframes star-movement-top {
+  0% {
+    transform: translate(0%, 0%);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(100%, 0%);
+    opacity: 0;
+  }
+}
+
 @media (max-width: 768px), (pointer: coarse) {
   body {
     background:
@@ -469,6 +491,122 @@ body > * {
   border: 1px solid rgba(0, 229, 255, 0.16);
   background: linear-gradient(180deg, rgba(8, 18, 28, 0.9), rgba(8, 18, 28, 0.72));
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+}
+
+.glare-hover {
+  width: var(--gh-width);
+  height: var(--gh-height);
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  place-items: center;
+  border: 1px solid var(--gh-border);
+  border-radius: var(--gh-br);
+  background: var(--gh-bg);
+}
+
+.glare-hover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      var(--gh-angle),
+      hsla(0, 0%, 0%, 0) 58%,
+      var(--gh-rgba) 70%,
+      hsla(0, 0%, 0%, 0) 82%
+    );
+  background-position:
+    -100% -100%,
+    0 0;
+  background-repeat: no-repeat;
+  background-size:
+    var(--gh-size) var(--gh-size),
+    100% 100%;
+  transition: var(--gh-duration) ease;
+}
+
+.glare-hover:hover::before {
+  background-position:
+    100% 100%,
+    0 0;
+}
+
+.glare-hover--play-once::before {
+  transition: none;
+}
+
+.glare-hover--play-once:hover::before {
+  transition: var(--gh-duration) ease;
+  background-position:
+    100% 100%,
+    0 0;
+}
+
+.star-border-container {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.border-gradient-bottom {
+  position: absolute;
+  right: -250%;
+  bottom: -11px;
+  z-index: 0;
+  width: 300%;
+  height: 50%;
+  opacity: 0.7;
+  border-radius: 50%;
+  animation: star-movement-bottom linear infinite alternate;
+}
+
+.border-gradient-top {
+  position: absolute;
+  top: -10px;
+  left: -250%;
+  z-index: 0;
+  width: 300%;
+  height: 50%;
+  opacity: 0.7;
+  border-radius: 50%;
+  animation: star-movement-top linear infinite alternate;
+}
+
+.inner-content {
+  position: relative;
+  z-index: 1;
+  border: 1px solid #222;
+  border-radius: 20px;
+  background: linear-gradient(to bottom, #060010, #111);
+  color: white;
+  text-align: center;
+}
+
+.star-border-cta {
+  width: max-content;
+}
+
+.star-border-cta .inner-content {
+  border-color: rgba(148, 163, 184, 0.16);
+  background: linear-gradient(180deg, rgba(4, 14, 18, 0.94), rgba(6, 17, 23, 0.9));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 12px 28px rgba(0, 0, 0, 0.18);
+}
+
+.star-border-cta-secondary .inner-content {
+  background: linear-gradient(180deg, rgba(8, 14, 25, 0.96), rgba(7, 15, 22, 0.92));
+}
+
+.reactbits-card-shell {
+  width: 100%;
+  height: 100%;
+}
+
+.reactbits-card-shell > * {
+  width: 100%;
 }
 
 .cyber-badge {

@@ -1,21 +1,23 @@
 "use client";
 
-import { Activity, LockKeyhole, Radar, ShieldCheck, Workflow } from "lucide-react";
+import { Activity, ArrowUpRight, LockKeyhole, Radar, ShieldCheck, Workflow } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SiGit, SiGithubactions, SiLinux, SiNginx } from "react-icons/si";
 import AnimatedContent from "./AnimatedContent";
 import FadeContent from "./FadeContent";
+import GlareHover from "./GlareHover";
 import { useLanguage } from "./LanguageContext";
 import Lanyard from "./Lanyard";
 import LogoLoop from "./LogoLoop";
 import ProfileCard from "./ProfileCard";
 import SectionCard from "./SectionCard";
+import StarBorder from "./StarBorder";
 
 const heroMetrics = {
   es: [
     { label: "Foco", value: "Infra + Sec", icon: ShieldCheck },
     { label: "Modo", value: "DevSecOps", icon: Workflow },
-    { label: "Señal", value: "Observabilidad", icon: Radar },
+    { label: "Se\u00f1al", value: "Observabilidad", icon: Radar },
   ],
   en: [
     { label: "Focus", value: "Infra + Sec", icon: ShieldCheck },
@@ -47,7 +49,7 @@ const heroSignals = {
   es: [
     { label: "Hardening primero", icon: ShieldCheck },
     { label: "Entregas medibles", icon: Activity },
-    { label: "Operación clara", icon: Radar },
+    { label: "Operaci\u00f3n clara", icon: Radar },
   ],
   en: [
     { label: "Hardening first", icon: ShieldCheck },
@@ -87,7 +89,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[96svh] scroll-mt-28 items-center justify-center px-4 py-24 md:px-6"
+      className="relative flex min-h-[98svh] scroll-mt-28 items-center justify-center px-4 py-24 md:px-6"
     >
       <SectionCard accent="mixed" depth={0}>
         <FadeContent className="mb-8 flex flex-wrap items-center justify-center gap-3">
@@ -97,12 +99,16 @@ export default function Hero() {
 
           <div className="cyber-badge inline-flex items-center gap-2 rounded-full px-4 py-2 text-[11px] tracking-[0.18em]">
             <LockKeyhole size={14} />
-            {lang === "es" ? "Perfil técnico en evolución" : "Technical profile in progress"}
+            {lang === "es" ? "Perfil t\u00e9cnico en evoluci\u00f3n" : "Technical profile in progress"}
           </div>
         </FadeContent>
 
         <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
           <AnimatedContent className="text-center xl:text-left">
+            <p className="mb-4 text-xs tracking-[0.32em] text-cyan-200/70">
+              {lang === "es" ? "PORTAFOLIO // INFRASTRUCTURE x SECURITY" : "PORTFOLIO // INFRASTRUCTURE x SECURITY"}
+            </p>
+
             <h1 className="cyber-title mb-4 text-4xl font-extrabold text-white md:text-6xl">
               David {"L\u00f3pez S\u00e1nchez"}
             </h1>
@@ -116,39 +122,65 @@ export default function Hero() {
 
             <p className="cyber-text mx-auto mb-8 max-w-3xl text-base leading-relaxed xl:mx-0 md:text-xl">
               {lang === "es"
-                ? "Ingeniería de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
+                ? "Ingenier\u00eda de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
                 : "Systems engineering focused on cybersecurity, infrastructure hardening, secure networking, and operational reliability with a DevSecOps mindset."}
             </p>
 
             <div className="mb-8 grid gap-3 sm:grid-cols-3">
               {metrics.map((metric, index) => (
                 <FadeContent key={metric.label} delay={0.08 * index}>
-                  <div className="cyber-metric rounded-[1.45rem] px-4 py-4 text-left">
-                    <div className="mb-2 flex items-center gap-2 text-cyan-200">
-                      <metric.icon size={15} />
-                      <span className="text-[11px] tracking-[0.22em] text-cyan-100/70">{metric.label}</span>
+                  <GlareHover
+                    width="100%"
+                    height="100%"
+                    background="linear-gradient(180deg, rgba(4, 11, 18, 0.88), rgba(6, 15, 22, 0.76))"
+                    borderRadius="1.45rem"
+                    borderColor="rgba(34, 211, 238, 0.14)"
+                    glareColor="#c4fff4"
+                    glareOpacity={0.12}
+                    glareAngle={-38}
+                    glareSize={220}
+                    className="reactbits-card-shell"
+                  >
+                    <div className="cyber-metric h-full rounded-[1.45rem] px-4 py-4 text-left">
+                      <div className="mb-2 flex items-center gap-2 text-cyan-200">
+                        <metric.icon size={15} />
+                        <span className="text-[11px] tracking-[0.22em] text-cyan-100/70">{metric.label}</span>
+                      </div>
+                      <p className="text-sm font-semibold text-white">{metric.value}</p>
                     </div>
-                    <p className="text-sm font-semibold text-white">{metric.value}</p>
-                  </div>
+                  </GlareHover>
                 </FadeContent>
               ))}
             </div>
 
-            <div className="mb-8 flex flex-col justify-center gap-4 sm:flex-row xl:justify-start">
-              <a
+            <div className="mb-8 flex flex-wrap justify-center gap-4 xl:justify-start">
+              <StarBorder
+                as="a"
                 href="#projects"
-                className="rounded-[1rem] border border-emerald-400/50 bg-emerald-400/10 px-6 py-3 font-medium text-emerald-200 transition hover:bg-emerald-400/20"
+                className="star-border-cta"
+                color="#34d399"
+                speed="8s"
               >
-                {lang === "es" ? "Ver proyectos" : "View projects"}
-              </a>
-              <a
+                <span className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold tracking-[0.08em] text-emerald-50">
+                  {lang === "es" ? "Ver proyectos" : "View projects"}
+                  <ArrowUpRight size={16} />
+                </span>
+              </StarBorder>
+
+              <StarBorder
+                as="a"
                 href="https://github.com/davidlszz"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-[1rem] border border-cyan-300/50 bg-cyan-300/10 px-6 py-3 font-medium text-cyan-100 transition hover:bg-cyan-300/20"
+                className="star-border-cta star-border-cta-secondary"
+                color="#22d3ee"
+                speed="10s"
               >
-                GitHub
-              </a>
+                <span className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold tracking-[0.08em] text-cyan-50">
+                  GitHub
+                  <ArrowUpRight size={16} />
+                </span>
+              </StarBorder>
             </div>
 
             <div className="mb-8 flex flex-wrap justify-center gap-3 xl:justify-start">
