@@ -41,6 +41,7 @@ export default function Lanyard({
         className={`relative w-full overflow-hidden rounded-[1.6rem] border border-cyan-300/20 bg-slate-950/88 shadow-[0_24px_50px_rgba(0,0,0,0.28)] ${compact ? "p-4" : "p-5"}`}
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.12),transparent_34%),linear-gradient(180deg,rgba(0,255,136,0.04),transparent_42%)]" />
+        <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
         <div className="relative flex items-center gap-4">
           <div className={`relative overflow-hidden rounded-2xl border border-cyan-300/16 ${compact ? "h-16 w-16" : "h-20 w-20"}`}>
             {hasImage ? (

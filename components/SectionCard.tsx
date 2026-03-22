@@ -56,6 +56,7 @@ export default function SectionCard({
         className={`pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r ${styles.border}`}
       />
       <div aria-hidden="true" className="section-grid-glow" />
+      <div aria-hidden="true" className="section-sheen" />
       <div className={`relative z-10 p-6 md:p-10 lg:p-12 ${innerClassName}`}>{children}</div>
     </ScrollStack>
   );

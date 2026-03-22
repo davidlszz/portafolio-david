@@ -93,10 +93,11 @@ export default function Navbar() {
     >
       <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3">
         <div className="section-shell section-shell-react overflow-hidden rounded-[1.85rem] border border-cyan-300/18 bg-slate-950/72 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.3)]">
+          <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
           <div className="flex items-center justify-between gap-3">
             <a
               href="#home"
-              className="inline-flex min-w-0 items-center gap-3 rounded-[1.35rem] border border-emerald-400/18 bg-emerald-400/8 px-4 py-3 text-emerald-100"
+              className="glass-chip inline-flex min-w-0 items-center gap-3 rounded-[1.35rem] border border-emerald-400/18 px-4 py-3 text-emerald-100"
             >
               <div className="rounded-2xl border border-emerald-400/18 bg-emerald-400/10 p-2.5">
                 <ShieldCheck size={17} />
@@ -137,11 +138,11 @@ export default function Navbar() {
             </nav>
 
             <div className="hidden items-center gap-2 lg:flex">
-              <div className="inline-flex items-center gap-2 rounded-[1.2rem] border border-cyan-300/14 bg-cyan-300/7 px-3 py-2 text-[10px] tracking-[0.18em] text-cyan-100/72">
+              <div className="glass-chip inline-flex items-center gap-2 rounded-[1.2rem] px-3 py-2 text-[10px] tracking-[0.18em] text-cyan-100/72">
                 <span className="inline-flex h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
                 {lang === "es" ? "Disponible" : "Available"}
               </div>
-              <div className="inline-flex items-center gap-1 rounded-[1.2rem] border border-cyan-300/14 bg-slate-900/80 p-1">
+              <div className="glass-chip inline-flex items-center gap-1 rounded-[1.2rem] p-1">
                 <button
                   type="button"
                   onClick={() => setLang("en")}
@@ -167,7 +168,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="rounded-[1.15rem] border border-cyan-300/24 bg-slate-900/82 p-3 text-cyan-100 lg:hidden"
+              className="glass-chip rounded-[1.15rem] p-3 text-cyan-100 lg:hidden"
               onClick={() => setOpen((current) => !current)}
               aria-label={open ? "Cerrar menu" : "Abrir menu"}
               aria-expanded={open}

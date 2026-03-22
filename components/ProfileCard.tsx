@@ -57,6 +57,7 @@ export default function ProfileCard({
         className="group relative w-full overflow-hidden rounded-[2rem] border border-cyan-300/24 bg-[#07111b] shadow-[0_30px_70px_rgba(0,0,0,0.35)]"
       >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.2),transparent_34%),linear-gradient(180deg,rgba(0,255,136,0.06),transparent_40%),linear-gradient(180deg,#08121c_0%,#071018_100%)]" />
+        <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
         <motion.div
           aria-hidden="true"
           style={{ left: glareLeft, top: glareTop }}
@@ -64,12 +65,12 @@ export default function ProfileCard({
         />
         <div className="absolute inset-4 rounded-[1.65rem] border border-cyan-300/16" />
 
-        <div className="absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-400/18 bg-emerald-400/10 px-3 py-1.5 text-[11px] tracking-[0.2em] text-emerald-100">
+        <div className="glass-chip absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-400/18 px-3 py-1.5 text-[11px] tracking-[0.2em] text-emerald-100">
           <ShieldCheck size={14} />
           PROFILE CARD
         </div>
 
-        <div className="absolute right-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-cyan-300/18 bg-cyan-300/10 px-3 py-1.5 text-[11px] tracking-[0.2em] text-cyan-100">
+        <div className="glass-chip absolute right-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-cyan-300/18 px-3 py-1.5 text-[11px] tracking-[0.2em] text-cyan-100">
           <Sparkles size={14} />
           LIVE
         </div>
@@ -99,7 +100,7 @@ export default function ProfileCard({
         </div>
 
         <div className="relative z-10 px-6 py-5">
-          <div className="rounded-[1.6rem] border border-cyan-300/18 bg-slate-950/86 p-5">
+          <div className="glass-chip rounded-[1.6rem] border border-cyan-300/18 p-5">
             <p className="cyber-title text-xs tracking-[0.3em] text-cyan-100/56">{subtitle}</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">{name}</h3>
             <p className="mt-2 text-sm text-emerald-200">{role}</p>
