@@ -35,9 +35,8 @@ body {
   margin: 0;
   color: var(--foreground);
   background:
-    radial-gradient(circle at 18% 8%, rgba(0, 229, 255, 0.18), transparent 30%),
-    radial-gradient(circle at 84% 84%, rgba(0, 255, 136, 0.16), transparent 34%),
-    radial-gradient(circle at 50% 22%, rgba(10, 30, 52, 0.45), transparent 40%),
+    radial-gradient(circle at 22% 10%, rgba(0, 229, 255, 0.12), transparent 26%),
+    radial-gradient(circle at 78% 82%, rgba(0, 255, 136, 0.1), transparent 28%),
     linear-gradient(140deg, #02050a 0%, #07101a 50%, #05070d 100%);
   font-family: var(--font-jetbrains-mono), monospace;
   overflow-x: hidden;
@@ -67,7 +66,7 @@ body {
       rgba(0, 255, 136, 0.03) calc(50% + 600px),
       transparent calc(50% + 600px)
     );
-  opacity: 0.9;
+  opacity: 0.72;
 }
 
 .page-shell::after {
@@ -90,7 +89,7 @@ body::before {
     linear-gradient(rgba(0, 255, 136, 0.08) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 229, 255, 0.08) 1px, transparent 1px);
   background-size: 44px 44px;
-  opacity: 0.14;
+  opacity: 0.09;
 }
 
 body::after {
@@ -238,16 +237,16 @@ body > * {
   position: absolute;
   top: -4rem;
   bottom: -8rem;
-  width: 9rem;
+  width: 10rem;
   border-radius: 999px;
-  opacity: 0.9;
+  opacity: 1;
   filter: blur(0.6px);
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.1) 18%, rgba(255, 255, 255, 0.02)),
-    linear-gradient(90deg, rgba(0, 229, 255, 0) 0%, rgba(0, 229, 255, 0.16) 48%, rgba(0, 229, 255, 0) 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.12) 18%, rgba(255, 255, 255, 0.02)),
+    linear-gradient(90deg, rgba(0, 229, 255, 0) 0%, rgba(0, 229, 255, 0.22) 48%, rgba(0, 229, 255, 0) 100%);
   box-shadow:
-    0 0 40px rgba(0, 229, 255, 0.08),
-    0 0 140px rgba(0, 229, 255, 0.04);
+    0 0 50px rgba(0, 229, 255, 0.1),
+    0 0 180px rgba(0, 229, 255, 0.06);
 }
 
 .light-pillar::before,
@@ -275,15 +274,15 @@ body > * {
 
 .light-pillar-center {
   left: 50%;
-  width: 6.5rem;
+  width: 7rem;
   transform: translateX(-50%);
-  opacity: 0.4;
+  opacity: 0.55;
   background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.06) 18%, rgba(255, 255, 255, 0.015)),
-    linear-gradient(90deg, rgba(0, 255, 136, 0) 0%, rgba(0, 255, 136, 0.12) 48%, rgba(0, 255, 136, 0) 100%);
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.08) 18%, rgba(255, 255, 255, 0.015)),
+    linear-gradient(90deg, rgba(0, 255, 136, 0) 0%, rgba(0, 255, 136, 0.16) 48%, rgba(0, 255, 136, 0) 100%);
   box-shadow:
-    0 0 36px rgba(0, 255, 136, 0.06),
-    0 0 120px rgba(0, 255, 136, 0.03);
+    0 0 44px rgba(0, 255, 136, 0.08),
+    0 0 140px rgba(0, 255, 136, 0.04);
 }
 
 .light-pillar-right {
@@ -314,7 +313,17 @@ body > * {
 .scroll-stack-shell {
   --stack-depth: 0;
   position: relative;
-  transform: translate3d(0, calc(var(--stack-depth) * 2px), 0);
+  opacity: 0;
+  transform: translate3d(0, calc(28px + var(--stack-depth) * 4px), 0) scale(0.986);
+  transition:
+    opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--stack-depth) * 40ms);
+}
+
+.scroll-stack-shell.is-visible {
+  opacity: 1;
+  transform: translate3d(0, calc(var(--stack-depth) * 2px), 0) scale(1);
 }
 
 .profile-tilt {
@@ -350,41 +359,25 @@ body > * {
 
 .fade-content,
 .animated-content {
-  animation-delay: var(--enter-delay, 0s);
-  animation-fill-mode: both;
-  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  transition:
+    opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--enter-delay, 0s);
 }
 
 .fade-content {
-  animation-duration: 0.55s;
-  animation-name: fade-content-in;
+  transform: translate3d(0, 20px, 0);
 }
 
 .animated-content {
-  animation-duration: 0.7s;
-  animation-name: animated-content-in;
+  transform: translate3d(0, 28px, 0) scale(0.985);
 }
 
-@keyframes fade-content-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes animated-content-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 28px, 0) scale(0.985);
-  }
-  to {
-    opacity: 1;
-    transform: translate3d(0, 0, 0) scale(1);
-  }
+.fade-content.is-visible,
+.animated-content.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
 }
 
 @keyframes logo-marquee {

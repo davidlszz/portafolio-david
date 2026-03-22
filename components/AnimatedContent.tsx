@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, ReactNode } from "react";
+import useRevealOnScroll from "./useRevealOnScroll";
 
 interface AnimatedContentProps {
   children: ReactNode;
@@ -13,9 +14,12 @@ export default function AnimatedContent({
   className = "",
   delay = 0,
 }: AnimatedContentProps) {
+  const { ref, isVisible } = useRevealOnScroll();
+
   return (
     <div
-      className={`animated-content ${className}`}
+      ref={ref}
+      className={`animated-content ${isVisible ? "is-visible" : ""} ${className}`}
       style={{ "--enter-delay": `${delay}s` } as CSSProperties}
     >
       {children}

@@ -1,6 +1,7 @@
 "use client";
 
 import { CSSProperties, ReactNode } from "react";
+import useRevealOnScroll from "./useRevealOnScroll";
 
 interface FadeContentProps {
   children: ReactNode;
@@ -13,9 +14,12 @@ export default function FadeContent({
   className = "",
   delay = 0,
 }: FadeContentProps) {
+  const { ref, isVisible } = useRevealOnScroll();
+
   return (
     <div
-      className={`fade-content ${className}`}
+      ref={ref}
+      className={`fade-content ${isVisible ? "is-visible" : ""} ${className}`}
       style={{ "--enter-delay": `${delay}s` } as CSSProperties}
     >
       {children}
