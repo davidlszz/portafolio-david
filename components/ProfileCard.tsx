@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ShieldCheck, Sparkles } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Sparkles } from "lucide-react";
 import { useRef, useState } from "react";
 
 interface ProfileCardProps {
@@ -54,24 +54,24 @@ export default function ProfileCard({
         ref={cardRef}
         onPointerMove={handlePointerMove}
         onPointerLeave={resetCard}
-        className="profile-tilt group relative w-full overflow-hidden rounded-[2rem] border border-cyan-300/24 bg-[#07111b] shadow-[0_30px_70px_rgba(0,0,0,0.35)]"
+        className="profile-tilt group relative w-full overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(28,30,35,0.95),rgba(16,18,22,0.9))] shadow-[0_36px_90px_rgba(0,0,0,0.34)]"
       >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.2),transparent_34%),linear-gradient(180deg,rgba(0,255,136,0.06),transparent_40%),linear-gradient(180deg,#08121c_0%,#071018_100%)]" />
-        <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/35 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,138,85,0.18),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(137,176,163,0.18),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.03),transparent_40%)]" />
+        <div className="pointer-events-none absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/35 to-transparent" />
         <div
           aria-hidden="true"
-          className="profile-glare pointer-events-none absolute h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/12 blur-3xl"
+          className="profile-glare pointer-events-none absolute h-44 w-44 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white/14 blur-3xl"
         />
-        <div className="absolute inset-4 rounded-[1.65rem] border border-cyan-300/16" />
+        <div className="absolute inset-4 rounded-[1.65rem] border border-white/8" />
 
-        <div className="glass-chip absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-emerald-400/18 px-3 py-1.5 text-[11px] tracking-[0.2em] text-emerald-100">
+        <div className="absolute left-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/18 px-3 py-1.5 text-[11px] tracking-[0.2em] text-[color:var(--muted)] backdrop-blur">
           <ShieldCheck size={14} />
-          PROFILE CARD
+          FIELD PROFILE
         </div>
 
-        <div className="glass-chip absolute right-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-cyan-300/18 px-3 py-1.5 text-[11px] tracking-[0.2em] text-cyan-100">
+        <div className="absolute right-5 top-5 z-10 inline-flex items-center gap-2 rounded-full border border-white/12 bg-black/18 px-3 py-1.5 text-[11px] tracking-[0.2em] text-[color:var(--accent)] backdrop-blur">
           <Sparkles size={14} />
-          LIVE
+          ACTIVE
         </div>
 
         <div className="relative mx-5 mt-16 overflow-hidden rounded-[1.75rem] border border-white/10">
@@ -87,22 +87,28 @@ export default function ProfileCard({
                 onError={() => setHasImage(false)}
               />
             ) : (
-              <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.22),transparent_34%),linear-gradient(180deg,#071018_0%,#0b1520_100%)]">
+              <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(255,138,85,0.22),transparent_34%),linear-gradient(180deg,#181c21_0%,#111317_100%)]">
                 <div className="text-center">
-                  <p className="cyber-title text-6xl font-extrabold text-white">DLS</p>
-                  <p className="mt-3 text-sm tracking-[0.22em] text-cyan-200/80">{role}</p>
+                  <p className="font-sans text-6xl font-extrabold text-white">DLS</p>
+                  <p className="mt-3 text-sm tracking-[0.22em] text-[color:var(--muted)]">{role}</p>
                 </div>
               </div>
             )}
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,17,27,0.05),rgba(7,17,27,0.02)_38%,rgba(7,17,27,0.18)_100%)]" />
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(14,16,20,0.04),rgba(14,16,20,0.04)_38%,rgba(14,16,20,0.38)_100%)]" />
           </div>
         </div>
 
         <div className="relative z-10 px-6 py-5">
-          <div className="glass-chip rounded-[1.6rem] border border-cyan-300/18 p-5">
-            <p className="cyber-title text-xs tracking-[0.3em] text-cyan-100/56">{subtitle}</p>
+          <div className="rounded-[1.6rem] border border-white/10 bg-black/18 p-5 backdrop-blur">
+            <p className="font-mono text-xs tracking-[0.3em] text-white/45">{subtitle}</p>
             <h3 className="mt-3 text-2xl font-semibold text-white">{name}</h3>
-            <p className="mt-2 text-sm text-emerald-200">{role}</p>
+            <div className="mt-3 flex items-center justify-between gap-3">
+              <p className="text-sm text-[color:var(--muted)]">{role}</p>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-[11px] tracking-[0.14em] text-[color:var(--accent)]">
+                OPERATIONS
+                <ArrowUpRight size={12} />
+              </span>
+            </div>
           </div>
         </div>
       </div>

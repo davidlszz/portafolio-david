@@ -1,23 +1,23 @@
 import type { Metadata } from "next";
-import { Orbitron, JetBrains_Mono } from "next/font/google";
+import { IBM_Plex_Mono, Sora } from "next/font/google";
 import "./globals.css";
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
+const sora = Sora({
+  variable: "--font-sora",
   subsets: ["latin"],
-  weight: ["500", "700", "800"],
+  weight: ["400", "500", "600", "700", "800"],
 });
 
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
+const ibmPlexMono = IBM_Plex_Mono({
+  variable: "--font-ibm-plex-mono",
   subsets: ["latin"],
   weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "David L\u00f3pez S\u00e1nchez | Cybersecurity Portfolio",
+  title: "David L\u00f3pez S\u00e1nchez | Infrastructure, Security & Delivery",
   description:
-    "Portfolio de David L\u00f3pez S\u00e1nchez enfocado en ciberseguridad, infraestructura, redes y confiabilidad.",
+    "Portfolio de David L\u00f3pez S\u00e1nchez sobre infraestructura segura, redes, observabilidad y entrega confiable.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
-      <body className={`${orbitron.variable} ${jetbrainsMono.variable} antialiased`}>
+      <body className={`${sora.variable} ${ibmPlexMono.variable} antialiased`}>
         {children}
       </body>
     </html>

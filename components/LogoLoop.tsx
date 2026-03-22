@@ -32,9 +32,9 @@ export default function LogoLoop({
           <div
             key={`${item.label}-${index}`}
             aria-hidden={index >= items.length}
-            className="inline-flex min-w-fit items-center gap-3 rounded-2xl border border-cyan-300/16 bg-slate-950/78 px-4 py-3 text-sm text-cyan-100/82 shadow-[0_14px_30px_rgba(1,8,16,0.18)]"
+            className="inline-flex min-w-fit items-center gap-3 rounded-full border border-white/10 bg-white/6 px-4 py-2.5 text-sm text-[color:var(--muted)] shadow-[0_16px_40px_rgba(0,0,0,0.18)] backdrop-blur"
           >
-            <span className="flex h-9 w-9 items-center justify-center rounded-2xl border border-emerald-400/18 bg-emerald-400/10 text-emerald-200">
+            <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-[color:var(--panel-strong)] text-[color:var(--accent)]">
               {item.icon}
             </span>
             <span className="whitespace-nowrap tracking-[0.14em]">{item.label}</span>

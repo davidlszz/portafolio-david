@@ -91,20 +91,22 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex w-full max-w-[1180px] flex-col gap-3">
-        <div className="section-shell section-shell-react overflow-hidden rounded-[1.85rem] border border-cyan-300/18 bg-slate-950/72 p-2 shadow-[0_18px_50px_rgba(0,0,0,0.3)]">
-          <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent" />
+        <div className="section-shell overflow-hidden rounded-[1.85rem] border border-white/10 bg-[rgba(18,20,24,0.78)] p-2 shadow-[0_18px_50px_rgba(0,0,0,0.28)] backdrop-blur-xl">
+          <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
           <div className="flex items-center justify-between gap-3">
             <a
               href="#home"
-              className="glass-chip inline-flex min-w-0 items-center gap-3 rounded-[1.35rem] border border-emerald-400/18 px-4 py-3 text-emerald-100"
+              className="inline-flex min-w-0 items-center gap-3 rounded-[1.35rem] border border-white/10 bg-white/5 px-4 py-3 text-white"
             >
-              <div className="rounded-2xl border border-emerald-400/18 bg-emerald-400/10 p-2.5">
+              <div className="rounded-2xl border border-white/10 bg-[color:var(--panel-strong)] p-2.5 text-[color:var(--accent)]">
                 <ShieldCheck size={17} />
               </div>
               <div className="min-w-0">
-                <p className="cyber-title truncate text-[11px] md:text-xs">David / Secure Node</p>
-                <p className="truncate text-[10px] text-cyan-100/55">
-                  {lang === "es" ? "Portfolio operativo" : "Operational portfolio"}
+                <p className="truncate text-[11px] font-semibold uppercase tracking-[0.28em] md:text-xs">
+                  David Lopez
+                </p>
+                <p className="truncate text-[10px] text-white/45">
+                  {lang === "es" ? "Infraestructura + seguridad" : "Infrastructure + security"}
                 </p>
               </div>
             </a>
@@ -117,10 +119,10 @@ export default function Navbar() {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    className={`relative overflow-hidden rounded-[1.1rem] border px-4 py-3 text-[11px] tracking-[0.18em] transition ${
+                    className={`relative overflow-hidden rounded-full border px-4 py-3 text-[11px] tracking-[0.18em] transition ${
                       isActive
-                        ? "border-cyan-300/20 bg-gradient-to-r from-cyan-300/18 to-emerald-400/16 text-white shadow-[0_0_24px_rgba(34,211,238,0.14)]"
-                        : "border-transparent text-cyan-100/72 hover:border-cyan-300/14 hover:bg-cyan-300/8 hover:text-cyan-100"
+                        ? "border-white/12 bg-white/9 text-white shadow-[0_12px_30px_rgba(0,0,0,0.16)]"
+                        : "border-transparent text-white/55 hover:border-white/10 hover:bg-white/6 hover:text-white"
                     }`}
                   >
                     <span className="relative z-10">{lang === "es" ? item.es : item.en}</span>
@@ -130,16 +132,16 @@ export default function Navbar() {
             </nav>
 
             <div className="hidden items-center gap-2 lg:flex">
-              <div className="glass-chip inline-flex items-center gap-2 rounded-[1.2rem] px-3 py-2 text-[10px] tracking-[0.18em] text-cyan-100/72">
-                <span className="inline-flex h-2 w-2 rounded-full bg-emerald-300 shadow-[0_0_12px_rgba(52,211,153,0.9)]" />
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[10px] tracking-[0.18em] text-white/65">
+                <span className="inline-flex h-2 w-2 rounded-full bg-[color:var(--accent)] shadow-[0_0_12px_rgba(255,138,85,0.72)]" />
                 {lang === "es" ? "Disponible" : "Available"}
               </div>
-              <div className="glass-chip inline-flex items-center gap-1 rounded-[1.2rem] p-1">
+              <div className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
                 <button
                   type="button"
                   onClick={() => setLang("en")}
-                  className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
-                    lang === "en" ? "bg-cyan-300/18 text-cyan-100" : "text-cyan-100/58"
+                  className={`rounded-full px-3 py-2 text-[11px] tracking-[0.14em] transition ${
+                    lang === "en" ? "bg-white/12 text-white" : "text-white/46"
                   }`}
                   aria-label="Switch to English"
                 >
@@ -148,8 +150,8 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setLang("es")}
-                  className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
-                    lang === "es" ? "bg-emerald-400/18 text-emerald-100" : "text-cyan-100/58"
+                  className={`rounded-full px-3 py-2 text-[11px] tracking-[0.14em] transition ${
+                    lang === "es" ? "bg-[color:var(--accent)]/20 text-[color:var(--accent)]" : "text-white/46"
                   }`}
                   aria-label="Cambiar a Espanol"
                 >
@@ -160,7 +162,7 @@ export default function Navbar() {
 
             <button
               type="button"
-              className="glass-chip rounded-[1.15rem] p-3 text-cyan-100 lg:hidden"
+              className="rounded-[1.15rem] border border-white/10 bg-white/5 p-3 text-white lg:hidden"
               onClick={() => setOpen((current) => !current)}
               aria-label={open ? "Cerrar menu" : "Abrir menu"}
               aria-expanded={open}
@@ -171,20 +173,20 @@ export default function Navbar() {
         </div>
 
         {open && (
-          <div className="animated-content section-shell section-shell-react overflow-hidden rounded-[1.8rem] border border-cyan-300/18 bg-slate-950/90 p-4 shadow-[0_18px_50px_rgba(0,0,0,0.32)]">
+          <div className="animated-content section-shell overflow-hidden rounded-[1.8rem] border border-white/10 bg-[rgba(18,20,24,0.92)] p-4 shadow-[0_18px_50px_rgba(0,0,0,0.32)] backdrop-blur-xl">
             <div className="mb-4 grid gap-3 sm:grid-cols-[1fr_auto] sm:items-center">
               <div>
-                <p className="text-[11px] tracking-[0.24em] text-cyan-100/55">CARD NAV</p>
+                <p className="text-[11px] tracking-[0.24em] text-white/42">FIELD NAV</p>
                 <p className="mt-2 text-sm font-semibold text-white">
                   {lang === "es" ? "Navegacion del portfolio" : "Portfolio navigation"}
                 </p>
               </div>
-              <div className="glass-chip inline-flex items-center gap-1 rounded-[1.2rem] p-1">
+              <div className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/5 p-1">
                 <button
                   type="button"
                   onClick={() => setLang("en")}
-                  className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
-                    lang === "en" ? "bg-cyan-300/18 text-cyan-100" : "text-cyan-100/58"
+                  className={`rounded-full px-3 py-2 text-[11px] tracking-[0.14em] transition ${
+                    lang === "en" ? "bg-white/12 text-white" : "text-white/46"
                   }`}
                 >
                   EN
@@ -192,8 +194,8 @@ export default function Navbar() {
                 <button
                   type="button"
                   onClick={() => setLang("es")}
-                  className={`rounded-[0.9rem] px-3 py-2 text-[11px] tracking-[0.14em] transition ${
-                    lang === "es" ? "bg-emerald-400/18 text-emerald-100" : "text-cyan-100/58"
+                  className={`rounded-full px-3 py-2 text-[11px] tracking-[0.14em] transition ${
+                    lang === "es" ? "bg-[color:var(--accent)]/20 text-[color:var(--accent)]" : "text-white/46"
                   }`}
                 >
                   ES
@@ -209,8 +211,8 @@ export default function Navbar() {
                   onClick={() => setOpen(false)}
                   className={`rounded-[1.25rem] border px-4 py-3 text-sm tracking-[0.08em] transition ${
                     active === item.id
-                      ? "border-emerald-400/18 bg-emerald-400/12 text-emerald-100"
-                      : "border-cyan-300/12 bg-slate-900/76 text-cyan-100/82 hover:bg-cyan-300/10"
+                      ? "border-white/12 bg-white/8 text-white"
+                      : "border-white/8 bg-white/5 text-white/72 hover:bg-white/8"
                   }`}
                 >
                   {lang === "es" ? item.es : item.en}

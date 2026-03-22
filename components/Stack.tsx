@@ -1,7 +1,6 @@
 "use client";
 
 import {
-  Activity,
   Boxes,
   LockKeyhole,
   Network,
@@ -19,98 +18,98 @@ import LogoLoop from "./LogoLoop";
 import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
-const stackGroups = {
+const capabilityCards = {
   es: [
     {
-      title: "Seguridad de red",
-      subtitle: "Base defensiva para tr\u00e1fico, acceso y segmentaci\u00f3n.",
-      icon: Network,
-      accent: "from-cyan-400/22 to-cyan-300/6",
-      items: ["TCP/IP", "DNS", "TLS", "SSH", "Subnetting"],
-      focus: "Control de exposici\u00f3n y protecci\u00f3n en capa de red.",
-    },
-    {
-      title: "Infraestructura",
-      subtitle: "Servicios endurecidos con foco en estabilidad operativa.",
+      title: "Infraestructura endurecida",
+      description: "Provisionamiento, configuracion base, control de acceso y publicacion segura de servicios.",
       icon: ServerCog,
-      accent: "from-emerald-400/22 to-emerald-300/6",
-      items: ["Linux", "VPS", "Nginx", "Reverse proxy", "Hardening base"],
-      focus: "Despliegues confiables y administraci\u00f3n segura de servidores.",
+      items: ["Linux", "VPS", "Nginx", "TLS", "SSH"],
     },
     {
-      title: "DevSecOps",
-      subtitle: "Automatizaci\u00f3n, entrega segura y observabilidad \u00fatil.",
+      title: "Entrega con control",
+      description: "Pipelines con validaciones, trazabilidad y menos cambios manuales en produccion.",
       icon: Workflow,
-      accent: "from-cyan-400/18 to-emerald-300/12",
-      items: ["Git", "CI/CD", "Observabilidad", "Incidentes", "Automatizaci\u00f3n"],
-      focus: "Menos tareas manuales, m\u00e1s trazabilidad y resiliencia.",
+      items: ["Git", "CI/CD", "Policies", "Rollback", "Checks"],
+    },
+    {
+      title: "Observabilidad util",
+      description: "Logs, alertas y tableros que ayuden a diagnosticar, no solo a decorar.",
+      icon: Radar,
+      items: ["Logs", "Alerting", "Signals", "MTTR", "Runbooks"],
+    },
+    {
+      title: "Red y segmentacion",
+      description: "Diseno de zonas, reglas y flujos permitidos para reducir superficie de ataque.",
+      icon: Network,
+      items: ["TCP/IP", "DNS", "Subnets", "ACLs", "Segmentation"],
     },
   ],
   en: [
     {
-      title: "Network security",
-      subtitle: "Defensive foundations for traffic, access, and segmentation.",
-      icon: Network,
-      accent: "from-cyan-400/22 to-cyan-300/6",
-      items: ["TCP/IP", "DNS", "TLS", "SSH", "Subnetting"],
-      focus: "Exposure control and protection at the network layer.",
-    },
-    {
-      title: "Infrastructure",
-      subtitle: "Hardened services with an operations-first mindset.",
+      title: "Hardened infrastructure",
+      description: "Provisioning, baseline configuration, access control, and secure service exposure.",
       icon: ServerCog,
-      accent: "from-emerald-400/22 to-emerald-300/6",
-      items: ["Linux", "VPS", "Nginx", "Reverse proxy", "Baseline hardening"],
-      focus: "Reliable deployments and secure server administration.",
+      items: ["Linux", "VPS", "Nginx", "TLS", "SSH"],
     },
     {
-      title: "DevSecOps",
-      subtitle: "Automation, secure delivery, and useful observability.",
+      title: "Controlled delivery",
+      description: "Pipelines with validation, traceability, and fewer manual changes in production.",
       icon: Workflow,
-      accent: "from-cyan-400/18 to-emerald-300/12",
-      items: ["Git", "CI/CD", "Observability", "Incident handling", "Automation"],
-      focus: "Less manual work, more traceability and resilience.",
+      items: ["Git", "CI/CD", "Policies", "Rollback", "Checks"],
+    },
+    {
+      title: "Useful observability",
+      description: "Logs, alerts, and dashboards that help diagnose rather than decorate.",
+      icon: Radar,
+      items: ["Logs", "Alerting", "Signals", "MTTR", "Runbooks"],
+    },
+    {
+      title: "Networking and segmentation",
+      description: "Zones, rules, and allowed flows designed to reduce attack surface.",
+      icon: Network,
+      items: ["TCP/IP", "DNS", "Subnets", "ACLs", "Segmentation"],
     },
   ],
 } as const;
 
-const stackSignals = {
+const operatingSignals = {
   es: [
-    { label: "Arquitectura", value: "Defensa en capas", icon: ShieldCheck },
-    { label: "Operaci\u00f3n", value: "Monitoreo activo", icon: Radar },
+    { label: "Base", value: "Hardening aplicable", icon: ShieldCheck },
     { label: "Entrega", value: "Cambios controlados", icon: Boxes },
+    { label: "Acceso", value: "Minimo privilegio", icon: LockKeyhole },
   ],
   en: [
-    { label: "Architecture", value: "Defense in depth", icon: ShieldCheck },
-    { label: "Operations", value: "Active monitoring", icon: Radar },
+    { label: "Baseline", value: "Applicable hardening", icon: ShieldCheck },
     { label: "Delivery", value: "Controlled change", icon: Boxes },
+    { label: "Access", value: "Least privilege", icon: LockKeyhole },
   ],
 } as const;
 
-const stackLoop = {
+const toolLoop = {
   es: [
-    { label: "Linux", icon: <SiLinux className="text-lg" /> },
-    { label: "Nginx", icon: <SiNginx className="text-lg" /> },
-    { label: "Git", icon: <SiGit className="text-lg" /> },
-    { label: "GitHub Actions", icon: <SiGithubactions className="text-lg" /> },
-    { label: "TLS", icon: <ShieldCheck size={17} /> },
-    { label: "SSH", icon: <LockKeyhole size={17} /> },
+    { label: "Linux", icon: <SiLinux className="text-base" /> },
+    { label: "Nginx", icon: <SiNginx className="text-base" /> },
+    { label: "Git", icon: <SiGit className="text-base" /> },
+    { label: "GitHub Actions", icon: <SiGithubactions className="text-base" /> },
+    { label: "TLS", icon: <ShieldCheck size={16} /> },
+    { label: "SSH", icon: <LockKeyhole size={16} /> },
   ],
   en: [
-    { label: "Linux", icon: <SiLinux className="text-lg" /> },
-    { label: "Nginx", icon: <SiNginx className="text-lg" /> },
-    { label: "Git", icon: <SiGit className="text-lg" /> },
-    { label: "GitHub Actions", icon: <SiGithubactions className="text-lg" /> },
-    { label: "TLS", icon: <ShieldCheck size={17} /> },
-    { label: "SSH", icon: <LockKeyhole size={17} /> },
+    { label: "Linux", icon: <SiLinux className="text-base" /> },
+    { label: "Nginx", icon: <SiNginx className="text-base" /> },
+    { label: "Git", icon: <SiGit className="text-base" /> },
+    { label: "GitHub Actions", icon: <SiGithubactions className="text-base" /> },
+    { label: "TLS", icon: <ShieldCheck size={16} /> },
+    { label: "SSH", icon: <LockKeyhole size={16} /> },
   ],
 } as const;
 
 export default function Stack() {
   const { lang } = useLanguage();
-  const groups = stackGroups[lang];
-  const signals = stackSignals[lang];
-  const loopItems = stackLoop[lang];
+  const cards = capabilityCards[lang];
+  const signals = operatingSignals[lang];
+  const loopItems = toolLoop[lang];
 
   return (
     <section
@@ -118,121 +117,103 @@ export default function Stack() {
       className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
       <SectionCard accent="emerald" depth={2}>
-        <div className="mb-10 grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(360px,0.9fr)] xl:items-start">
-          <AnimatedContent className="mx-auto max-w-3xl text-center xl:mx-0 xl:text-left">
-            <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
-              {lang === "es" ? "STACK PROFESIONAL" : "PROFESSIONAL STACK"}
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
+          <AnimatedContent>
+            <p className="eyebrow mb-4 text-xs text-white/42">
+              {lang === "es" ? "Capacidades / stack real" : "Capabilities / real stack"}
             </p>
-            <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-              {lang === "es" ? "Capacidades t\u00e9cnicas" : "Technical capabilities"}
-            </h2>
-            <p className="cyber-text text-base leading-relaxed md:text-lg">
+            <h2 className="section-quote max-w-[14ch] font-semibold text-white">
               {lang === "es"
-                ? "M\u00e1s que una lista de herramientas, este stack explica c\u00f3mo conecto seguridad, infraestructura y operaci\u00f3n para construir sistemas con mejor visibilidad, menor superficie de ataque y entregas m\u00e1s estables."
-                : "More than a tool list, this stack shows how I connect security, infrastructure, and operations to build systems with better visibility, lower attack surface, and more stable delivery."}
+                ? "Mi stack no empieza en la herramienta; empieza en lo que el sistema necesita soportar."
+                : "My stack does not start with the tool; it starts with what the system must support."}
+            </h2>
+
+            <p className="section-copy mt-6 max-w-2xl text-base leading-relaxed md:text-lg">
+              {lang === "es"
+                ? "Trabajo estas tecnologias como partes de un flujo coherente: configurar mejor, exponer menos, automatizar sin perder control y dejar suficiente senal para operar con calma cuando algo falla."
+                : "I use these technologies as parts of a coherent flow: configure better, expose less, automate without losing control, and leave enough signal to operate calmly when something fails."}
             </p>
 
-            <div className="mt-6">
-              <FadeContent>
-                <LogoLoop items={loopItems} duration={22} reverse />
-              </FadeContent>
-            </div>
+            <FadeContent className="mt-8" delay={0.06}>
+              <LogoLoop items={loopItems} duration={22} reverse />
+            </FadeContent>
           </AnimatedContent>
 
-          <AnimatedContent className="rounded-[1.8rem] border border-cyan-300/18 bg-slate-950/62 p-6" delay={0.08}>
-            <div className="mb-5 flex items-center gap-3">
-              <div className="rounded-xl border border-emerald-400/25 bg-emerald-400/10 p-3 text-emerald-200">
-                <LockKeyhole size={20} />
+          <AnimatedContent delay={0.08}>
+            <div className="rounded-[1.85rem] border border-white/10 bg-white/5 p-6">
+              <div className="mb-5 flex items-center gap-3">
+                <div className="rounded-full border border-white/10 bg-white/6 p-3 text-[color:var(--accent)]">
+                  <Workflow size={18} />
+                </div>
+                <div>
+                  <p className="eyebrow text-[11px] text-white/42">
+                    {lang === "es" ? "Perfil operativo" : "Operating profile"}
+                  </p>
+                  <p className="mt-2 text-lg font-semibold text-white">
+                    {lang === "es" ? "Como conecto las piezas" : "How I connect the pieces"}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-sm font-semibold text-white">
-                  {lang === "es" ? "Perfil operativo" : "Operational profile"}
-                </p>
-                <p className="text-sm text-cyan-100/70">
-                  {lang === "es" ? "Orientado a seguridad y confiabilidad" : "Security and reliability oriented"}
-                </p>
-              </div>
-            </div>
 
-            <div className="grid gap-3">
-              {signals.map((signal, index) => (
-                <FadeContent key={signal.label} delay={0.05 * index}>
-                  <div className="rounded-[1.15rem] border border-cyan-300/14 bg-slate-900/82 px-4 py-4">
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <signal.icon size={16} className="text-cyan-200" />
-                        <span className="text-sm text-cyan-100/80">{signal.label}</span>
+              <div className="space-y-3">
+                {signals.map((signal, index) => (
+                  <FadeContent key={signal.label} delay={0.05 * index}>
+                    <div className="rounded-[1.2rem] border border-white/8 bg-black/12 px-4 py-4">
+                      <div className="flex items-center justify-between gap-4">
+                        <div className="flex items-center gap-3 text-[color:var(--muted)]">
+                          <signal.icon size={16} className="text-[color:var(--secondary)]" />
+                          <span className="text-sm">{signal.label}</span>
+                        </div>
+                        <span className="text-sm font-semibold text-white">{signal.value}</span>
                       </div>
-                      <span className="text-sm font-semibold text-emerald-200">{signal.value}</span>
                     </div>
-                  </div>
-                </FadeContent>
-              ))}
-            </div>
-
-            <div className="mt-4 rounded-[1.15rem] border border-emerald-400/14 bg-emerald-400/8 px-4 py-4 text-sm text-emerald-100/90">
-              {lang === "es"
-                ? "Dise\u00f1ado para mostrar criterio t\u00e9cnico, orden visual y una narrativa clara de seguridad + operaci\u00f3n."
-                : "Designed to show technical judgment, visual order, and a clear security + operations narrative."}
+                  </FadeContent>
+                ))}
+              </div>
             </div>
           </AnimatedContent>
         </div>
 
-        <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-          {groups.map((group, index) => (
-            <ScrollStack key={group.title} depth={index + 1}>
+        <div className="mt-10 grid gap-5 md:grid-cols-2">
+          {cards.map((card, index) => (
+            <ScrollStack key={card.title} depth={index + 1}>
               <FadeContent delay={0.08 * index}>
                 <GlareHover
                   width="100%"
                   height="100%"
-                  background="linear-gradient(180deg, rgba(5, 10, 16, 0.86), rgba(6, 15, 22, 0.76))"
+                  background="linear-gradient(180deg, rgba(29,32,37,0.92), rgba(18,20,24,0.92))"
                   borderRadius="1.75rem"
-                  borderColor="rgba(110, 231, 183, 0.16)"
-                  glareColor="#d6fff2"
-                  glareOpacity={0.12}
-                  glareAngle={-36}
+                  borderColor="rgba(255,255,255,0.08)"
+                  glareColor="#f3efe5"
+                  glareOpacity={0.09}
+                  glareAngle={-28}
                   glareSize={220}
                   className="reactbits-card-shell"
                 >
-                  <article className="interactive-card relative flex h-full w-full flex-col overflow-hidden rounded-[1.75rem] p-6">
-                    <div
-                      className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${group.accent} opacity-100`}
-                    />
-                    <div className="relative flex h-full flex-col">
-                      <div className="mb-6 flex items-start justify-between gap-4">
-                        <div>
-                          <p className="mb-2 text-xs tracking-[0.25em] text-cyan-200/75">
-                            {lang === "es" ? "DOMINIO" : "DOMAIN"}
-                          </p>
-                          <h3 className="max-w-[12ch] text-2xl font-semibold text-white">{group.title}</h3>
-                        </div>
-                        <div className="rounded-2xl border border-cyan-300/20 bg-slate-900/85 p-3 text-cyan-200">
-                          <group.icon size={22} />
-                        </div>
+                  <article className="interactive-card h-full rounded-[1.75rem] p-6">
+                    <div className="mb-6 flex items-start justify-between gap-4">
+                      <div className="max-w-[18rem]">
+                        <p className="eyebrow text-[11px] text-white/42">
+                          {lang === "es" ? "Dominio" : "Domain"} 0{index + 1}
+                        </p>
+                        <h3 className="mt-3 text-2xl font-semibold text-white">{card.title}</h3>
                       </div>
-
-                      <p className="cyber-text mb-6 min-h-[84px] text-base leading-relaxed">{group.subtitle}</p>
-
-                      <div className="mb-6 flex flex-wrap gap-2">
-                        {group.items.map((item) => (
-                          <span
-                            key={item}
-                            className="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-3 py-1.5 text-xs text-cyan-100/85"
-                          >
-                            {item}
-                          </span>
-                        ))}
+                      <div className="rounded-full border border-white/10 bg-white/6 p-3 text-[color:var(--accent)]">
+                        <card.icon size={20} />
                       </div>
+                    </div>
 
-                      <div className="mt-auto rounded-[1.25rem] border border-emerald-400/15 bg-slate-900/75 px-4 py-4">
-                        <div className="mb-2 flex items-center gap-2 text-emerald-200">
-                          <Activity size={15} />
-                          <span className="text-xs tracking-[0.22em]">
-                            {lang === "es" ? "FOCO ACTUAL" : "CURRENT FOCUS"}
-                          </span>
-                        </div>
-                        <p className="text-sm text-cyan-100/80">{group.focus}</p>
-                      </div>
+                    <p className="section-copy min-h-[72px] text-sm leading-relaxed">{card.description}</p>
+
+                    <div className="mt-6 flex flex-wrap gap-2">
+                      {card.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-white/10 bg-white/6 px-3 py-1.5 text-xs text-[color:var(--muted)]"
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </article>
                 </GlareHover>

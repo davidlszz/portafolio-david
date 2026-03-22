@@ -13,19 +13,19 @@ interface SectionCardProps {
 
 const accentStyles = {
   mixed: {
-    leftGlow: "bg-cyan-300/14",
-    rightGlow: "bg-emerald-400/12",
-    border: "from-cyan-300/35 via-white/0 to-emerald-300/35",
+    leftGlow: "bg-[color:var(--accent)]/18",
+    rightGlow: "bg-[color:var(--secondary)]/18",
+    border: "from-[color:var(--accent)]/60 via-white/0 to-[color:var(--secondary)]/45",
   },
   cyan: {
-    leftGlow: "bg-cyan-300/16",
-    rightGlow: "bg-sky-300/12",
-    border: "from-cyan-300/45 via-white/0 to-sky-300/35",
+    leftGlow: "bg-[color:var(--secondary)]/18",
+    rightGlow: "bg-white/8",
+    border: "from-[color:var(--secondary)]/55 via-white/0 to-white/30",
   },
   emerald: {
-    leftGlow: "bg-emerald-300/16",
-    rightGlow: "bg-lime-300/12",
-    border: "from-emerald-300/45 via-white/0 to-lime-300/35",
+    leftGlow: "bg-[color:var(--accent-strong)]/18",
+    rightGlow: "bg-[color:var(--accent)]/14",
+    border: "from-[color:var(--accent-strong)]/55 via-white/0 to-[color:var(--accent)]/35",
   },
 } as const;
 
@@ -41,15 +41,15 @@ export default function SectionCard({
   return (
     <ScrollStack
       depth={depth}
-      className={`section-shell section-shell-react mx-auto w-full max-w-[1180px] overflow-hidden rounded-[2rem] ${className}`}
+      className={`section-shell mx-auto w-full max-w-[1180px] overflow-hidden rounded-[2rem] ${className}`}
     >
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute left-[-4rem] top-[-3rem] h-44 w-44 rounded-full blur-3xl ${styles.leftGlow}`}
+        className={`pointer-events-none absolute left-[-3rem] top-[-2rem] h-36 w-36 rounded-full blur-3xl ${styles.leftGlow}`}
       />
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute bottom-[-4rem] right-[-2rem] h-52 w-52 rounded-full blur-3xl ${styles.rightGlow}`}
+        className={`pointer-events-none absolute bottom-[-4rem] right-[-2rem] h-44 w-44 rounded-full blur-3xl ${styles.rightGlow}`}
       />
       <div
         aria-hidden="true"

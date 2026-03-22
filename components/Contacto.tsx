@@ -1,85 +1,56 @@
 "use client";
 
-import {
-  ArrowUpRight,
-  Clock3,
-  Github,
-  Linkedin,
-  Mail,
-  ShieldCheck,
-  TerminalSquare,
-  Workflow,
-} from "lucide-react";
+import { ArrowUpRight, Clock3, Github, Linkedin, Mail, ShieldCheck, TerminalSquare, Workflow } from "lucide-react";
 import AnimatedContent from "./AnimatedContent";
 import FadeContent from "./FadeContent";
 import GlareHover from "./GlareHover";
 import { useLanguage } from "./LanguageContext";
 import Lanyard from "./Lanyard";
-import LogoLoop from "./LogoLoop";
+import Magnet from "./Magnet";
 import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 import StarBorder from "./StarBorder";
 
-const contactSignals = {
-  es: [
-    { label: "Infraestructura segura", icon: <ShieldCheck size={16} /> },
-    { label: "Automatizaci\u00f3n y CI/CD", icon: <Workflow size={16} /> },
-    { label: "Observabilidad y operaci\u00f3n", icon: <TerminalSquare size={16} /> },
-    { label: "LinkedIn", icon: <Linkedin size={16} /> },
-    { label: "GitHub", icon: <Github size={16} /> },
-    { label: "Email", icon: <Mail size={16} /> },
-  ],
-  en: [
-    { label: "Secure infrastructure", icon: <ShieldCheck size={16} /> },
-    { label: "Automation and CI/CD", icon: <Workflow size={16} /> },
-    { label: "Observability and operations", icon: <TerminalSquare size={16} /> },
-    { label: "LinkedIn", icon: <Linkedin size={16} /> },
-    { label: "GitHub", icon: <Github size={16} /> },
-    { label: "Email", icon: <Mail size={16} /> },
-  ],
-} as const;
-
-const collaborationModes = {
+const collaborationCards = {
   es: [
     {
-      title: "Proyectos t\u00e9cnicos",
-      description: "Dise\u00f1o, hardening, automatizaci\u00f3n y mejora continua sobre plataformas y servicios.",
+      title: "Infraestructura y hardening",
+      description: "Base segura, configuracion clara y exposicion controlada para servicios y laboratorios.",
       icon: ShieldCheck,
     },
     {
-      title: "Laboratorios y pr\u00e1ctica",
-      description: "Construcci\u00f3n de entornos controlados para observabilidad, segmentaci\u00f3n y validaci\u00f3n de controles.",
-      icon: TerminalSquare,
+      title: "CI/CD y automatizacion",
+      description: "Pipelines, validaciones, trazabilidad y menos dependencia de tareas manuales.",
+      icon: Workflow,
     },
     {
-      title: "Entrega operativa",
-      description: "Apoyo en documentaci\u00f3n, runbooks, flujos CI/CD y trazabilidad de cambios.",
-      icon: Workflow,
+      title: "Observabilidad y operaciones",
+      description: "Logs, respuesta inicial y documentacion util para operar con menos friccion.",
+      icon: TerminalSquare,
     },
   ],
   en: [
     {
-      title: "Technical projects",
-      description: "Design, hardening, automation, and continuous improvement across platforms and services.",
+      title: "Infrastructure and hardening",
+      description: "Secure baseline, clear configuration, and controlled exposure for services and labs.",
       icon: ShieldCheck,
     },
     {
-      title: "Labs and practice",
-      description: "Controlled environments for observability, segmentation, and validation of security controls.",
-      icon: TerminalSquare,
+      title: "CI/CD and automation",
+      description: "Pipelines, validation, traceability, and less dependence on manual tasks.",
+      icon: Workflow,
     },
     {
-      title: "Operational delivery",
-      description: "Support in documentation, runbooks, CI/CD flows, and change traceability.",
-      icon: Workflow,
+      title: "Observability and operations",
+      description: "Logs, first response, and useful documentation to operate with less friction.",
+      icon: TerminalSquare,
     },
   ],
 } as const;
 
 export default function Contacto() {
   const { lang } = useLanguage();
-  const signals = contactSignals[lang];
-  const modes = collaborationModes[lang];
+  const cards = collaborationCards[lang];
   const role = lang === "es" ? "Ingeniero de sistemas" : "Systems engineer";
 
   return (
@@ -88,135 +59,106 @@ export default function Contacto() {
       className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
       <SectionCard accent="cyan" depth={5}>
-        <div className="mb-10 grid gap-6 xl:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)] xl:items-start">
-          <AnimatedContent className="mx-auto max-w-3xl text-center xl:mx-0 xl:text-left">
-            <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
-              {lang === "es" ? "COLABORACION Y CONTACTO" : "COLLABORATION AND CONTACT"}
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.02fr)_minmax(320px,0.98fr)] xl:items-start">
+          <AnimatedContent>
+            <p className="eyebrow mb-4 text-xs text-white/42">
+              {lang === "es" ? "Contacto / colaboracion" : "Contact / collaboration"}
             </p>
-            <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-              {lang === "es" ? "Colaboracion y contacto" : "Collaboration and contact"}
+            <h2 className="section-quote max-w-[14ch] font-semibold text-white">
+              {lang === "es"
+                ? "Si necesitas alguien que piense exposicion, operacion y trazabilidad al mismo tiempo, conversemos."
+                : "If you need someone who thinks about exposure, operations, and traceability at once, let us talk."}
             </h2>
 
-            <p className="cyber-text text-lg leading-relaxed">
+            <p className="section-copy mt-6 max-w-2xl text-base leading-relaxed md:text-lg">
               {lang === "es"
-                ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operacion se crucen de forma real: despliegues confiables, hardening, observabilidad, automatizacion y mejora continua de plataformas."
-                : "I am interested in collaborating on initiatives where infrastructure, security, and operations intersect in real ways: reliable deployments, hardening, observability, automation, and continuous platform improvement."}
+                ? "Me interesan practicas, laboratorios y proyectos donde seguridad e infraestructura no se trabajen por separado. Puedo aportar en documentacion tecnica, pipelines, hardening, segmentacion y visibilidad operativa."
+                : "I am interested in internships, labs, and projects where security and infrastructure are not treated separately. I can contribute to technical documentation, pipelines, hardening, segmentation, and operational visibility."}
             </p>
 
-            <div className="mt-6">
-              <FadeContent>
-                <LogoLoop items={signals} duration={23} />
-              </FadeContent>
-            </div>
+            <FadeContent className="mt-8 flex flex-wrap gap-4" delay={0.06}>
+              <Magnet padding={120} magnetStrength={3}>
+                <StarBorder
+                  as="a"
+                  href="mailto:davidlszdev@gmail.com"
+                  className="star-border-cta"
+                  color="#ff8754"
+                  speed="8s"
+                >
+                  <span className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white">
+                    {lang === "es" ? "Escribir por correo" : "Send an email"}
+                    <ArrowUpRight size={16} />
+                  </span>
+                </StarBorder>
+              </Magnet>
 
-            <div className="mt-6 flex flex-wrap justify-center gap-4 xl:justify-start">
-              <StarBorder
-                as="a"
-                href="mailto:davidlszdev@gmail.com"
-                className="star-border-cta"
-                color="#34d399"
-                speed="8s"
-              >
-                <span className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-emerald-50">
-                  {lang === "es" ? "Enviar correo" : "Send email"}
-                  <ArrowUpRight size={16} />
-                </span>
-              </StarBorder>
-
-              <StarBorder
-                as="a"
+              <a
                 href="https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="star-border-cta star-border-cta-secondary"
-                color="#22d3ee"
-                speed="10s"
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/6 px-6 py-3 text-sm font-semibold text-white transition hover:border-white/16 hover:bg-white/9"
               >
-                <span className="inline-flex items-center gap-2 px-5 py-3 text-sm font-semibold tracking-[0.08em] text-cyan-50">
-                  LinkedIn
-                  <ArrowUpRight size={16} />
-                </span>
-              </StarBorder>
-            </div>
+                LinkedIn
+                <ArrowUpRight size={16} />
+              </a>
+            </FadeContent>
           </AnimatedContent>
 
-          <AnimatedContent className="space-y-6" delay={0.08}>
-            <div className="cyber-grid-panel rounded-[1.8rem] border border-cyan-300/18 bg-slate-950/65 p-6">
+          <AnimatedContent delay={0.08} className="space-y-6">
+            <div className="rounded-[1.85rem] border border-white/10 bg-white/5 p-6">
               <div className="mb-5 flex items-center gap-3">
-                <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
-                  <ShieldCheck size={20} />
+                <div className="rounded-full border border-white/10 bg-white/6 p-3 text-[color:var(--secondary)]">
+                  <Clock3 size={18} />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold text-white">
-                    {lang === "es" ? "Perfil de respuesta" : "Response profile"}
+                  <p className="eyebrow text-[11px] text-white/42">
+                    {lang === "es" ? "Disponibilidad" : "Availability"}
                   </p>
-                  <p className="text-sm text-cyan-100/70">
-                    {lang === "es" ? "Canales profesionales y disponibilidad" : "Professional channels and availability"}
+                  <p className="mt-2 text-lg font-semibold text-white">
+                    {lang === "es" ? "Canales y tiempos" : "Channels and timing"}
                   </p>
                 </div>
               </div>
 
               <div className="grid gap-3">
-                <div className="rounded-[1.1rem] border border-cyan-300/15 bg-slate-900/80 px-4 py-4">
-                  <div className="flex items-center gap-3 text-cyan-200">
-                    <Clock3 size={16} />
-                    <span className="text-sm text-cyan-100/85">
-                      {lang === "es" ? "Respuesta estimada: 24 a 48 horas" : "Estimated reply: 24 to 48 hours"}
-                    </span>
+                {[
+                  lang === "es" ? "Respuesta estimada: 24 a 48 horas." : "Estimated reply: 24 to 48 hours.",
+                  lang === "es" ? "Canal prioritario: email y LinkedIn." : "Priority channel: email and LinkedIn.",
+                  lang === "es" ? "Abierto a practicas, colaboracion y builds tecnicos." : "Open to internships, collaboration, and technical builds.",
+                ].map((item) => (
+                  <div key={item} className="rounded-[1.2rem] border border-white/8 bg-black/12 px-4 py-3 text-sm text-[color:var(--muted)]">
+                    {item}
                   </div>
-                </div>
-                <div className="rounded-[1.1rem] border border-cyan-300/15 bg-slate-900/80 px-4 py-4">
-                  <div className="flex items-center gap-3 text-cyan-200">
-                    <Mail size={16} />
-                    <span className="text-sm text-cyan-100/85">
-                      {lang === "es" ? "Canal prioritario: correo y LinkedIn" : "Priority channel: email and LinkedIn"}
-                    </span>
-                  </div>
-                </div>
-                <div className="rounded-[1.1rem] border border-cyan-300/15 bg-slate-900/80 px-4 py-4">
-                  <div className="flex items-center gap-3 text-cyan-200">
-                    <Workflow size={16} />
-                    <span className="text-sm text-cyan-100/85">
-                      {lang === "es"
-                        ? "Abierto a proyectos, practicas y colaboracion"
-                        : "Open to projects, internships, and collaboration"}
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
-            <Lanyard
-              name={"David L\u00f3pez S\u00e1nchez"}
-              role={role}
-              imageSrc="/profile-photo.jpg"
-              compact
-            />
+            <Lanyard name="David Lopez Sanchez" role={role} imageSrc="/profile-photo.jpg" compact />
           </AnimatedContent>
         </div>
 
-        <div className="mb-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-          {modes.map((mode, index) => (
-            <ScrollStack key={mode.title} depth={index + 1}>
-              <FadeContent delay={0.06 * index}>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {cards.map((card, index) => (
+            <ScrollStack key={card.title} depth={index + 1}>
+              <FadeContent delay={0.08 * index}>
                 <GlareHover
                   width="100%"
                   height="100%"
-                  background="linear-gradient(180deg, rgba(4, 10, 18, 0.88), rgba(6, 13, 20, 0.78))"
+                  background="linear-gradient(180deg, rgba(28,31,36,0.92), rgba(18,20,24,0.92))"
                   borderRadius="1.7rem"
-                  borderColor="rgba(110, 231, 183, 0.16)"
-                  glareColor="#d5fff6"
-                  glareOpacity={0.12}
-                  glareAngle={-36}
+                  borderColor="rgba(255,255,255,0.08)"
+                  glareColor="#eef8f4"
+                  glareOpacity={0.1}
+                  glareAngle={-28}
                   glareSize={220}
                   className="reactbits-card-shell"
                 >
-                  <article className="interactive-card flex h-full w-full flex-col rounded-[1.7rem] p-6">
-                    <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200">
-                      <mode.icon size={22} />
+                  <article className="interactive-card h-full rounded-[1.7rem] p-6">
+                    <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/6 p-3 text-[color:var(--accent)]">
+                      <card.icon size={18} />
                     </div>
-                    <h3 className="mb-4 text-2xl font-semibold text-white">{mode.title}</h3>
-                    <p className="cyber-text text-base leading-relaxed">{mode.description}</p>
+                    <h3 className="text-xl font-semibold text-white">{card.title}</h3>
+                    <p className="section-copy mt-4 text-sm leading-relaxed">{card.description}</p>
                   </article>
                 </GlareHover>
               </FadeContent>
@@ -224,37 +166,31 @@ export default function Contacto() {
           ))}
         </div>
 
-        <div className="grid gap-5 md:grid-cols-3">
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
           {[
             {
               label: "EMAIL",
               href: "mailto:davidlszdev@gmail.com",
               text: "davidlszdev@gmail.com",
               icon: Mail,
-              borderClass: "border-emerald-400/22",
-              textClass: "text-emerald-300",
             },
             {
               label: "LINKEDIN",
               href: "https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7",
               text: "linkedin.com/in/david-lopez-sanchez-aa269a1b7",
               icon: Linkedin,
-              borderClass: "border-cyan-300/22",
-              textClass: "text-cyan-300",
             },
             {
               label: "GITHUB",
               href: "https://github.com/davidlszz",
               text: "github.com/davidlszz",
               icon: Github,
-              borderClass: "border-emerald-400/22",
-              textClass: "text-emerald-300",
             },
           ].map((item, index) => (
             <ScrollStack key={item.label} depth={index + 1}>
               <FadeContent delay={0.08 * index}>
-                <article className={`interactive-card rounded-[1.5rem] border bg-slate-950/55 p-5 ${item.borderClass}`}>
-                  <p className={`mb-3 flex items-center gap-2 text-xs tracking-[0.18em] ${item.textClass}`}>
+                <article className="interactive-card rounded-[1.45rem] border border-white/10 bg-white/5 p-5">
+                  <p className="eyebrow mb-3 flex items-center gap-2 text-[11px] text-white/45">
                     <item.icon size={14} />
                     {item.label}
                   </p>

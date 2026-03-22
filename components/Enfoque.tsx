@@ -8,68 +8,68 @@ import { useLanguage } from "./LanguageContext";
 import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
-const focusPillars = {
+const workSequence = {
+  es: [
+    "Entender arquitectura, dependencias y puntos de fallo.",
+    "Reducir superficie de ataque y ordenar accesos.",
+    "Automatizar controles repetibles sin perder trazabilidad.",
+    "Medir comportamiento real para responder mejor.",
+  ],
+  en: [
+    "Understand architecture, dependencies, and failure points.",
+    "Reduce attack surface and organize access.",
+    "Automate repeatable controls without losing traceability.",
+    "Measure real behavior to respond better.",
+  ],
+} as const;
+
+const principles = {
   es: [
     {
-      title: "Analizar primero",
+      title: "Analizar antes de tocar",
       description:
-        "Parto del riesgo, la arquitectura y los puntos de fallo para entender donde se rompe realmente un sistema.",
+        "Prefiero mapear contexto, flujos y exposicion antes de sumar herramientas o cambiar configuraciones.",
       icon: Radar,
     },
     {
       title: "Automatizar con criterio",
       description:
-        "Busco reducir friccion operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
+        "Una automatizacion buena reduce error humano y deja rollback, evidencia y entendimiento del proceso.",
       icon: Activity,
     },
     {
-      title: "Medir para mejorar",
+      title: "Defender en capas",
       description:
-        "Sin observabilidad no hay operacion madura; por eso priorizo logs, senales y metricas accionables.",
+        "Combino acceso, configuracion, segmentacion y observabilidad para no depender de un solo control.",
       icon: ShieldCheck,
     },
   ],
   en: [
     {
-      title: "Analyze first",
+      title: "Analyze before changing",
       description:
-        "I start from risk, architecture, and failure points to understand where a system really breaks.",
+        "I prefer mapping context, flows, and exposure before adding tools or changing configuration.",
       icon: Radar,
     },
     {
       title: "Automate with intent",
       description:
-        "I aim to reduce operational friction and manual errors through pipelines, repeatable tasks, and controlled change.",
+        "Good automation reduces human error while leaving rollback, evidence, and process understanding.",
       icon: Activity,
     },
     {
-      title: "Measure to improve",
+      title: "Defend in layers",
       description:
-        "Without observability there is no mature operation, so I prioritize logs, signals, and actionable metrics.",
+        "I combine access, configuration, segmentation, and observability so nothing depends on a single control.",
       icon: ShieldCheck,
     },
   ],
 } as const;
 
-const focusSequence = {
-  es: [
-    "Entender la arquitectura",
-    "Reducir superficie de ataque",
-    "Automatizar validaciones",
-    "Medir y responder",
-  ],
-  en: [
-    "Understand the architecture",
-    "Reduce attack surface",
-    "Automate validation",
-    "Measure and respond",
-  ],
-} as const;
-
 export default function Enfoque() {
   const { lang } = useLanguage();
-  const pillars = focusPillars[lang];
-  const sequence = focusSequence[lang];
+  const sequence = workSequence[lang];
+  const cards = principles[lang];
 
   return (
     <section
@@ -77,83 +77,91 @@ export default function Enfoque() {
       className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
       <SectionCard accent="emerald" depth={4}>
-        <div className="mb-10 grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
-          <AnimatedContent className="text-center xl:text-left">
-            <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
-              {lang === "es" ? "CRITERIO DE TRABAJO" : "WORKING FRAMEWORK"}
+        <div className="grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
+          <AnimatedContent>
+            <p className="eyebrow mb-4 text-xs text-white/42">
+              {lang === "es" ? "Metodo / forma de trabajo" : "Method / way of working"}
             </p>
-            <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-              {lang === "es" ? "Criterio de trabajo" : "Work criteria"}
+            <h2 className="section-quote max-w-[14ch] font-semibold text-white">
+              {lang === "es"
+                ? "Me interesa que una solucion siga siendo clara cuando llega el momento dificil de operarla."
+                : "I care that a solution stays clear when the difficult part arrives: operating it."}
             </h2>
 
-            <p className="cyber-text text-lg leading-relaxed">
+            <p className="section-copy mt-6 max-w-2xl text-base leading-relaxed md:text-lg">
               {lang === "es"
-                ? "Mi enfoque combina ciberseguridad, infraestructura y confiabilidad como partes de un mismo problema. No me interesa solo que un servicio funcione; me interesa que pueda operar con criterios claros de riesgo, trazabilidad, mantenimiento y respuesta ante incidentes."
-                : "My approach combines cybersecurity, infrastructure, and reliability as parts of the same problem. I am not only interested in whether a service works, but whether it can operate with clear criteria for risk, traceability, maintainability, and incident response."}
-            </p>
-
-            <p className="cyber-text mt-6 text-lg leading-relaxed">
-              {lang === "es"
-                ? "Por eso priorizo disenar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
-                : "That is why I prioritize layered defenses, automate controls where it makes sense, and measure real system behavior so decisions are based on evidence rather than assumptions."}
+                ? "Por eso trabajo con una secuencia simple pero consistente: primero entender, luego endurecer, despues automatizar y finalmente medir. Esa logica me ayuda a evitar disenos espectaculares pero fragiles."
+                : "That is why I work with a simple but consistent sequence: first understand, then harden, then automate, and finally measure. That logic helps me avoid designs that look impressive but fail under pressure."}
             </p>
           </AnimatedContent>
 
-          <AnimatedContent className="rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6" delay={0.08}>
-            <div className="mb-5 flex items-center gap-3">
-              <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
-                <Target size={20} />
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-white">
-                  {lang === "es" ? "Secuencia operativa" : "Operating sequence"}
-                </p>
-                <p className="text-sm text-cyan-100/70">
-                  {lang === "es" ? "Asi estructuro el trabajo tecnico" : "How I structure technical work"}
-                </p>
-              </div>
-            </div>
-
-            <div className="grid gap-3">
-              {sequence.map((step, index) => (
-                <div
-                  key={step}
-                  className="rounded-xl border border-cyan-300/15 bg-slate-900/80 px-4 py-3"
-                >
-                  <div className="flex items-center gap-4">
-                    <span className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-emerald-400/25 bg-emerald-400/10 text-xs font-semibold text-emerald-200">
-                      {index + 1}
-                    </span>
-                    <span className="text-sm text-cyan-100/85">{step}</span>
+          <AnimatedContent delay={0.08}>
+            <GlareHover
+              width="100%"
+              height="100%"
+              background="linear-gradient(180deg, rgba(28,31,36,0.92), rgba(18,20,24,0.92))"
+              borderRadius="1.85rem"
+              borderColor="rgba(255,255,255,0.08)"
+              glareColor="#ecf8f4"
+              glareOpacity={0.1}
+              glareAngle={-28}
+              glareSize={220}
+              className="reactbits-card-shell"
+            >
+              <div className="rounded-[1.85rem] p-6">
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="rounded-full border border-white/10 bg-white/6 p-3 text-[color:var(--secondary)]">
+                    <Target size={18} />
+                  </div>
+                  <div>
+                    <p className="eyebrow text-[11px] text-white/42">
+                      {lang === "es" ? "Secuencia de trabajo" : "Working sequence"}
+                    </p>
+                    <p className="mt-2 text-lg font-semibold text-white">
+                      {lang === "es" ? "Como estructuro un proyecto" : "How I structure a project"}
+                    </p>
                   </div>
                 </div>
-              ))}
-            </div>
+
+                <div className="space-y-3">
+                  {sequence.map((item, index) => (
+                    <FadeContent key={item} delay={0.05 * index}>
+                      <div className="flex items-center gap-4 rounded-[1.2rem] border border-white/8 bg-black/12 px-4 py-3">
+                        <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-white/6 text-xs text-[color:var(--accent)]">
+                          0{index + 1}
+                        </span>
+                        <span className="text-sm text-[color:var(--muted)]">{item}</span>
+                      </div>
+                    </FadeContent>
+                  ))}
+                </div>
+              </div>
+            </GlareHover>
           </AnimatedContent>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-3">
-          {pillars.map((pillar, index) => (
-            <ScrollStack key={pillar.title} depth={index + 1}>
+        <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          {cards.map((card, index) => (
+            <ScrollStack key={card.title} depth={index + 1}>
               <FadeContent delay={0.08 * index}>
                 <GlareHover
                   width="100%"
                   height="100%"
-                  background="linear-gradient(180deg, rgba(4, 10, 18, 0.88), rgba(6, 13, 20, 0.78))"
-                  borderRadius="1.5rem"
-                  borderColor="rgba(110, 231, 183, 0.14)"
-                  glareColor="#d7fff2"
-                  glareOpacity={0.12}
-                  glareAngle={-36}
+                  background="linear-gradient(180deg, rgba(28,31,36,0.92), rgba(18,20,24,0.92))"
+                  borderRadius="1.65rem"
+                  borderColor="rgba(255,255,255,0.08)"
+                  glareColor="#fff4ec"
+                  glareOpacity={0.1}
+                  glareAngle={-30}
                   glareSize={220}
                   className="reactbits-card-shell"
                 >
-                  <article className="interactive-card rounded-[1.5rem] p-6">
-                    <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
-                      <pillar.icon size={20} />
+                  <article className="interactive-card h-full rounded-[1.65rem] p-6">
+                    <div className="mb-5 inline-flex rounded-full border border-white/10 bg-white/6 p-3 text-[color:var(--accent)]">
+                      <card.icon size={18} />
                     </div>
-                    <h3 className="mb-3 text-lg font-semibold text-white">{pillar.title}</h3>
-                    <p className="cyber-text text-sm leading-relaxed">{pillar.description}</p>
+                    <h3 className="text-xl font-semibold text-white">{card.title}</h3>
+                    <p className="section-copy mt-4 text-sm leading-relaxed">{card.description}</p>
                   </article>
                 </GlareHover>
               </FadeContent>
