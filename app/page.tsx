@@ -4,39 +4,32 @@ import Stack from "@/components/Stack";
 import Projects from "@/components/Projects";
 import Enfoque from "@/components/Enfoque";
 import Contacto from "@/components/Contacto";
-import LightPillars from "@/components/LightPillars";
 import Navbar from "@/components/Navbar";
+import NoiseOverlay from "@/components/NoiseOverlay";
+import PointerGlow from "@/components/PointerGlow";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageContext";
-import SectionDivider from "@/components/SectionDivider";
 
 export default function Home() {
   return (
     <LanguageProvider>
       <main className="page-shell relative isolate overflow-x-clip">
-        <LightPillars />
+        <NoiseOverlay />
+        <PointerGlow />
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-1/2 top-28 h-72 w-72 -translate-x-[82%] rounded-full bg-cyan-400/10 blur-3xl" />
-          <div className="absolute left-1/2 top-[28rem] h-[20rem] w-[20rem] translate-x-[18%] rounded-full bg-emerald-400/9 blur-3xl" />
-          <div className="absolute left-1/2 top-[66rem] h-[24rem] w-[24rem] -translate-x-[45%] rounded-full bg-cyan-300/6 blur-3xl" />
-          <div className="absolute inset-y-0 left-1/2 w-px -translate-x-[590px] bg-gradient-to-b from-transparent via-cyan-300/12 to-transparent" />
-          <div className="absolute inset-y-0 left-1/2 w-px translate-x-[590px] bg-gradient-to-b from-transparent via-emerald-400/12 to-transparent" />
-          <div className="absolute left-1/2 top-[16rem] h-px w-[1180px] -translate-x-1/2 bg-gradient-to-r from-transparent via-cyan-300/6 to-transparent" />
-          <div className="absolute left-1/2 top-[76rem] h-px w-[1180px] -translate-x-1/2 bg-gradient-to-r from-transparent via-emerald-300/6 to-transparent" />
-          <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-slate-950/45 to-transparent" />
+          <div className="absolute left-[6%] top-16 h-72 w-72 rounded-full bg-[color:var(--accent-strong)]/12 blur-[140px]" />
+          <div className="absolute right-[8%] top-[18rem] h-[26rem] w-[26rem] rounded-full bg-[color:var(--secondary)]/12 blur-[180px]" />
+          <div className="absolute left-1/2 top-[68rem] h-[32rem] w-[32rem] -translate-x-1/2 rounded-full bg-white/5 blur-[200px]" />
+          <div className="absolute left-[14%] top-[92rem] h-[18rem] w-[18rem] rounded-full bg-[color:var(--accent)]/8 blur-[160px]" />
+          <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/28 to-transparent" />
         </div>
         <Navbar />
-        <div className="relative z-10 pb-6">
+        <div className="relative z-10 pb-6 pt-22 md:pt-28">
           <Hero />
-          <SectionDivider />
           <About />
-          <SectionDivider />
           <Stack />
-          <SectionDivider />
           <Projects />
-          <SectionDivider />
           <Enfoque />
-          <SectionDivider />
           <Contacto />
           <Footer />
         </div>
