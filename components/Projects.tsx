@@ -23,7 +23,7 @@ export default function Projects() {
       title: lang === "es" ? "Hardening de servidor VPS" : "VPS server hardening",
       description:
         lang === "es"
-          ? "Fortalecimiento de un servidor Linux con Nginx, politicas SSH, minimo privilegio y TLS para trafico cifrado."
+          ? "Fortalecimiento de un servidor Linux con Nginx, políticas SSH, mínimo privilegio y TLS para tráfico cifrado."
           : "Linux server hardening with Nginx, SSH policies, least privilege, and TLS for encrypted traffic.",
       ribbon: lang === "es" ? "Infraestructura" : "Infrastructure",
       status: lang === "es" ? "Blueprint activo" : "Active blueprint",
@@ -39,7 +39,7 @@ export default function Projects() {
       title: lang === "es" ? "Pipeline CI/CD con controles" : "Controlled CI/CD pipeline",
       description:
         lang === "es"
-          ? "Pipeline de despliegue con validaciones automatizadas, versionado seguro y reduccion de cambios manuales en produccion."
+          ? "Pipeline de despliegue con validaciones automatizadas, versionado seguro y reducción de cambios manuales en producción."
           : "Deployment pipeline with automated validations, secure versioning, and reduced manual changes in production.",
       ribbon: "DevSecOps",
       status: lang === "es" ? "Entrega segura" : "Secure delivery",
@@ -54,9 +54,9 @@ export default function Projects() {
       title: lang === "es" ? "Laboratorio Blue Team" : "Blue Team lab",
       description:
         lang === "es"
-          ? "Escenarios de monitoreo con recoleccion de logs, deteccion de anomalias y respuesta inicial para bajar MTTR."
+          ? "Escenarios de monitoreo con recolección de logs, detección de anomalías y respuesta inicial para bajar MTTR."
           : "Monitoring scenarios with log collection, anomaly detection, and first-response workflows to reduce MTTR.",
-      ribbon: lang === "es" ? "Deteccion" : "Detection",
+      ribbon: lang === "es" ? "Detección" : "Detection",
       status: lang === "es" ? "Observabilidad" : "Observability",
       tags: [
         { label: "Logs", icon: <TerminalSquare size={16} /> },
@@ -69,7 +69,7 @@ export default function Projects() {
       title: lang === "es" ? "Segmentacion de red" : "Network segmentation",
       description:
         lang === "es"
-          ? "Diseno de segmentacion por subredes para separar servicios criticos, reducir movimiento lateral y mejorar control de acceso."
+          ? "Diseño de segmentación por subredes para separar servicios críticos, reducir movimiento lateral y mejorar control de acceso."
           : "Subnet-based segmentation to isolate critical services, reduce lateral movement, and improve access control.",
       ribbon: lang === "es" ? "Arquitectura" : "Architecture",
       status: lang === "es" ? "Defensa en capas" : "Defense in depth",
@@ -93,11 +93,11 @@ export default function Projects() {
               {lang === "es" ? "BUILD CASES // REACT BITS VIBE" : "BUILD CASES // REACT BITS VIBE"}
             </p>
             <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-              {lang === "es" ? "Casos de construccion" : "Build cases"}
+              {lang === "es" ? "Casos de construcción" : "Build cases"}
             </h2>
             <p className="cyber-text mx-auto max-w-3xl text-base leading-relaxed xl:mx-0 md:text-lg">
               {lang === "es"
-                ? "Cada proyecto esta pensado como una pieza tecnica presentable: con arquitectura clara, foco operativo y una narrativa que conecta seguridad, infraestructura y ejecucion real."
+                ? "Cada proyecto está pensado como una pieza técnica presentable: con arquitectura clara, foco operativo y una narrativa que conecta seguridad, infraestructura y ejecución real."
                 : "Each project is designed as a presentable technical artifact: with clear architecture, operational focus, and a narrative that connects security, infrastructure, and real execution."}
             </p>
           </div>
@@ -112,7 +112,7 @@ export default function Projects() {
                   {lang === "es" ? "Criterio de portfolio" : "Portfolio criteria"}
                 </p>
                 <p className="text-sm text-cyan-100/70">
-                  {lang === "es" ? "Mostrar diseno, operacion y trazabilidad" : "Show design, operations, and traceability"}
+                  {lang === "es" ? "Mostrar diseño, operación y trazabilidad" : "Show design, operations, and traceability"}
                 </p>
               </div>
             </div>

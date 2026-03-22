@@ -1,7 +1,6 @@
 "use client";
 
 import { ReactNode } from "react";
-import GradualBlur from "./GradualBlur";
 import ScrollStack from "./ScrollStack";
 
 interface SectionCardProps {
@@ -44,24 +43,20 @@ export default function SectionCard({
       depth={depth}
       className={`section-shell section-shell-react mx-auto w-full max-w-[1180px] overflow-hidden rounded-[2rem] ${className}`}
     >
-      <GradualBlur className="h-full">
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute left-[-4rem] top-[-3rem] h-44 w-44 rounded-full blur-3xl ${styles.leftGlow}`}
-        />
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute bottom-[-4rem] right-[-2rem] h-52 w-52 rounded-full blur-3xl ${styles.rightGlow}`}
-        />
-        <div
-          aria-hidden="true"
-          className={`pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r ${styles.border}`}
-        />
-        <div aria-hidden="true" className="section-grid-glow" />
-        <div aria-hidden="true" className="react-lens react-lens-top" />
-        <div aria-hidden="true" className="react-lens react-lens-bottom" />
-        <div className={`relative z-10 p-6 md:p-10 lg:p-12 ${innerClassName}`}>{children}</div>
-      </GradualBlur>
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute left-[-4rem] top-[-3rem] h-44 w-44 rounded-full blur-3xl ${styles.leftGlow}`}
+      />
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute bottom-[-4rem] right-[-2rem] h-52 w-52 rounded-full blur-3xl ${styles.rightGlow}`}
+      />
+      <div
+        aria-hidden="true"
+        className={`pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r ${styles.border}`}
+      />
+      <div aria-hidden="true" className="section-grid-glow" />
+      <div className={`relative z-10 p-6 md:p-10 lg:p-12 ${innerClassName}`}>{children}</div>
     </ScrollStack>
   );
 }

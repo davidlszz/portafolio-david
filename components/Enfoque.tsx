@@ -9,19 +9,19 @@ const focusPillars = {
     {
       title: "Analizar primero",
       description:
-        "Parto del riesgo, la arquitectura y los puntos de fallo para entender donde se rompe realmente un sistema.",
+        "Parto del riesgo, la arquitectura y los puntos de fallo para entender dónde se rompe realmente un sistema.",
       icon: Radar,
     },
     {
       title: "Automatizar con criterio",
       description:
-        "Busco reducir friccion operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
+        "Busco reducir fricción operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
       icon: Activity,
     },
     {
       title: "Medir para mejorar",
       description:
-        "Sin observabilidad no hay operacion madura; por eso priorizo logs, senales y metricas accionables.",
+        "Sin observabilidad no hay operación madura; por eso priorizo logs, señales y métricas accionables.",
       icon: ShieldCheck,
     },
   ],
@@ -90,7 +90,7 @@ export default function Enfoque() {
 
             <p className="cyber-text mt-6 text-lg leading-relaxed">
               {lang === "es"
-                ? "Por eso priorizo disenar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
+                ? "Por eso priorizo diseñar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
                 : "That is why I prioritize layered defenses, automate controls where it makes sense, and measure real system behavior so decisions are based on evidence rather than assumptions."}
             </p>
           </div>
@@ -105,7 +105,7 @@ export default function Enfoque() {
                   {lang === "es" ? "Secuencia operativa" : "Operating sequence"}
                 </p>
                 <p className="text-sm text-cyan-100/70">
-                  {lang === "es" ? "Asi estructuro el trabajo tecnico" : "How I structure technical work"}
+                  {lang === "es" ? "Así estructuro el trabajo técnico" : "How I structure technical work"}
                 </p>
               </div>
             </div>

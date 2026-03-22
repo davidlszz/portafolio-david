@@ -1,19 +1,19 @@
 "use client";
 
-import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 import { Activity, LockKeyhole, Radar, ShieldCheck, Workflow } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SiGit, SiGithubactions, SiLinux, SiNginx } from "react-icons/si";
 import { useLanguage } from "./LanguageContext";
 import LogoLoop from "./LogoLoop";
+import ProfileCard from "./ProfileCard";
 import SectionCard from "./SectionCard";
 
 const heroMetrics = {
   es: [
     { label: "Foco", value: "Infra + Sec", icon: ShieldCheck },
     { label: "Modo", value: "DevSecOps", icon: Workflow },
-    { label: "Senal", value: "Observabilidad", icon: Radar },
+    { label: "Señal", value: "Observabilidad", icon: Radar },
   ],
   en: [
     { label: "Focus", value: "Infra + Sec", icon: ShieldCheck },
@@ -45,7 +45,7 @@ const heroSignals = {
   es: [
     { label: "Hardening primero", icon: ShieldCheck },
     { label: "Entregas medibles", icon: Activity },
-    { label: "Operacion clara", icon: Radar },
+    { label: "Operación clara", icon: Radar },
   ],
   en: [
     { label: "Hardening first", icon: ShieldCheck },
@@ -57,7 +57,6 @@ const heroSignals = {
 export default function Hero() {
   const { lang } = useLanguage();
   const reducedMotion = useReducedMotion();
-  const [hasProfileImage, setHasProfileImage] = useState(true);
   const words = useMemo(
     () =>
       lang === "es"
@@ -105,11 +104,11 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.08 }}
           >
             <LockKeyhole size={14} />
-            {lang === "es" ? "Perfil tecnico en evolucion" : "Technical profile in progress"}
+            {lang === "es" ? "Perfil técnico en evolución" : "Technical profile in progress"}
           </motion.div>
         </div>
 
-        <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(340px,0.95fr)]">
+        <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
           <div className="text-center xl:text-left">
             <motion.h1
               className="cyber-title mb-4 text-4xl font-extrabold text-white md:text-6xl"
@@ -142,7 +141,7 @@ export default function Hero() {
               transition={{ duration: 0.75, delay: 0.2 }}
             >
               {lang === "es"
-                ? "Ingenieria de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
+                ? "Ingeniería de sistemas enfocada en ciberseguridad, hardening de infraestructura, redes seguras y confiabilidad operativa con mentalidad DevSecOps."
                 : "Systems engineering focused on cybersecurity, infrastructure hardening, secure networking, and operational reliability with a DevSecOps mindset."}
             </motion.p>
 
@@ -208,7 +207,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.45 }}
             >
               <p className="mb-4 text-center text-[11px] tracking-[0.32em] text-cyan-100/55 xl:text-left">
-                {lang === "es" ? "LOGO LOOP // TOOLSET" : "LOGO LOOP // TOOLSET"}
+                LOGO LOOP // TOOLSET
               </p>
               <LogoLoop items={loopItems} duration={21} />
             </motion.div>
@@ -220,45 +219,12 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.18 }}
           >
-            <div className="cyber-grid-panel relative mx-auto aspect-[4/5] overflow-hidden rounded-[2rem] border border-cyan-300/30 bg-slate-950/75 p-3 shadow-[0_0_40px_rgba(0,229,255,0.12)]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.18),transparent_36%),linear-gradient(180deg,rgba(0,255,136,0.05),transparent)]" />
-              <div className="absolute left-4 top-4 rounded-full border border-emerald-400/20 bg-slate-950/75 px-3 py-1 text-[10px] tracking-[0.24em] text-emerald-200">
-                {lang === "es" ? "IDENTIDAD" : "IDENTITY"}
-              </div>
-              <div className="absolute right-4 top-4 rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1 text-[10px] tracking-[0.2em] text-cyan-100">
-                {lang === "es" ? "React style" : "React style"}
-              </div>
-              <div className="absolute bottom-4 left-4 z-10 max-w-[13rem] rounded-[1.25rem] border border-cyan-300/18 bg-slate-950/74 px-4 py-3 backdrop-blur-md">
-                <p className="text-[10px] tracking-[0.24em] text-cyan-100/52">
-                  {lang === "es" ? "SENAL" : "SIGNAL"}
-                </p>
-                <p className="mt-2 text-sm font-semibold text-white">
-                  {lang === "es" ? "Perfil centrado en seguridad e infraestructura" : "Security and infrastructure centered profile"}
-                </p>
-              </div>
-              <div className="relative h-full overflow-hidden rounded-[1.6rem] border border-emerald-400/20 bg-slate-900">
-                {hasProfileImage ? (
-                  <Image
-                    src="/profile-photo.jpg"
-                    alt={"Retrato de David L\u00f3pez S\u00e1nchez"}
-                    fill
-                    priority
-                    sizes="(max-width: 768px) 70vw, 32vw"
-                    className="object-cover"
-                    onError={() => setHasProfileImage(false)}
-                  />
-                ) : (
-                  <div className="flex h-full items-center justify-center bg-[radial-gradient(circle_at_top,rgba(0,229,255,0.22),transparent_34%),linear-gradient(180deg,#071018_0%,#0b1520_100%)]">
-                    <div className="text-center">
-                      <p className="cyber-title text-6xl font-extrabold text-white">DLS</p>
-                      <p className="mt-3 text-sm tracking-[0.22em] text-cyan-200/80">
-                        {lang === "es" ? "Perfil profesional" : "Professional profile"}
-                      </p>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </div>
+            <ProfileCard
+              name={"David L\u00f3pez S\u00e1nchez"}
+              role={lang === "es" ? "Ingeniero de sistemas" : "Systems engineer"}
+              subtitle={lang === "es" ? "Perfil interactivo" : "Interactive profile"}
+              imageSrc="/profile-photo.jpg"
+            />
           </motion.div>
         </div>
       </SectionCard>

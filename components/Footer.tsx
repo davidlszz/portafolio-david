@@ -8,8 +8,8 @@ import SectionCard from "./SectionCard";
 const footerSignals = {
   es: [
     { label: "Infraestructura segura", icon: <ShieldCheck size={16} /> },
-    { label: "Automatizacion operativa", icon: <Workflow size={16} /> },
-    { label: "Observabilidad practica", icon: <ArrowUpRight size={16} /> },
+    { label: "Automatización operativa", icon: <Workflow size={16} /> },
+    { label: "Observabilidad práctica", icon: <ArrowUpRight size={16} /> },
     { label: "GitHub", icon: <Github size={16} /> },
     { label: "LinkedIn", icon: <Linkedin size={16} /> },
     { label: "Email", icon: <Mail size={16} /> },
@@ -35,12 +35,12 @@ export default function Footer() {
         <div className="grid gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
           <div className="text-center xl:text-left">
             <h3 className="cyber-title mb-4 text-2xl font-bold text-white md:text-3xl">
-              {lang === "es" ? "Ingenieria de sistemas con enfoque en redes" : "Systems engineering with a networking focus"}
+              {lang === "es" ? "Ingeniería de sistemas con enfoque en redes" : "Systems engineering with a networking focus"}
             </h3>
 
             <p className="cyber-text mx-auto max-w-2xl text-base leading-relaxed xl:mx-0">
               {lang === "es"
-                ? "Este portfolio documenta una direccion clara: construir sistemas mas seguros, observables y confiables, con criterio tecnico y ejecucion disciplinada."
+                ? "Este portfolio documenta una dirección clara: construir sistemas más seguros, observables y confiables, con criterio técnico y ejecución disciplinada."
                 : "This portfolio documents a clear direction: building more secure, observable, and reliable systems with technical judgment and disciplined execution."}
             </p>
 
@@ -127,11 +127,11 @@ export default function Footer() {
         <div className="mt-8 flex flex-col gap-3 border-t border-cyan-300/12 pt-5 text-center text-xs text-cyan-100/60 md:flex-row md:items-center md:justify-between md:text-left">
           <p>
             {"\u00a9"} {year} David {"L\u00f3pez S\u00e1nchez"} {"//"}{" "}
-            {lang === "es" ? "Ingenieria de sistemas | Redes" : "Systems engineering | Networking"}
+            {lang === "es" ? "Ingeniería de sistemas | Redes" : "Systems engineering | Networking"}
           </p>
           <p>
             {lang === "es"
-              ? "Construido con foco en claridad, senal y criterio tecnico."
+              ? "Construido con foco en claridad, señal y criterio técnico."
               : "Built with a focus on clarity, signal, and technical judgment."}
           </p>
         </div>

@@ -16,8 +16,8 @@ import SectionCard from "./SectionCard";
 const contactSignals = {
   es: [
     { label: "Infraestructura segura", icon: <ShieldCheck size={16} /> },
-    { label: "Automatizacion y CI/CD", icon: <Workflow size={16} /> },
-    { label: "Observabilidad y operacion", icon: <TerminalSquare size={16} /> },
+    { label: "Automatización y CI/CD", icon: <Workflow size={16} /> },
+    { label: "Observabilidad y operación", icon: <TerminalSquare size={16} /> },
     { label: "LinkedIn", icon: <Linkedin size={16} /> },
     { label: "GitHub", icon: <Github size={16} /> },
     { label: "Email", icon: <Mail size={16} /> },
@@ -35,18 +35,18 @@ const contactSignals = {
 const collaborationModes = {
   es: [
     {
-      title: "Proyectos tecnicos",
-      description: "Diseno, hardening, automatizacion y mejora continua sobre plataformas y servicios.",
+      title: "Proyectos técnicos",
+      description: "Diseño, hardening, automatización y mejora continua sobre plataformas y servicios.",
       icon: ShieldCheck,
     },
     {
-      title: "Laboratorios y practica",
-      description: "Construccion de entornos controlados para observabilidad, segmentacion y validacion de controles.",
+      title: "Laboratorios y práctica",
+      description: "Construcción de entornos controlados para observabilidad, segmentación y validación de controles.",
       icon: TerminalSquare,
     },
     {
       title: "Entrega operativa",
-      description: "Apoyo en documentacion, runbooks, flujos CI/CD y trazabilidad de cambios.",
+      description: "Apoyo en documentación, runbooks, flujos CI/CD y trazabilidad de cambios.",
       icon: Workflow,
     },
   ],
@@ -80,39 +80,24 @@ export default function Contacto() {
       className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
       <SectionCard accent="cyan" depth={5}>
-        <div className="mx-auto mb-8 max-w-3xl text-center">
-          <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
-            {lang === "es" ? "COLABORACION Y CONTACTO" : "COLLABORATION AND CONTACT"}
-          </p>
-          <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-            {lang === "es" ? "Colaboracion y contacto" : "Collaboration and contact"}
-          </h2>
+        <div className="mb-8 grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)] xl:items-start">
+          <div className="mx-auto max-w-3xl text-center xl:mx-0 xl:text-left">
+            <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
+              {lang === "es" ? "COLABORACIÓN Y CONTACTO" : "COLLABORATION AND CONTACT"}
+            </p>
+            <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
+              {lang === "es" ? "Colaboración y contacto" : "Collaboration and contact"}
+            </h2>
 
-          <p className="cyber-text text-lg leading-relaxed">
-            {lang === "es"
-              ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operacion se crucen de forma real: despliegues confiables, hardening, observabilidad, automatizacion y mejora continua de plataformas."
-              : "I am interested in collaborating on initiatives where infrastructure, security, and operations intersect in real ways: reliable deployments, hardening, observability, automation, and continuous platform improvement."}
-          </p>
-        </div>
+            <p className="cyber-text text-lg leading-relaxed">
+              {lang === "es"
+                ? "Estoy interesado en colaborar en iniciativas donde infraestructura, seguridad y operación se crucen de forma real: despliegues confiables, hardening, observabilidad, automatización y mejora continua de plataformas."
+                : "I am interested in collaborating on initiatives where infrastructure, security, and operations intersect in real ways: reliable deployments, hardening, observability, automation, and continuous platform improvement."}
+            </p>
 
-        <div className="mb-8">
-          <LogoLoop items={signals} duration={23} />
-        </div>
-
-        <div className="mb-8 grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
-          <div className="grid gap-4 md:grid-cols-3">
-            {modes.map((mode) => (
-              <article
-                key={mode.title}
-                className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6"
-              >
-                <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
-                  <mode.icon size={20} />
-                </div>
-                <h3 className="mb-3 text-lg font-semibold text-white">{mode.title}</h3>
-                <p className="cyber-text text-sm leading-relaxed">{mode.description}</p>
-              </article>
-            ))}
+            <div className="mt-6">
+              <LogoLoop items={signals} duration={23} />
+            </div>
           </div>
 
           <div className="cyber-grid-panel rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6">
@@ -131,7 +116,7 @@ export default function Contacto() {
             </div>
 
             <div className="grid gap-3">
-              <div className="rounded-xl border border-cyan-300/15 bg-slate-900/80 px-4 py-3">
+              <div className="rounded-[1.1rem] border border-cyan-300/15 bg-slate-900/80 px-4 py-4">
                 <div className="flex items-center gap-3 text-cyan-200">
                   <Clock3 size={16} />
                   <span className="text-sm text-cyan-100/85">
@@ -139,7 +124,7 @@ export default function Contacto() {
                   </span>
                 </div>
               </div>
-              <div className="rounded-xl border border-cyan-300/15 bg-slate-900/80 px-4 py-3">
+              <div className="rounded-[1.1rem] border border-cyan-300/15 bg-slate-900/80 px-4 py-4">
                 <div className="flex items-center gap-3 text-cyan-200">
                   <Mail size={16} />
                   <span className="text-sm text-cyan-100/85">
@@ -147,23 +132,46 @@ export default function Contacto() {
                   </span>
                 </div>
               </div>
+              <div className="rounded-[1.1rem] border border-cyan-300/15 bg-slate-900/80 px-4 py-4">
+                <div className="flex items-center gap-3 text-cyan-200">
+                  <Workflow size={16} />
+                  <span className="text-sm text-cyan-100/85">
+                    {lang === "es" ? "Abierto a proyectos, prácticas y colaboración" : "Open to projects, internships, and collaboration"}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
-          <article className="interactive-card rounded-[1.4rem] border border-emerald-400/30 bg-slate-950/55 p-5">
-            <p className="mb-2 flex items-center gap-2 text-xs tracking-[0.18em] text-emerald-300">
+        <div className="mb-8 grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
+          {modes.map((mode) => (
+            <article
+              key={mode.title}
+              className="interactive-card flex h-full flex-col rounded-[1.7rem] border border-emerald-400/18 bg-slate-950/65 p-6"
+            >
+              <div className="mb-5 inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-300/20 bg-cyan-300/10 text-cyan-200">
+                <mode.icon size={22} />
+              </div>
+              <h3 className="mb-4 text-2xl font-semibold text-white">{mode.title}</h3>
+              <p className="cyber-text text-base leading-relaxed">{mode.description}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="grid gap-5 md:grid-cols-3">
+          <article className="interactive-card rounded-[1.5rem] border border-emerald-400/22 bg-slate-950/55 p-5">
+            <p className="mb-3 flex items-center gap-2 text-xs tracking-[0.18em] text-emerald-300">
               <Mail size={14} />
               EMAIL
             </p>
-            <a className="cyber-link break-all" href="mailto:davidlszdev@gmail.com">
+            <a className="cyber-link break-all text-base" href="mailto:davidlszdev@gmail.com">
               davidlszdev@gmail.com
             </a>
           </article>
 
-          <article className="interactive-card rounded-[1.4rem] border border-cyan-300/30 bg-slate-950/55 p-5">
-            <p className="mb-2 flex items-center gap-2 text-xs tracking-[0.18em] text-cyan-300">
+          <article className="interactive-card rounded-[1.5rem] border border-cyan-300/22 bg-slate-950/55 p-5">
+            <p className="mb-3 flex items-center gap-2 text-xs tracking-[0.18em] text-cyan-300">
               <Linkedin size={14} />
               LINKEDIN
             </p>
@@ -171,14 +179,14 @@ export default function Contacto() {
               href="https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7"
               target="_blank"
               rel="noopener noreferrer"
-              className="cyber-link break-all"
+              className="cyber-link break-all text-base"
             >
               {"linkedin.com/in/david-lopez-s\u00e1nchez-aa269a1b7"}
             </a>
           </article>
 
-          <article className="interactive-card rounded-[1.4rem] border border-emerald-400/30 bg-slate-950/55 p-5">
-            <p className="mb-2 flex items-center gap-2 text-xs tracking-[0.18em] text-emerald-300">
+          <article className="interactive-card rounded-[1.5rem] border border-emerald-400/22 bg-slate-950/55 p-5">
+            <p className="mb-3 flex items-center gap-2 text-xs tracking-[0.18em] text-emerald-300">
               <Github size={14} />
               GITHUB
             </p>
@@ -186,7 +194,7 @@ export default function Contacto() {
               href="https://github.com/davidlszz"
               target="_blank"
               rel="noopener noreferrer"
-              className="cyber-link break-all"
+              className="cyber-link break-all text-base"
             >
               github.com/davidlszz
             </a>

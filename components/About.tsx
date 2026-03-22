@@ -8,7 +8,7 @@ const aboutHighlights = {
   es: [
     { label: "Especialidad", value: "Seguridad e infraestructura", icon: ShieldCheck },
     { label: "Entornos", value: "Linux, VPS y redes", icon: ServerCog },
-    { label: "Operacion", value: "Observabilidad y CI/CD", icon: Workflow },
+    { label: "Operación", value: "Observabilidad y CI/CD", icon: Workflow },
   ],
   en: [
     { label: "Specialty", value: "Security and infrastructure", icon: ShieldCheck },
@@ -20,19 +20,19 @@ const aboutHighlights = {
 const aboutBlocks = {
   es: [
     {
-      title: "Mentalidad tecnica",
+      title: "Mentalidad técnica",
       description:
-        "Trabajo desde la comprension del sistema completo: red, sistema operativo, superficie de exposicion y continuidad operativa.",
+        "Trabajo desde la comprensión del sistema completo: red, sistema operativo, superficie de exposición y continuidad operativa.",
       icon: Network,
     },
     {
-      title: "Construccion segura",
+      title: "Construcción segura",
       description:
-        "Me interesa disenar servicios con hardening base, cifrado, control de acceso y evidencia tecnica clara para operarlos con criterio.",
+        "Me interesa diseñar servicios con hardening base, cifrado, control de acceso y evidencia técnica clara para operarlos con criterio.",
       icon: ShieldCheck,
     },
     {
-      title: "Evolucion profesional",
+      title: "Evolución profesional",
       description:
         "Estoy orientando mi perfil hacia infraestructura segura, cloud, ciberseguridad defensiva y confiabilidad aplicada a entornos reales.",
       icon: Workflow,
@@ -76,11 +76,11 @@ export default function About() {
             {lang === "es" ? "PERFIL PROFESIONAL" : "PROFESSIONAL PROFILE"}
           </p>
           <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-            {lang === "es" ? "Sobre mi" : "About me"}
+            {lang === "es" ? "Sobre mí" : "About me"}
           </h2>
           <p className="cyber-text text-lg leading-relaxed">
             {lang === "es"
-              ? "Soy estudiante de ingenieria de sistemas con orientacion a ciberseguridad, infraestructura y operacion confiable. Mi interes esta en entender como se comporta un servicio desde la red hasta su despliegue, y como fortalecerlo para que sea mas resistente, medible y seguro."
+              ? "Soy estudiante de ingeniería de sistemas con orientación a ciberseguridad, infraestructura y operación confiable. Mi interés está en entender cómo se comporta un servicio desde la red hasta su despliegue, y cómo fortalecerlo para que sea más resistente, medible y seguro."
               : "I am a systems engineering student focused on cybersecurity, infrastructure, and reliable operations. I am interested in understanding how a service behaves from the network layer to deployment, and how to strengthen it so it becomes more resilient, measurable, and secure."}
           </p>
         </div>
