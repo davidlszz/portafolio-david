@@ -4,6 +4,7 @@ import Stack from "@/components/Stack";
 import Projects from "@/components/Projects";
 import Enfoque from "@/components/Enfoque";
 import Contacto from "@/components/Contacto";
+import LightPillars from "@/components/LightPillars";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { LanguageProvider } from "@/components/LanguageContext";
@@ -13,6 +14,7 @@ export default function Home() {
   return (
     <LanguageProvider>
       <main className="page-shell relative isolate overflow-x-clip">
+        <LightPillars />
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
           <div className="absolute left-1/2 top-24 h-80 w-80 -translate-x-[88%] rounded-full bg-cyan-400/12 blur-3xl" />
           <div className="absolute left-1/2 top-[24rem] h-[24rem] w-[24rem] translate-x-[18%] rounded-full bg-emerald-400/12 blur-3xl" />

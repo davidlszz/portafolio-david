@@ -234,6 +234,62 @@ body > * {
   opacity: 0.5;
 }
 
+.light-pillar {
+  position: absolute;
+  top: -4rem;
+  bottom: -8rem;
+  width: 9rem;
+  border-radius: 999px;
+  opacity: 0.9;
+  filter: blur(0.6px);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.1) 18%, rgba(255, 255, 255, 0.02)),
+    linear-gradient(90deg, rgba(0, 229, 255, 0) 0%, rgba(0, 229, 255, 0.16) 48%, rgba(0, 229, 255, 0) 100%);
+  box-shadow:
+    0 0 40px rgba(0, 229, 255, 0.08),
+    0 0 140px rgba(0, 229, 255, 0.04);
+}
+
+.light-pillar::before,
+.light-pillar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.light-pillar::before {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), transparent 14%, transparent 86%, rgba(255, 255, 255, 0.04));
+  opacity: 0.7;
+}
+
+.light-pillar::after {
+  background: linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.16), transparent);
+  opacity: 0.35;
+  animation: pillar-shimmer 8s linear infinite;
+}
+
+.light-pillar-left {
+  left: max(1.5rem, calc(50% - 620px));
+}
+
+.light-pillar-center {
+  left: 50%;
+  width: 6.5rem;
+  transform: translateX(-50%);
+  opacity: 0.4;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.015), rgba(255, 255, 255, 0.06) 18%, rgba(255, 255, 255, 0.015)),
+    linear-gradient(90deg, rgba(0, 255, 136, 0) 0%, rgba(0, 255, 136, 0.12) 48%, rgba(0, 255, 136, 0) 100%);
+  box-shadow:
+    0 0 36px rgba(0, 255, 136, 0.06),
+    0 0 120px rgba(0, 255, 136, 0.03);
+}
+
+.light-pillar-right {
+  right: max(1.5rem, calc(50% - 620px));
+}
+
 .interactive-card {
   transition:
     transform 220ms ease,
@@ -269,6 +325,7 @@ body > * {
   transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
   transform-style: preserve-3d;
   transition: transform 220ms ease;
+  will-change: transform;
 }
 
 .profile-glare {
@@ -284,6 +341,7 @@ body > * {
   transform: rotate(var(--lanyard-rotate));
   transform-origin: top center;
   transition: transform 220ms ease;
+  will-change: transform;
 }
 
 .content-section {
@@ -338,6 +396,15 @@ body > * {
   }
 }
 
+@keyframes pillar-shimmer {
+  from {
+    transform: translateY(-24%);
+  }
+  to {
+    transform: translateY(24%);
+  }
+}
+
 @media (max-width: 768px), (pointer: coarse) {
   body {
     background:
@@ -360,6 +427,15 @@ body > * {
 
   .section-grid-glow {
     display: none;
+  }
+
+  .light-pillar-center {
+    display: none;
+  }
+
+  .light-pillar {
+    width: 5.5rem;
+    opacity: 0.6;
   }
 
   .content-section {
@@ -448,6 +524,10 @@ body > * {
   .logo-loop-track,
   .fade-content,
   .animated-content {
+    animation: none;
+  }
+
+  .light-pillar::after {
     animation: none;
   }
 
