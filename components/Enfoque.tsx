@@ -1,7 +1,10 @@
 "use client";
 
 import { Activity, Radar, ShieldCheck, Target } from "lucide-react";
+import AnimatedContent from "./AnimatedContent";
+import FadeContent from "./FadeContent";
 import { useLanguage } from "./LanguageContext";
+import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
 const focusPillars = {
@@ -74,7 +77,7 @@ export default function Enfoque() {
     >
       <SectionCard accent="emerald" depth={4}>
         <div className="mb-10 grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
-          <div className="text-center xl:text-left">
+          <AnimatedContent className="text-center xl:text-left">
             <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
               {lang === "es" ? "CRITERIO DE TRABAJO" : "WORKING FRAMEWORK"}
             </p>
@@ -93,9 +96,9 @@ export default function Enfoque() {
                 ? "Por eso priorizo diseñar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
                 : "That is why I prioritize layered defenses, automate controls where it makes sense, and measure real system behavior so decisions are based on evidence rather than assumptions."}
             </p>
-          </div>
+          </AnimatedContent>
 
-          <div className="rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6">
+          <AnimatedContent className="rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6" delay={0.08}>
             <div className="mb-5 flex items-center gap-3">
               <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
                 <Target size={20} />
@@ -125,21 +128,22 @@ export default function Enfoque() {
                 </div>
               ))}
             </div>
-          </div>
+          </AnimatedContent>
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
-          {pillars.map((pillar) => (
-            <article
-              key={pillar.title}
-              className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6"
-            >
-              <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
-                <pillar.icon size={20} />
-              </div>
-              <h3 className="mb-3 text-lg font-semibold text-white">{pillar.title}</h3>
-              <p className="cyber-text text-sm leading-relaxed">{pillar.description}</p>
-            </article>
+          {pillars.map((pillar, index) => (
+            <ScrollStack key={pillar.title} depth={index + 1}>
+              <FadeContent delay={0.08 * index}>
+                <article className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6">
+                  <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
+                    <pillar.icon size={20} />
+                  </div>
+                  <h3 className="mb-3 text-lg font-semibold text-white">{pillar.title}</h3>
+                  <p className="cyber-text text-sm leading-relaxed">{pillar.description}</p>
+                </article>
+              </FadeContent>
+            </ScrollStack>
           ))}
         </div>
       </SectionCard>

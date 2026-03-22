@@ -1,8 +1,11 @@
 "use client";
 
 import { ArrowUpRight, Github, Linkedin, Mail, ShieldCheck, Workflow } from "lucide-react";
+import AnimatedContent from "./AnimatedContent";
+import FadeContent from "./FadeContent";
 import { useLanguage } from "./LanguageContext";
 import LogoLoop from "./LogoLoop";
+import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
 const footerSignals = {
@@ -33,7 +36,7 @@ export default function Footer() {
     <footer className="relative z-10 px-4 pb-8 md:px-6">
       <SectionCard accent="mixed" depth={6}>
         <div className="grid gap-6 xl:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] xl:items-start">
-          <div className="text-center xl:text-left">
+          <AnimatedContent className="text-center xl:text-left">
             <h3 className="cyber-title mb-4 text-2xl font-bold text-white md:text-3xl">
               {lang === "es" ? "Ingeniería de sistemas con enfoque en redes" : "Systems engineering with a networking focus"}
             </h3>
@@ -45,7 +48,9 @@ export default function Footer() {
             </p>
 
             <div className="mt-5">
-              <LogoLoop items={signals} duration={24} reverse />
+              <FadeContent>
+                <LogoLoop items={signals} duration={24} reverse />
+              </FadeContent>
             </div>
 
             <div className="mt-6">
@@ -57,70 +62,78 @@ export default function Footer() {
                 {lang === "es" ? "Volver arriba" : "Back to top"}
               </a>
             </div>
-          </div>
+          </AnimatedContent>
 
           <div className="grid gap-4 sm:grid-cols-2">
-            <div className="h-full rounded-[1.45rem] border border-cyan-300/18 bg-slate-950/65 p-5">
-              <p className="mb-3 text-xs tracking-[0.24em] text-cyan-100/65">
-                {lang === "es" ? "NAVEGACION" : "NAVIGATION"}
-              </p>
-              <div className="grid gap-2.5 text-sm">
-                <a
-                  href="#home"
-                  className="cyber-link inline-flex items-center justify-between rounded-xl border border-cyan-300/12 bg-slate-900/70 px-3 py-2.5"
-                >
-                  <span>{lang === "es" ? "Inicio" : "Home"}</span>
-                  <ArrowUpRight size={14} />
-                </a>
-                <a
-                  href="#projects"
-                  className="cyber-link inline-flex items-center justify-between rounded-xl border border-cyan-300/12 bg-slate-900/70 px-3 py-2.5"
-                >
-                  <span>{lang === "es" ? "Proyectos" : "Projects"}</span>
-                  <ArrowUpRight size={14} />
-                </a>
-                <a
-                  href="#contact"
-                  className="cyber-link inline-flex items-center justify-between rounded-xl border border-cyan-300/12 bg-slate-900/70 px-3 py-2.5"
-                >
-                  <span>{lang === "es" ? "Contacto" : "Contact"}</span>
-                  <ArrowUpRight size={14} />
-                </a>
-              </div>
-            </div>
+            <ScrollStack depth={1}>
+              <FadeContent>
+                <div className="h-full rounded-[1.45rem] border border-cyan-300/18 bg-slate-950/65 p-5">
+                  <p className="mb-3 text-xs tracking-[0.24em] text-cyan-100/65">
+                    {lang === "es" ? "NAVEGACIÓN" : "NAVIGATION"}
+                  </p>
+                  <div className="grid gap-2.5 text-sm">
+                    <a
+                      href="#home"
+                      className="cyber-link inline-flex items-center justify-between rounded-xl border border-cyan-300/12 bg-slate-900/70 px-3 py-2.5"
+                    >
+                      <span>{lang === "es" ? "Inicio" : "Home"}</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                    <a
+                      href="#projects"
+                      className="cyber-link inline-flex items-center justify-between rounded-xl border border-cyan-300/12 bg-slate-900/70 px-3 py-2.5"
+                    >
+                      <span>{lang === "es" ? "Proyectos" : "Projects"}</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                    <a
+                      href="#contact"
+                      className="cyber-link inline-flex items-center justify-between rounded-xl border border-cyan-300/12 bg-slate-900/70 px-3 py-2.5"
+                    >
+                      <span>{lang === "es" ? "Contacto" : "Contact"}</span>
+                      <ArrowUpRight size={14} />
+                    </a>
+                  </div>
+                </div>
+              </FadeContent>
+            </ScrollStack>
 
-            <div className="h-full rounded-[1.45rem] border border-emerald-400/18 bg-slate-950/65 p-5">
-              <p className="mb-3 text-xs tracking-[0.24em] text-cyan-100/65">
-                {lang === "es" ? "CANALES" : "CHANNELS"}
-              </p>
-              <div className="grid gap-2.5 text-sm">
-                <a
-                  href="mailto:davidlszdev@gmail.com"
-                  className="cyber-link inline-flex items-center justify-between rounded-xl border border-emerald-400/12 bg-slate-900/70 px-3 py-2.5"
-                >
-                  <span>Email</span>
-                  <Mail size={14} />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cyber-link inline-flex items-center justify-between rounded-xl border border-emerald-400/12 bg-slate-900/70 px-3 py-2.5"
-                >
-                  <span>LinkedIn</span>
-                  <Linkedin size={14} />
-                </a>
-                <a
-                  href="https://github.com/davidlszz"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cyber-link inline-flex items-center justify-between rounded-xl border border-emerald-400/12 bg-slate-900/70 px-3 py-2.5"
-                >
-                  <span>GitHub</span>
-                  <Github size={14} />
-                </a>
-              </div>
-            </div>
+            <ScrollStack depth={2}>
+              <FadeContent delay={0.06}>
+                <div className="h-full rounded-[1.45rem] border border-emerald-400/18 bg-slate-950/65 p-5">
+                  <p className="mb-3 text-xs tracking-[0.24em] text-cyan-100/65">
+                    {lang === "es" ? "CANALES" : "CHANNELS"}
+                  </p>
+                  <div className="grid gap-2.5 text-sm">
+                    <a
+                      href="mailto:davidlszdev@gmail.com"
+                      className="cyber-link inline-flex items-center justify-between rounded-xl border border-emerald-400/12 bg-slate-900/70 px-3 py-2.5"
+                    >
+                      <span>Email</span>
+                      <Mail size={14} />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/david-lopez-s%C3%A1nchez-aa269a1b7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cyber-link inline-flex items-center justify-between rounded-xl border border-emerald-400/12 bg-slate-900/70 px-3 py-2.5"
+                    >
+                      <span>LinkedIn</span>
+                      <Linkedin size={14} />
+                    </a>
+                    <a
+                      href="https://github.com/davidlszz"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="cyber-link inline-flex items-center justify-between rounded-xl border border-emerald-400/12 bg-slate-900/70 px-3 py-2.5"
+                    >
+                      <span>GitHub</span>
+                      <Github size={14} />
+                    </a>
+                  </div>
+                </div>
+              </FadeContent>
+            </ScrollStack>
           </div>
         </div>
 

@@ -11,8 +11,11 @@ import {
   Workflow,
 } from "lucide-react";
 import { SiGit, SiGithubactions, SiLinux, SiNginx } from "react-icons/si";
+import AnimatedContent from "./AnimatedContent";
+import FadeContent from "./FadeContent";
 import { useLanguage } from "./LanguageContext";
 import LogoLoop from "./LogoLoop";
+import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
 const stackGroups = {
@@ -115,7 +118,7 @@ export default function Stack() {
     >
       <SectionCard accent="emerald" depth={2}>
         <div className="mb-8 grid gap-6 xl:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)] xl:items-start">
-          <div className="mx-auto max-w-3xl text-center xl:mx-0 xl:text-left">
+          <AnimatedContent className="mx-auto max-w-3xl text-center xl:mx-0 xl:text-left">
             <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
               {lang === "es" ? "STACK PROFESIONAL" : "PROFESSIONAL STACK"}
             </p>
@@ -129,11 +132,13 @@ export default function Stack() {
             </p>
 
             <div className="mt-6">
-              <LogoLoop items={loopItems} duration={22} reverse />
+              <FadeContent>
+                <LogoLoop items={loopItems} duration={22} reverse />
+              </FadeContent>
             </div>
-          </div>
+          </AnimatedContent>
 
-          <div className="rounded-[1.7rem] border border-cyan-300/20 bg-slate-950/60 p-6">
+          <AnimatedContent className="rounded-[1.7rem] border border-cyan-300/20 bg-slate-950/60 p-6" delay={0.08}>
             <div className="mb-5 flex items-center gap-3">
               <div className="rounded-xl border border-emerald-400/25 bg-emerald-400/10 p-3 text-emerald-200">
                 <LockKeyhole size={20} />
@@ -164,55 +169,56 @@ export default function Stack() {
                 </div>
               ))}
             </div>
-          </div>
+          </AnimatedContent>
         </div>
 
         <div className="grid gap-5 lg:grid-cols-2 xl:grid-cols-3">
-          {groups.map((group) => (
-            <article
-              key={group.title}
-              className="interactive-card relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-emerald-400/18 bg-slate-950/68 p-6"
-            >
-              <div
-                className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${group.accent} opacity-100`}
-              />
-              <div className="relative flex h-full flex-col">
-                <div className="mb-6 flex items-start justify-between gap-4">
-                  <div>
-                    <p className="mb-2 text-xs tracking-[0.25em] text-cyan-200/75">
-                      {lang === "es" ? "DOMINIO" : "DOMAIN"}
-                    </p>
-                    <h3 className="max-w-[12ch] text-2xl font-semibold text-white">{group.title}</h3>
-                  </div>
-                  <div className="rounded-2xl border border-cyan-300/20 bg-slate-900/85 p-3 text-cyan-200">
-                    <group.icon size={22} />
-                  </div>
-                </div>
+          {groups.map((group, index) => (
+            <ScrollStack key={group.title} depth={index + 1}>
+              <FadeContent delay={0.08 * index}>
+                <article className="interactive-card relative flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-emerald-400/18 bg-slate-950/68 p-6">
+                  <div
+                    className={`pointer-events-none absolute inset-0 bg-gradient-to-br ${group.accent} opacity-100`}
+                  />
+                  <div className="relative flex h-full flex-col">
+                    <div className="mb-6 flex items-start justify-between gap-4">
+                      <div>
+                        <p className="mb-2 text-xs tracking-[0.25em] text-cyan-200/75">
+                          {lang === "es" ? "DOMINIO" : "DOMAIN"}
+                        </p>
+                        <h3 className="max-w-[12ch] text-2xl font-semibold text-white">{group.title}</h3>
+                      </div>
+                      <div className="rounded-2xl border border-cyan-300/20 bg-slate-900/85 p-3 text-cyan-200">
+                        <group.icon size={22} />
+                      </div>
+                    </div>
 
-                <p className="cyber-text mb-6 min-h-[84px] text-base leading-relaxed">{group.subtitle}</p>
+                    <p className="cyber-text mb-6 min-h-[84px] text-base leading-relaxed">{group.subtitle}</p>
 
-                <div className="mb-6 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-3 py-1.5 text-xs text-cyan-100/85"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                    <div className="mb-6 flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <span
+                          key={item}
+                          className="rounded-full border border-cyan-300/20 bg-cyan-300/8 px-3 py-1.5 text-xs text-cyan-100/85"
+                        >
+                          {item}
+                        </span>
+                      ))}
+                    </div>
 
-                <div className="mt-auto rounded-[1.25rem] border border-emerald-400/15 bg-slate-900/75 px-4 py-4">
-                  <div className="mb-2 flex items-center gap-2 text-emerald-200">
-                    <Activity size={15} />
-                    <span className="text-xs tracking-[0.22em]">
-                      {lang === "es" ? "FOCO ACTUAL" : "CURRENT FOCUS"}
-                    </span>
+                    <div className="mt-auto rounded-[1.25rem] border border-emerald-400/15 bg-slate-900/75 px-4 py-4">
+                      <div className="mb-2 flex items-center gap-2 text-emerald-200">
+                        <Activity size={15} />
+                        <span className="text-xs tracking-[0.22em]">
+                          {lang === "es" ? "FOCO ACTUAL" : "CURRENT FOCUS"}
+                        </span>
+                      </div>
+                      <p className="text-sm text-cyan-100/80">{group.focus}</p>
+                    </div>
                   </div>
-                  <p className="text-sm text-cyan-100/80">{group.focus}</p>
-                </div>
-              </div>
-            </article>
+                </article>
+              </FadeContent>
+            </ScrollStack>
           ))}
         </div>
       </SectionCard>

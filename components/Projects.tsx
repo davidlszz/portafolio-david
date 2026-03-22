@@ -12,8 +12,11 @@ import {
   Workflow,
 } from "lucide-react";
 import { SiGithubactions, SiGit, SiLinux, SiNginx } from "react-icons/si";
+import AnimatedContent from "./AnimatedContent";
+import FadeContent from "./FadeContent";
 import { useLanguage } from "./LanguageContext";
 import LogoLoop from "./LogoLoop";
+import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
 export default function Projects() {
@@ -88,7 +91,7 @@ export default function Projects() {
     >
       <SectionCard accent="mixed" depth={3}>
         <div className="mb-10 grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
-          <div className="text-center xl:text-left">
+          <AnimatedContent className="text-center xl:text-left">
             <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
               {lang === "es" ? "BUILD CASES // REACT BITS VIBE" : "BUILD CASES // REACT BITS VIBE"}
             </p>
@@ -100,9 +103,9 @@ export default function Projects() {
                 ? "Cada proyecto está pensado como una pieza técnica presentable: con arquitectura clara, foco operativo y una narrativa que conecta seguridad, infraestructura y ejecución real."
                 : "Each project is designed as a presentable technical artifact: with clear architecture, operational focus, and a narrative that connects security, infrastructure, and real execution."}
             </p>
-          </div>
+          </AnimatedContent>
 
-          <div className="cyber-grid-panel rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6">
+          <AnimatedContent className="cyber-grid-panel rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6" delay={0.08}>
             <div className="mb-5 flex items-center gap-3">
               <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
                 <Layers3 size={20} />
@@ -134,42 +137,43 @@ export default function Projects() {
                 </div>
               ))}
             </div>
-          </div>
+          </AnimatedContent>
         </div>
 
         <div className="grid gap-6 md:grid-cols-2">
           {projects.map((project, index) => (
-            <article
-              key={project.title}
-              className="interactive-card relative overflow-hidden rounded-[1.7rem] border border-cyan-300/25 bg-slate-950/60 p-6 hover:border-cyan-300/55"
-            >
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,229,255,0.12),transparent_30%),linear-gradient(180deg,rgba(0,255,136,0.04),transparent_45%)]" />
-              <div className="pointer-events-none absolute right-5 top-5 text-4xl font-semibold tracking-[0.18em] text-white/6">
-                {`0${index + 1}`}
-              </div>
-              <div className="relative">
-                <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
-                  <span className="rounded-full border border-cyan-300/18 bg-cyan-300/8 px-3 py-1 text-[11px] tracking-[0.2em] text-cyan-100/75">
-                    {project.ribbon}
-                  </span>
-                  <span className="rounded-full border border-emerald-400/18 bg-emerald-400/8 px-3 py-1 text-[11px] tracking-[0.16em] text-emerald-200">
-                    {project.status}
-                  </span>
-                </div>
+            <ScrollStack key={project.title} depth={index + 1}>
+              <FadeContent delay={0.08 * index}>
+                <article className="interactive-card relative overflow-hidden rounded-[1.7rem] border border-cyan-300/25 bg-slate-950/60 p-6 hover:border-cyan-300/55">
+                  <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(0,229,255,0.12),transparent_30%),linear-gradient(180deg,rgba(0,255,136,0.04),transparent_45%)]" />
+                  <div className="pointer-events-none absolute right-5 top-5 text-4xl font-semibold tracking-[0.18em] text-white/6">
+                    {`0${index + 1}`}
+                  </div>
+                  <div className="relative">
+                    <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+                      <span className="rounded-full border border-cyan-300/18 bg-cyan-300/8 px-3 py-1 text-[11px] tracking-[0.2em] text-cyan-100/75">
+                        {project.ribbon}
+                      </span>
+                      <span className="rounded-full border border-emerald-400/18 bg-emerald-400/8 px-3 py-1 text-[11px] tracking-[0.16em] text-emerald-200">
+                        {project.status}
+                      </span>
+                    </div>
 
-                <h3 className="mb-3 text-xl font-semibold text-cyan-100">{project.title}</h3>
-                <p className="cyber-text mb-6 text-sm leading-relaxed">{project.description}</p>
+                    <h3 className="mb-3 text-xl font-semibold text-cyan-100">{project.title}</h3>
+                    <p className="cyber-text mb-6 text-sm leading-relaxed">{project.description}</p>
 
-                <div className="rounded-[1.3rem] border border-cyan-300/12 bg-slate-900/45 p-2">
-                  <LogoLoop
-                    items={project.tags}
-                    duration={20 + index * 2}
-                    reverse={index % 2 === 1}
-                    className="-mx-2"
-                  />
-                </div>
-              </div>
-            </article>
+                    <div className="rounded-[1.3rem] border border-cyan-300/12 bg-slate-900/45 p-2">
+                      <LogoLoop
+                        items={project.tags}
+                        duration={20 + index * 2}
+                        reverse={index % 2 === 1}
+                        className="-mx-2"
+                      />
+                    </div>
+                  </div>
+                </article>
+              </FadeContent>
+            </ScrollStack>
           ))}
         </div>
       </SectionCard>

@@ -1,7 +1,10 @@
 "use client";
 
 import { Network, ServerCog, ShieldCheck, Workflow } from "lucide-react";
+import AnimatedContent from "./AnimatedContent";
+import FadeContent from "./FadeContent";
 import { useLanguage } from "./LanguageContext";
+import ScrollStack from "./ScrollStack";
 import SectionCard from "./SectionCard";
 
 const aboutHighlights = {
@@ -71,7 +74,7 @@ export default function About() {
       className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
       <SectionCard accent="cyan" depth={1}>
-        <div className="mx-auto mb-12 max-w-3xl text-center">
+        <AnimatedContent className="mx-auto mb-12 max-w-3xl text-center">
           <p className="mb-3 text-xs font-medium tracking-[0.3em] text-cyan-300/85">
             {lang === "es" ? "PERFIL PROFESIONAL" : "PROFESSIONAL PROFILE"}
           </p>
@@ -83,35 +86,37 @@ export default function About() {
               ? "Soy estudiante de ingeniería de sistemas con orientación a ciberseguridad, infraestructura y operación confiable. Mi interés está en entender cómo se comporta un servicio desde la red hasta su despliegue, y cómo fortalecerlo para que sea más resistente, medible y seguro."
               : "I am a systems engineering student focused on cybersecurity, infrastructure, and reliable operations. I am interested in understanding how a service behaves from the network layer to deployment, and how to strengthen it so it becomes more resilient, measurable, and secure."}
           </p>
-        </div>
+        </AnimatedContent>
 
         <div className="mb-10 grid gap-4 md:grid-cols-3">
-          {highlights.map((item) => (
-            <div
-              key={item.label}
-              className="rounded-[1.55rem] border border-cyan-300/15 bg-slate-950/72 px-5 py-5 text-center"
-            >
-              <div className="mb-3 flex items-center justify-center gap-3 text-cyan-200">
-                <item.icon size={18} />
-                <span className="text-xs tracking-[0.22em] text-cyan-100/70">{item.label}</span>
-              </div>
-              <p className="text-base font-semibold text-white">{item.value}</p>
-            </div>
+          {highlights.map((item, index) => (
+            <ScrollStack key={item.label} depth={index + 1}>
+              <FadeContent delay={0.06 * index}>
+                <div className="rounded-[1.55rem] border border-cyan-300/15 bg-slate-950/72 px-5 py-5 text-center">
+                  <div className="mb-3 flex items-center justify-center gap-3 text-cyan-200">
+                    <item.icon size={18} />
+                    <span className="text-xs tracking-[0.22em] text-cyan-100/70">{item.label}</span>
+                  </div>
+                  <p className="text-base font-semibold text-white">{item.value}</p>
+                </div>
+              </FadeContent>
+            </ScrollStack>
           ))}
         </div>
 
         <div className="grid gap-4 md:grid-cols-3">
-          {blocks.map((block) => (
-            <article
-              key={block.title}
-              className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6"
-            >
-              <div className="mb-4 inline-flex rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
-                <block.icon size={20} />
-              </div>
-              <h3 className="mb-3 text-lg font-semibold text-white">{block.title}</h3>
-              <p className="cyber-text text-sm leading-relaxed">{block.description}</p>
-            </article>
+          {blocks.map((block, index) => (
+            <ScrollStack key={block.title} depth={index + 1}>
+              <FadeContent delay={0.08 * index}>
+                <article className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6">
+                  <div className="mb-4 inline-flex rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
+                    <block.icon size={20} />
+                  </div>
+                  <h3 className="mb-3 text-lg font-semibold text-white">{block.title}</h3>
+                  <p className="cyber-text text-sm leading-relaxed">{block.description}</p>
+                </article>
+              </FadeContent>
+            </ScrollStack>
           ))}
         </div>
       </SectionCard>

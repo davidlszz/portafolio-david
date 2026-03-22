@@ -4,7 +4,10 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Activity, LockKeyhole, Radar, ShieldCheck, Workflow } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { SiGit, SiGithubactions, SiLinux, SiNginx } from "react-icons/si";
+import AnimatedContent from "./AnimatedContent";
+import FadeContent from "./FadeContent";
 import { useLanguage } from "./LanguageContext";
+import Lanyard from "./Lanyard";
 import LogoLoop from "./LogoLoop";
 import ProfileCard from "./ProfileCard";
 import SectionCard from "./SectionCard";
@@ -68,6 +71,7 @@ export default function Hero() {
   const loopItems = heroLoops[lang];
   const signals = heroSignals[lang];
   const [wordIndex, setWordIndex] = useState(0);
+  const role = lang === "es" ? "Ingeniero de sistemas" : "Systems engineer";
 
   useEffect(() => {
     if (reducedMotion) {
@@ -87,7 +91,7 @@ export default function Hero() {
       className="relative flex min-h-[96svh] scroll-mt-28 items-center justify-center px-4 py-24 md:px-6"
     >
       <SectionCard accent="mixed" depth={0}>
-        <div className="mb-8 flex flex-wrap items-center justify-center gap-3">
+        <FadeContent className="mb-8 flex flex-wrap items-center justify-center gap-3">
           <motion.p
             className="rounded-full border border-cyan-300/18 bg-cyan-300/8 px-4 py-2 font-mono text-[11px] tracking-[0.28em] text-cyan-300"
             initial={{ opacity: 0, y: -20 }}
@@ -106,10 +110,10 @@ export default function Hero() {
             <LockKeyhole size={14} />
             {lang === "es" ? "Perfil técnico en evolución" : "Technical profile in progress"}
           </motion.div>
-        </div>
+        </FadeContent>
 
         <div className="grid items-center gap-12 xl:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
-          <div className="text-center xl:text-left">
+          <AnimatedContent className="text-center xl:text-left">
             <motion.h1
               className="cyber-title mb-4 text-4xl font-extrabold text-white md:text-6xl"
               initial={{ opacity: 0, y: 24 }}
@@ -145,25 +149,19 @@ export default function Hero() {
                 : "Systems engineering focused on cybersecurity, infrastructure hardening, secure networking, and operational reliability with a DevSecOps mindset."}
             </motion.p>
 
-            <motion.div
-              className="mb-8 grid gap-3 sm:grid-cols-3"
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, delay: 0.28 }}
-            >
-              {metrics.map((metric) => (
-                <div
-                  key={metric.label}
-                  className="cyber-metric rounded-[1.45rem] px-4 py-4 text-left"
-                >
-                  <div className="mb-2 flex items-center gap-2 text-cyan-200">
-                    <metric.icon size={15} />
-                    <span className="text-[11px] tracking-[0.22em] text-cyan-100/70">{metric.label}</span>
+            <div className="mb-8 grid gap-3 sm:grid-cols-3">
+              {metrics.map((metric, index) => (
+                <FadeContent key={metric.label} delay={0.08 * index}>
+                  <div className="cyber-metric rounded-[1.45rem] px-4 py-4 text-left">
+                    <div className="mb-2 flex items-center gap-2 text-cyan-200">
+                      <metric.icon size={15} />
+                      <span className="text-[11px] tracking-[0.22em] text-cyan-100/70">{metric.label}</span>
+                    </div>
+                    <p className="text-sm font-semibold text-white">{metric.value}</p>
                   </div>
-                  <p className="text-sm font-semibold text-white">{metric.value}</p>
-                </div>
+                </FadeContent>
               ))}
-            </motion.div>
+            </div>
 
             <motion.div
               className="mb-8 flex flex-col justify-center gap-4 sm:flex-row xl:justify-start"
@@ -188,44 +186,36 @@ export default function Hero() {
             </motion.div>
 
             <div className="mb-8 flex flex-wrap justify-center gap-3 xl:justify-start">
-              {signals.map((signal) => (
-                <div
-                  key={signal.label}
-                  className="rounded-full border border-cyan-300/16 bg-slate-950/62 px-4 py-2 text-xs text-cyan-100/76"
-                >
-                  <span className="inline-flex items-center gap-2 tracking-[0.16em]">
-                    <signal.icon size={14} className="text-emerald-200" />
-                    {signal.label}
-                  </span>
-                </div>
+              {signals.map((signal, index) => (
+                <FadeContent key={signal.label} delay={0.06 * index}>
+                  <div className="rounded-full border border-cyan-300/16 bg-slate-950/62 px-4 py-2 text-xs text-cyan-100/76">
+                    <span className="inline-flex items-center gap-2 tracking-[0.16em]">
+                      <signal.icon size={14} className="text-emerald-200" />
+                      {signal.label}
+                    </span>
+                  </div>
+                </FadeContent>
               ))}
             </div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.45 }}
-            >
-              <p className="mb-4 text-center text-[11px] tracking-[0.32em] text-cyan-100/55 xl:text-left">
-                LOGO LOOP // TOOLSET
-              </p>
+            <FadeContent>
               <LogoLoop items={loopItems} duration={21} />
-            </motion.div>
-          </div>
+            </FadeContent>
+          </AnimatedContent>
 
-          <motion.div
-            className="mx-auto w-full max-w-md"
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.18 }}
-          >
+          <AnimatedContent className="mx-auto flex w-full max-w-md flex-col items-center gap-6" delay={0.08}>
             <ProfileCard
               name={"David L\u00f3pez S\u00e1nchez"}
-              role={lang === "es" ? "Ingeniero de sistemas" : "Systems engineer"}
+              role={role}
               subtitle={lang === "es" ? "Perfil interactivo" : "Interactive profile"}
               imageSrc="/profile-photo.jpg"
             />
-          </motion.div>
+            <Lanyard
+              name={"David L\u00f3pez S\u00e1nchez"}
+              role={role}
+              imageSrc="/profile-photo.jpg"
+            />
+          </AnimatedContent>
         </div>
       </SectionCard>
     </section>
