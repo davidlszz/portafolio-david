@@ -42,6 +42,33 @@ body {
   overflow-x: hidden;
 }
 
+.page-shell {
+  position: relative;
+  min-height: 100vh;
+}
+
+.page-shell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 8%, rgba(0, 229, 255, 0.13), transparent 26%),
+    radial-gradient(circle at 50% 92%, rgba(0, 255, 136, 0.1), transparent 28%),
+    linear-gradient(
+      90deg,
+      transparent calc(50% - 600px),
+      rgba(0, 229, 255, 0.035) calc(50% - 600px),
+      rgba(0, 229, 255, 0.035) calc(50% - 599px),
+      transparent calc(50% - 599px),
+      transparent calc(50% + 599px),
+      rgba(0, 255, 136, 0.03) calc(50% + 599px),
+      rgba(0, 255, 136, 0.03) calc(50% + 600px),
+      transparent calc(50% + 600px)
+    );
+  opacity: 0.9;
+}
+
 body::before {
   content: "";
   position: fixed;
@@ -114,19 +141,87 @@ body::after {
   border-right: 1px solid rgba(0, 229, 255, 0.32);
 }
 
+.section-shell-react {
+  background:
+    linear-gradient(180deg, rgba(6, 13, 21, 0.92), rgba(5, 10, 17, 0.84)),
+    radial-gradient(circle at top, rgba(0, 229, 255, 0.08), transparent 40%);
+  backdrop-filter: blur(18px);
+  box-shadow:
+    0 0 0 1px rgba(0, 229, 255, 0.08),
+    0 18px 50px rgba(0, 0, 0, 0.28),
+    0 0 60px rgba(0, 255, 136, 0.05);
+}
+
+.section-shell-react::before {
+  background:
+    linear-gradient(120deg, rgba(0, 229, 255, 0.07), transparent 22%),
+    linear-gradient(300deg, rgba(0, 255, 136, 0.08), transparent 24%),
+    radial-gradient(circle at 20% 18%, rgba(255, 255, 255, 0.04), transparent 15%);
+}
+
+.react-lens {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  height: 72px;
+  pointer-events: none;
+  z-index: 2;
+  backdrop-filter: blur(18px);
+  opacity: 0.52;
+}
+
+.react-lens-top {
+  top: 0;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.94), transparent);
+  background: linear-gradient(180deg, rgba(6, 14, 24, 0.56), transparent);
+}
+
+.react-lens-bottom {
+  bottom: 0;
+  mask-image: linear-gradient(to top, rgba(0, 0, 0, 0.94), transparent);
+  background: linear-gradient(0deg, rgba(6, 14, 24, 0.56), transparent);
+}
+
+.logo-loop-shell {
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.95) 10%,
+    rgba(0, 0, 0, 0.95) 90%,
+    transparent 100%
+  );
+}
+
+.section-grid-glow {
+  position: absolute;
+  inset: 1.25rem;
+  pointer-events: none;
+  border-radius: 1.5rem;
+  background-image:
+    linear-gradient(rgba(0, 229, 255, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.92), transparent 90%);
+  opacity: 0.28;
+}
+
 .interactive-card {
   transition:
     transform 180ms ease,
     border-color 180ms ease,
     background-color 180ms ease,
-    box-shadow 180ms ease;
+    box-shadow 180ms ease,
+    filter 180ms ease;
   will-change: transform;
 }
 
 @media (hover: hover) and (pointer: fine) {
   .interactive-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+    transform: translateY(-5px);
+    box-shadow:
+      0 18px 34px rgba(0, 0, 0, 0.22),
+      0 0 0 1px rgba(0, 229, 255, 0.08);
+    filter: saturate(1.08);
   }
 }
 
@@ -154,6 +249,18 @@ body::after {
   .section-shell {
     backdrop-filter: none;
     box-shadow: 0 0 0 1px rgba(0, 229, 255, 0.06);
+  }
+
+  .section-shell-react {
+    backdrop-filter: none;
+  }
+
+  .react-lens {
+    display: none;
+  }
+
+  .section-grid-glow {
+    display: none;
   }
 
   .content-section {
@@ -227,5 +334,9 @@ body::after {
 
   body::after {
     animation: none;
+  }
+
+  .logo-loop-shell {
+    mask-image: none;
   }
 }

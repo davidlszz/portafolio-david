@@ -1,27 +1,27 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { Activity, Radar, ShieldCheck, Target } from "lucide-react";
 import { useLanguage } from "./LanguageContext";
+import SectionCard from "./SectionCard";
 
 const focusPillars = {
   es: [
     {
       title: "Analizar primero",
       description:
-        "Parto del riesgo, la arquitectura y los puntos de fallo para entender d\u00f3nde se rompe realmente un sistema.",
+        "Parto del riesgo, la arquitectura y los puntos de fallo para entender donde se rompe realmente un sistema.",
       icon: Radar,
     },
     {
       title: "Automatizar con criterio",
       description:
-        "Busco reducir fricci\u00f3n operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
+        "Busco reducir friccion operativa y errores manuales mediante pipelines, tareas repetibles y control de cambios.",
       icon: Activity,
     },
     {
       title: "Medir para mejorar",
       description:
-        "Sin observabilidad no hay operaci\u00f3n madura; por eso priorizo logs, se\u00f1ales y m\u00e9tricas accionables.",
+        "Sin observabilidad no hay operacion madura; por eso priorizo logs, senales y metricas accionables.",
       icon: ShieldCheck,
     },
   ],
@@ -70,18 +70,12 @@ export default function Enfoque() {
   return (
     <section
       id="focus"
-      className="content-section flex min-h-[78svh] scroll-mt-28 items-center px-4 py-20 md:min-h-screen md:px-6"
+      className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
-      <motion.div
-        className="section-shell mx-auto max-w-6xl overflow-hidden rounded-[2rem] p-8 md:p-12"
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-      >
-        <div className="mb-10 grid gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="hidden">
+      <SectionCard accent="emerald" depth={4}>
+        <div className="mb-10 grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
+          <div className="text-center xl:text-left">
+            <p className="mb-3 text-xs tracking-[0.3em] text-cyan-300/82">
               {lang === "es" ? "CRITERIO DE TRABAJO" : "WORKING FRAMEWORK"}
             </p>
             <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
@@ -96,12 +90,12 @@ export default function Enfoque() {
 
             <p className="cyber-text mt-6 text-lg leading-relaxed">
               {lang === "es"
-                ? "Por eso priorizo dise\u00f1ar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
+                ? "Por eso priorizo disenar con defensas por capas, automatizar controles donde tenga sentido y medir el comportamiento real del sistema para tomar decisiones mejores, no suposiciones."
                 : "That is why I prioritize layered defenses, automate controls where it makes sense, and measure real system behavior so decisions are based on evidence rather than assumptions."}
             </p>
           </div>
 
-          <div className="rounded-[1.6rem] border border-cyan-300/18 bg-slate-950/65 p-6">
+          <div className="rounded-[1.7rem] border border-cyan-300/18 bg-slate-950/65 p-6">
             <div className="mb-5 flex items-center gap-3">
               <div className="rounded-2xl border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-200">
                 <Target size={20} />
@@ -111,7 +105,7 @@ export default function Enfoque() {
                   {lang === "es" ? "Secuencia operativa" : "Operating sequence"}
                 </p>
                 <p className="text-sm text-cyan-100/70">
-                  {lang === "es" ? "As\u00ed estructuro el trabajo t\u00e9cnico" : "How I structure technical work"}
+                  {lang === "es" ? "Asi estructuro el trabajo tecnico" : "How I structure technical work"}
                 </p>
               </div>
             </div>
@@ -138,7 +132,7 @@ export default function Enfoque() {
           {pillars.map((pillar) => (
             <article
               key={pillar.title}
-              className="interactive-card rounded-[1.4rem] border border-emerald-400/18 bg-slate-950/65 p-6"
+              className="interactive-card rounded-[1.5rem] border border-emerald-400/18 bg-slate-950/65 p-6"
             >
               <div className="mb-4 inline-flex rounded-2xl border border-cyan-300/20 bg-cyan-300/10 p-3 text-cyan-200">
                 <pillar.icon size={20} />
@@ -148,7 +142,7 @@ export default function Enfoque() {
             </article>
           ))}
         </div>
-      </motion.div>
+      </SectionCard>
     </section>
   );
 }

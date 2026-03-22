@@ -10,18 +10,20 @@ import {
   ShieldCheck,
   Workflow,
 } from "lucide-react";
-import FadeInSection from "./FadeInSection";
+import { SiGit, SiGithubactions, SiLinux, SiNginx } from "react-icons/si";
 import { useLanguage } from "./LanguageContext";
+import LogoLoop from "./LogoLoop";
+import SectionCard from "./SectionCard";
 
 const stackGroups = {
   es: [
     {
       title: "Seguridad de red",
-      subtitle: "Base defensiva para tr\u00e1fico, acceso y segmentaci\u00f3n.",
+      subtitle: "Base defensiva para trafico, acceso y segmentacion.",
       icon: Network,
       accent: "from-cyan-400/20 to-cyan-300/5",
       items: ["TCP/IP", "DNS", "TLS", "SSH", "Subnetting"],
-      focus: "Control de exposici\u00f3n y protecci\u00f3n en capa de red.",
+      focus: "Control de exposicion y proteccion en capa de red.",
     },
     {
       title: "Infraestructura",
@@ -29,15 +31,15 @@ const stackGroups = {
       icon: ServerCog,
       accent: "from-emerald-400/20 to-emerald-300/5",
       items: ["Linux", "VPS", "Nginx", "Reverse proxy", "Hardening base"],
-      focus: "Despliegues confiables y administraci\u00f3n segura de servidores.",
+      focus: "Despliegues confiables y administracion segura de servidores.",
     },
     {
       title: "DevSecOps",
-      subtitle: "Automatizaci\u00f3n, entrega segura y observabilidad \u00fatil.",
+      subtitle: "Automatizacion, entrega segura y observabilidad util.",
       icon: Workflow,
       accent: "from-cyan-400/15 to-emerald-300/10",
-      items: ["Git", "CI/CD", "Observabilidad", "Gesti\u00f3n de incidentes", "Automatizaci\u00f3n"],
-      focus: "Menos tareas manuales, m\u00e1s trazabilidad y resiliencia.",
+      items: ["Git", "CI/CD", "Observabilidad", "Incidentes", "Automatizacion"],
+      focus: "Menos tareas manuales, mas trazabilidad y resiliencia.",
     },
   ],
   en: [
@@ -71,7 +73,7 @@ const stackGroups = {
 const stackSignals = {
   es: [
     { label: "Arquitectura", value: "Defensa en capas", icon: ShieldCheck },
-    { label: "Operaci\u00f3n", value: "Monitoreo activo", icon: Radar },
+    { label: "Operacion", value: "Monitoreo activo", icon: Radar },
     { label: "Entrega", value: "Cambios controlados", icon: Boxes },
   ],
   en: [
@@ -81,64 +83,53 @@ const stackSignals = {
   ],
 } as const;
 
+const stackLoop = {
+  es: [
+    { label: "Linux", icon: <SiLinux className="text-lg" /> },
+    { label: "Nginx", icon: <SiNginx className="text-lg" /> },
+    { label: "Git", icon: <SiGit className="text-lg" /> },
+    { label: "GitHub Actions", icon: <SiGithubactions className="text-lg" /> },
+    { label: "TLS", icon: <ShieldCheck size={17} /> },
+    { label: "SSH", icon: <LockKeyhole size={17} /> },
+  ],
+  en: [
+    { label: "Linux", icon: <SiLinux className="text-lg" /> },
+    { label: "Nginx", icon: <SiNginx className="text-lg" /> },
+    { label: "Git", icon: <SiGit className="text-lg" /> },
+    { label: "GitHub Actions", icon: <SiGithubactions className="text-lg" /> },
+    { label: "TLS", icon: <ShieldCheck size={17} /> },
+    { label: "SSH", icon: <LockKeyhole size={17} /> },
+  ],
+} as const;
+
 export default function Stack() {
   const { lang } = useLanguage();
   const groups = stackGroups[lang];
   const signals = stackSignals[lang];
+  const loopItems = stackLoop[lang];
 
   return (
     <section
       id="stack"
-      className="content-section flex min-h-[78svh] scroll-mt-28 items-center px-4 py-20 md:min-h-screen md:px-6"
+      className="content-section flex min-h-[78svh] scroll-mt-28 items-center justify-center px-4 py-20 md:px-6"
     >
-      <FadeInSection>
-        <div className="section-shell mx-auto max-w-6xl overflow-hidden rounded-[2rem] p-8 md:p-12">
-          <div className="mb-10 grid gap-8 lg:grid-cols-[1.2fr_0.8fr]">
-            <div>
-              <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
-                {lang === "es" ? "Capacidades t\u00e9cnicas" : "Technical capabilities"}
-              </h2>
-              <p className="cyber-text max-w-3xl text-base leading-relaxed md:text-lg">
-                {lang === "es"
-                  ? "M\u00e1s que una lista de herramientas, este stack representa c\u00f3mo conecto seguridad, infraestructura y operaci\u00f3n para construir sistemas con mayor visibilidad, menor superficie de ataque y entregas m\u00e1s estables."
-                  : "More than a tool list, this stack shows how I connect security, infrastructure, and operations to build systems with better visibility, lower attack surface, and more stable delivery."}
-              </p>
-            </div>
+      <SectionCard accent="emerald" depth={2}>
+        <div className="mx-auto mb-10 max-w-3xl text-center">
+          <h2 className="cyber-title mb-5 text-3xl font-bold text-white md:text-4xl">
+            {lang === "es" ? "Capacidades tecnicas" : "Technical capabilities"}
+          </h2>
+          <p className="cyber-text text-base leading-relaxed md:text-lg">
+            {lang === "es"
+              ? "Mas que una lista de herramientas, este stack representa como conecto seguridad, infraestructura y operacion para construir sistemas con mayor visibilidad, menor superficie de ataque y entregas mas estables."
+              : "More than a tool list, this stack shows how I connect security, infrastructure, and operations to build systems with better visibility, lower attack surface, and more stable delivery."}
+          </p>
+        </div>
 
-            <div className="rounded-2xl border border-cyan-300/20 bg-slate-950/60 p-6">
-              <div className="mb-5 flex items-center gap-3">
-                <div className="rounded-xl border border-emerald-400/25 bg-emerald-400/10 p-3 text-emerald-200">
-                  <LockKeyhole size={20} />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold text-white">
-                    {lang === "es" ? "Perfil operativo" : "Operational profile"}
-                  </p>
-                  <p className="text-sm text-cyan-100/70">
-                    {lang === "es" ? "Orientado a seguridad y confiabilidad" : "Security and reliability oriented"}
-                  </p>
-                </div>
-              </div>
+        <div className="mb-8">
+          <LogoLoop items={loopItems} duration={22} reverse />
+        </div>
 
-              <div className="grid gap-3">
-                {signals.map((signal) => (
-                  <div
-                    key={signal.label}
-                    className="rounded-xl border border-cyan-300/15 bg-slate-900/80 px-4 py-3"
-                  >
-                    <div className="flex items-center justify-between gap-3">
-                      <div className="flex items-center gap-3">
-                        <signal.icon size={16} className="text-cyan-200" />
-                        <span className="text-sm text-cyan-100/80">{signal.label}</span>
-                      </div>
-                      <span className="text-sm font-semibold text-emerald-200">{signal.value}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-
+        <div className="mb-10 grid gap-8 xl:grid-cols-[minmax(0,1.05fr)_minmax(320px,0.95fr)] xl:items-start">
           <div className="grid gap-4 md:grid-cols-3">
             {groups.map((group) => (
               <article
@@ -187,8 +178,41 @@ export default function Stack() {
               </article>
             ))}
           </div>
+
+          <div className="rounded-[1.7rem] border border-cyan-300/20 bg-slate-950/60 p-6">
+            <div className="mb-5 flex items-center gap-3">
+              <div className="rounded-xl border border-emerald-400/25 bg-emerald-400/10 p-3 text-emerald-200">
+                <LockKeyhole size={20} />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-white">
+                  {lang === "es" ? "Perfil operativo" : "Operational profile"}
+                </p>
+                <p className="text-sm text-cyan-100/70">
+                  {lang === "es" ? "Orientado a seguridad y confiabilidad" : "Security and reliability oriented"}
+                </p>
+              </div>
+            </div>
+
+            <div className="grid gap-3">
+              {signals.map((signal) => (
+                <div
+                  key={signal.label}
+                  className="rounded-xl border border-cyan-300/15 bg-slate-900/80 px-4 py-3"
+                >
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <signal.icon size={16} className="text-cyan-200" />
+                      <span className="text-sm text-cyan-100/80">{signal.label}</span>
+                    </div>
+                    <span className="text-sm font-semibold text-emerald-200">{signal.value}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-      </FadeInSection>
+      </SectionCard>
     </section>
   );
 }

@@ -13,17 +13,19 @@ import SectionDivider from "@/components/SectionDivider";
 export default function Home() {
   return (
     <LanguageProvider>
-      <main className="relative isolate">
+      <main className="page-shell relative isolate overflow-x-clip">
         <CyberParticles />
         <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-          <div className="absolute left-[-8rem] top-24 h-72 w-72 rounded-full bg-cyan-400/10 blur-3xl" />
-          <div className="absolute right-[-6rem] top-[28rem] h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl" />
-          <div className="absolute left-1/2 top-[58rem] h-[28rem] w-[28rem] -translate-x-1/2 rounded-full bg-cyan-300/6 blur-3xl" />
-          <div className="absolute inset-y-0 left-[8%] w-px bg-gradient-to-b from-transparent via-cyan-300/10 to-transparent" />
-          <div className="absolute inset-y-0 right-[8%] w-px bg-gradient-to-b from-transparent via-emerald-400/10 to-transparent" />
+          <div className="absolute left-1/2 top-24 h-80 w-80 -translate-x-[88%] rounded-full bg-cyan-400/12 blur-3xl" />
+          <div className="absolute left-1/2 top-[24rem] h-[24rem] w-[24rem] translate-x-[18%] rounded-full bg-emerald-400/12 blur-3xl" />
+          <div className="absolute left-1/2 top-[62rem] h-[30rem] w-[30rem] -translate-x-1/2 rounded-full bg-cyan-300/7 blur-3xl" />
+          <div className="absolute left-1/2 top-[112rem] h-[26rem] w-[26rem] -translate-x-[70%] rounded-full bg-emerald-300/8 blur-3xl" />
+          <div className="absolute inset-y-0 left-1/2 w-px -translate-x-[590px] bg-gradient-to-b from-transparent via-cyan-300/12 to-transparent" />
+          <div className="absolute inset-y-0 left-1/2 w-px translate-x-[590px] bg-gradient-to-b from-transparent via-emerald-400/12 to-transparent" />
+          <div className="absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-slate-950/45 to-transparent" />
         </div>
         <Navbar />
-        <div className="relative z-10">
+        <div className="relative z-10 pb-6">
           <Hero />
           <SectionDivider />
           <About />
