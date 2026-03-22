@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 interface LogoLoopItem {
   label: string;
@@ -21,27 +20,13 @@ export default function LogoLoop({
   duration = 24,
   reverse = false,
 }: LogoLoopProps) {
-  const reducedMotion = useReducedMotion();
   const repeatedItems = [...items, ...items];
 
   return (
     <div className={`logo-loop-shell overflow-hidden ${className}`}>
-      <motion.div
-        className="flex w-max items-center gap-3 py-1 md:gap-4"
-        animate={
-          reducedMotion
-            ? undefined
-            : { x: reverse ? ["-50%", "0%"] : ["0%", "-50%"] }
-        }
-        transition={
-          reducedMotion
-            ? undefined
-            : {
-                duration,
-                ease: "linear",
-                repeat: Number.POSITIVE_INFINITY,
-              }
-        }
+      <div
+        className={`logo-loop-track ${reverse ? "logo-loop-track-reverse" : ""}`}
+        style={{ "--loop-duration": `${duration}s` } as CSSProperties}
       >
         {repeatedItems.map((item, index) => (
           <div
@@ -55,7 +40,7 @@ export default function LogoLoop({
             <span className="whitespace-nowrap tracking-[0.14em]">{item.label}</span>
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

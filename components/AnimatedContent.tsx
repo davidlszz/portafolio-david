@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 interface AnimatedContentProps {
   children: ReactNode;
@@ -14,17 +13,12 @@ export default function AnimatedContent({
   className = "",
   delay = 0,
 }: AnimatedContentProps) {
-  const reducedMotion = useReducedMotion();
-
   return (
-    <motion.div
-      initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.985 }}
-      whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      viewport={{ once: true, amount: 0.18 }}
-      transition={{ duration: 0.65, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={className}
+    <div
+      className={`animated-content ${className}`}
+      style={{ "--enter-delay": `${delay}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

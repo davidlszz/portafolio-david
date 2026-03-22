@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion } from "framer-motion";
-import { ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 interface FadeContentProps {
   children: ReactNode;
@@ -14,17 +13,12 @@ export default function FadeContent({
   className = "",
   delay = 0,
 }: FadeContentProps) {
-  const reducedMotion = useReducedMotion();
-
   return (
-    <motion.div
-      initial={reducedMotion ? { opacity: 0 } : { opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.55, delay, ease: "easeOut" }}
-      className={className}
+    <div
+      className={`fade-content ${className}`}
+      style={{ "--enter-delay": `${delay}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }
